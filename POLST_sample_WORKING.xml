@@ -16,6 +16,7 @@
  This sample is designed to be used in conjunction with the POLST Portable Medical Order Implementation Guide.
  
  ZG TESTING 1
+ ZG Testing 2 09/14/2021 at 5:30 pm
  ********************************************************
  -->
 <ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:voc="urn:hl7-org:v3/voc" xmlns:sdtc="urn:hl7-org:sdtc">
