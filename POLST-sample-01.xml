@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="CDA.xsl"?>
+<!--
+ Title:        ePOLST: Resuscitation and Treatment Portable Medical Orders
+ Filename:     ePOLST_sample.xml 
+ Created by:   Lantana Consulting Group, Inc.
+ Updated by:   Lantana Consulting Group, Inc. 
+ 
+ LastChangedDate: 10/15/2021, Diana Wright
+  
+ ********************************************************
+ Disclaimer: This sample file contains representative data elements for an ePOLST: Resuscitation and Treatment Portable Medical Orders document (ePOLST). 
+ The file depicts a fictional character's health data. Any resemblance to a real person is coincidental. 
+ To illustrate as many data elements as possible, the clinical scenario may not be plausible. 
+ The data in this sample file are not intended to represent real patients, people or clinical events. 
+ ********************************************************
+ -->
+<!--
+        ********************************************************
+        CDA Header
+        ********************************************************
+    -->
+
+<?xml-stylesheet type="text/xsl" href="../my_samples/CDA-Lantana.xsl"?>
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:hl7-org:v3 ../HL7cda-core-2.0_SDTC/schema/extensions/SDTC/infrastructure/cda/CDA_SDTC.xsd"
+	xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:voc="urn:hl7-org:v3/voc">
+	<!-- realmCode is required by the US Realm Header and SHALL be realmCode="US".-->
+	<realmCode code="US"/>
+	<!--The following typeID describes an HL7 registered Refined Message Information Models (RMIMs) [root="2.16.840.1.113883.1.3"] 
+		CDA specification [typeId extension="POCD_HD000040"]-->
+	<typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3"/>
+
+	<!-- US Realm Header current template and previous versions-->
+	<templateId root="2.16.840.1.113883.10.20.22.1.2" extension="2015-08-01"/>
+	<templateId root="2.16.840.1.113883.10.20.22.1.2"/>
+
+	<!-- Globally unique identifier for this document (can be a randomly generated GUID (Globally Unique Identifier) or UUID (Universally Unique Identifier). -->
+	<id root="03b48f86-6216-47ae-822b-2581db2568a3"/>
+
+	<!-- Code for this document type (NOT the template OID)-->
+	<code code="TEMP-POLST-ORDERS" displayName="National ePOLST Form: A Portable Medical Order"
+		codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+
+	<!--
+        ********************************************************
+        Title of this document
+        ********************************************************
+    -->
+	<title>National ePOLST Form: A Portable Medical Order</title>
+	<!-- The "National ePOLST Form: A Portable Medical Order" is a CDA electronic specification of the National POLST Form: A Portable Medical Order, available at www.polst.org/form-->
+	<!-- The following example illustrate how the "National ePOLST Form: A Portable Medical Order" applies and further constrains the CDA US Realm Header.-->
+
+
+	<!-- effectiveTime is not used by the National POLST form -->
+	<!-- Example of how to have a Null value for thise element-->
+	<effectiveTime nullFlavor="NA"/>
+
+	<!-- confidentiality is not used by the National POLST form -->
+	<!-- Example of how to have a Null value for thise element. -->
+	<!-- Question: Is it correct to say (here in comments) that... Another option is:
+	<confidentialityCode code="N" displayName="normal" codeSystem="2.16.840.1.113883.5.25"
+		codeSystemName="Confidentiality"/>-->
+	<confidentialityCode nullFlavor="NA"/>
+
+	<!-- langauge is not used by the National POLST form -->
+	<!-- Example of how to have a Null value for thise element-->
+	<languageCode nullFlavor="NA"/>
+
+	<!--
+        ********************************************************
+        recordTarget is the medical record (patient chart) that this document belongs to.
+        ********************************************************
+    -->
+	<recordTarget>
+		<patientRole>
+			<!-- Example of a Masked Social Security Number example of id using the root for the Social Security Administion assigningAuthority.
+			This example was created by Lisa Nelson, MaxMD.
+			It represent a social security number (SSN) that has been masked to show only the last four digits.
+			This example is available at http://hl7-c-cda-examples.herokuapp.com/examples/view/Header/
+			Note: When recording SSN in the extension, dashes (-) are permitted but not required.
+			Note: An id with a nullFlavor of "MSK" SHALL NOT be used for matching or indexing -->
+
+			<!-- Question: Would that last Note be a problem for POLST registries and for queries? -->
+			<id assigningAuthorityName="US Social Security Administration"
+				root="2.16.840.1.113883.4.1" extension="***-**-2222" nullFlavor="MSK"/>
+
+			<!-- Example of the patient's Medical Record Number.
+				 This example was created by Lisa Nelson, MaxMD.
+				 This example is available at http://hl7-c-cda-examples.herokuapp.com-->
+			<!-- This examples assumes the OID 2.16.840.1.113883.1.111.12345 
+                 uniquely identifies the encompassed Provider Organization's local 
+                 medical record number assigning system.
+                 Note: A receiving system only knows this is an MRN by looking up the root oid in a repository. -->
+			<id root="2.16.840.1.113883.1.111.12345" extension="12345"
+				assigningAuthorityName="River Valley Health Services Locally-assigned Medical Record Number"/>
+
+			<!-- Patient Address and Telephone are not on the National POLST Form-->
+			<!-- Examples of how to have a Null value for these elements-->
+			<addr nullFlavor="NA"/>
+			<telecom nullFlavor="NA"/>
+
+			<patient>
+				<name use="L">
+					<given>Evelyn</given>
+					<given>M</given>
+					<!-- The "SP" is "Spouse" from HL7 Code System EntityNamePartQualifier 2.16.840.1.113883.5.43 -->
+					<family qualifier="SP">Betterhalf</family>
+				</name>
+				<!-- Recommended way to send patient aliases; note @use='P' (pseudonym) and given/@qualifier='CL' (callme) -->
+				<name use="P">
+					<given qualifier="CL">Eve</given>
+				</name>
+
+				<administrativeGenderCode code="F" displayName="Female"
+					codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGender"/>
+
+				<!-- Date of birth need only be precise to the day -->
+				<birthTime value="19750501"/>
+
+				<!-- Race and ethnicity are not on the National POLST Form. -->
+				<!-- Examples of how to have a Null value for these elements-->
+				<raceCode nullFlavor="NA"/>
+				<ethnicGroupCode nullFlavor="NA"/>
+
+				<!-- For the ePOLST, use the guardian for "Patient Representative" on the National POLST Form, section E. SIGNATURE: Patient or Patient Representative. -->
+				<guardian>
+					<!-- Use the code element to specify the "Authority" of the Patient Representative in section E. SIGNATURE: Patient or Patient Representative. -->
+					<code code="POWATT" displayName="Power of Attorney"
+						codeSystem="2.16.840.1.113883.1.11.19830" codeSystemName="ResponsibleParty"/>
+
+					<!-- Patient Representative Address and Telephone are not on the National POLST Form-->
+					<!-- Examples of how to have a Null value for these elements-->
+					<addr nullFlavor="NA"/>
+					<telecom nullFlavor="NA"/>
+					<!-- This is the Patient Representative name in "If other than patient, print full name:" field of E. SIGNATURE: Patient or Patient Representative. -->
+					<guardianPerson>
+						<name>
+							<given>Boris</given>
+							<given qualifier="CL">Bo</given>
+							<family>Betterhalf</family>
+						</name>
+					</guardianPerson>
+				</guardian>
+
+			</patient>
+		</patientRole>
+	</recordTarget>
+	<!--
+        ********************************************************
+        author: The person who provides the content in the document.
+        For the ePOLST, the author SHOULD be the Health Care Provider listed in section F. SIGNATURE: Health Care Provider of the National POLST Form.  
+		The author and legal authenticator could be the same or different.
+        ********************************************************
+    -->
+
+	<author>
+		<time value="201308151030-0800"/>
+		<assignedAuthor>
+			<!-- The id captures the License/Cert. # in section F. SIGNATURE: Health Care Provider.-->
+			<id extension="5555555555" root="2.16.840.1.113883.4.6"/>
+			<code code="207QA0505X" displayName="Adult Medicine"
+				codeSystem="2.16.840.1.113883.6.101"
+				codeSystemName="Healthcare Provider Taxonomy (HIPAA)"/>
+			<!-- The National POLST Form does not have Health Care Provider address in section F. SIGNATURE: Health Care Provider. -->
+			<!-- Examples of how to have a Null value for these elements-->
+			<addr nullFlavor="NA"/>
+
+			<telecom use="WP" value="tel:+1(555)555-1004"/>
+			<assignedPerson>
+				<name>
+					<given>Patricia</given>
+					<given qualifier="CL">Patty</given>
+					<family>Primary</family>
+					<suffix qualifier="AC">M.D.</suffix>
+				</name>
+			</assignedPerson>
+		</assignedAuthor>
+	</author>
+	<!--
+        ********************************************************
+        dataEnterer: Person who transferred the content created by the author into the document.
+        The dataEnterer is optional, but if used SHALL have an id, which SHOULD be a United States National Provider Identifier OID "2.16.840.1.113883.4.6".
+        For the ePOLST, the dataEnterer could be the Health Care Provider listed in section F. SIGNATURE: Health Care Provider of the National POLST Form.  
+        ********************************************************
+    -->
+	<dataEnterer>
+		<assignedEntity>
+			<id/>
+			<addr/>
+			<telecom/>
+			<assignedPerson/>
+		</assignedEntity>
+	</dataEnterer>
+
+	<!--
+        ********************************************************
+        custodian: Organization charged with maintaining the original source document 
+        This is not specified in the National POLST Form and may be different from the author.
+        Implementers of the ePOLST may want to use the custodian for a POLST registry organization.
+        ********************************************************
+    -->
+	<!-- Question: Is the above statement about registries OK to include? -->
+	<custodian>
+		<assignedCustodian>
+			<representedCustodianOrganization>
+				<id extension="321CX" root="2.16.840.1.113883.4.6"/>
+				<name>Good Health HIE</name>
+				<telecom use="WP" value="tel:+1(555)555-1009"/>
+				<addr use="WP">
+					<streetAddressLine>1009 Healthcare Drive </streetAddressLine>
+					<city>Portland</city>
+					<state>OR</state>
+					<postalCode>99123</postalCode>
+					<country>US</country>
+				</addr>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+
+	<!--
+        ********************************************************
+        legalAuthenticator: Individual who is responsible for the document.
+        For the ePOLST, use legalAuthenticator for the signer in "Section F. Signature: Health Care Provider" of the National POLST Form (either the "Health Care Provider" or the "Supervising physician". 
+        Note: POLST only allows for ONE person to sign in "Section F. Signature: Health Care Provider", so this specification futher constarins the US Realm Header legalAuthenticator to SHALL [1..1].
+        ********************************************************
+	-->
+	<legalAuthenticator>
+		<time value="20130815223615-0800"/>
+		<signatureCode code="S"/>
+		<assignedEntity>
+			<id extension="5555555555" root="2.16.840.1.113883.4.6"/>
+			<code code="207QA0505X" displayName="Adult Medicine"
+				codeSystem="2.16.840.1.113883.6.101"
+				codeSystemName="Healthcare Provider Taxonomy (HIPAA)"/>
+			<!--The National POLST Form section "F. Signature: Health Care Provider" does not use address or telecom.-->
+			<!-- Examples of how to have a Null value for these elements-->
+			<addr nullFlavor="NA"/>
+			<telecom nullFlavor="NA"/>
+			<assignedPerson>
+				<name>
+					<given>Patricia</given>
+					<given qualifier="CL">Patty</given>
+					<family>Primary</family>
+					<suffix qualifier="AC">M.D.</suffix>
+				</name>
+			</assignedPerson>
+		</assignedEntity>
+	</legalAuthenticator>
+	<!--
+        ********************************************************
+        authenticator: Individual attesting to the accuracy of information in the document
+		For the ePOLST, use authenticator for the signer in section "E. Signature: Patient or Patient Representative" of the National POLST Form (either the Patient or Patient's Representative). 
+        ********************************************************
+	-->
+	<!-- In this example, the auithenticator is the spouse, who has Power of Attorney ("POWATT") -->
+	<authenticator>
+		<!--authenticator time is not on the National POLST Form-->
+		<!--Examples of how to have a Null value for these elements-->
+		<time nullFlavor="NA"/>
+		<signatureCode code="S"/>
+		<assignedEntity>
+			<id root="5e75fff9-f3d9-423f-854a-a648b05cdaf9"/>
+			<code code="POWATT" displayName="Power of Attorney"
+				codeSystem="2.16.840.1.113883.1.11.19830" codeSystemName="ResponsibleParty"/>
+			<!-- authenticator Address and Telephone are not on the National POLST Form-->
+			<!-- Examples of how to have a Null value for these elements-->
+			<addr nullFlavor="NA"/>
+			<telecom nullFlavor="NA"/>
+			<assignedPerson>
+				<name>
+					<given>Boris</given>
+					<given qualifier="CL">Bo</given>
+					<family>Betterhalf</family>
+				</name>
+			</assignedPerson>
+		</assignedEntity>
+	</authenticator>
+
+	<!--
+        ********************************************************
+        participant: Any supporting entities or individuals
+        
+        Question: Is this the right element for these roles from POLST Form?
+        INDIVIDUALS
+        	- Patient Representative
+        	- Emergency Contact
+        	- Other emergency contact
+        	- Legal Representative
+        	- Primary Care Provider
+        	- Professional Assisting Health Care Provider w/ Form Completion
+        	- Everyone who participated in discussion (check list):
+				• Patient with decision-making capacity
+				• Court Appointed Guardian
+				• Parent of Minor
+				• Legal Surrogate / Health Care Agent
+        ORGANIZATION
+        	- Hospice Name of Agency
+		Ex: 
+		https://terminology.hl7.org/2.1.0/CodeSystem-v3-ParticipationType.html
+		https://terminology.hl7.org/CodeSystem-v3-RoleCode.html
+        ********************************************************
+	-->
+
+	<participant typeCode="IND">
+		<!-- classCode "ECON" represents an emergency contact -->
+		<associatedEntity classCode="ECON">
+			<!-- Patient Address and Telephone are not on the National POLST Form-->
+			<!-- Examples of how to have a Null value for these elements-->
+			<addr nullFlavor="NA"/>
+			<telecom value="tel:+1(555)555-2008" use="MC"/>
+			<associatedPerson>
+				<name>
+					<given>Charles</given>
+					<family>Betterhalf</family>
+				</name>
+			</associatedPerson>
+		</associatedEntity>
+	</participant>
+	
+	<participant typeCode="IND">
+		<!-- classCode "RESPRSN" represents a party who has legal responsibility for another. -->
+		<associatedEntity classCode="RESPRSN">
+			<!-- Patient Address and Telephone are not on the National POLST Form-->
+			<!-- Examples of how to have a Null value for these elements-->
+			<addr nullFlavor="NA"/>
+			<telecom value="tel:+1(555)555-2008" use="MC"/>
+			<associatedPerson>
+				<name>
+					<given>Charles</given>
+					<family>Betterhalf</family>
+				</name>
+			</associatedPerson>
+		</associatedEntity>
+	</participant>
+
+	<!-- ******************************************************** CDA Body ******************************************************** -->
+	<component>
+		<!--
+             ********************************************************
+             structuredBody
+             ********************************************************
+         -->
+
+		<structuredBody>
+
+
+			<component>
+				<!--
+            	 ********************************************************
+             	ePOLST Medical Orders Section 
+             	This Section has 4 entries, 1 for each order type on the National POLST form (A,B,C,D.).
+             	These entry templates are Acts and each is related to a Procedure entry template.
+             	********************************************************
+         	-->
+				<section>
+					<!-- Planned Procedure Section (V2) section template is Implied-->
+					<templateId root="2.16.840.1.113883.10.20.22.2.30" extension="2014-06-09"/>
+					<!-- ePOLST Medical Orders Section section template -->
+					<templateId root="2.16.840.1.113883.9.275.2.1" extension="2021-12-01"/>
+
+					<!-- Provide a title for the orders portion of the form here. -->
+					<title>ePOLST Portable Medical Orders </title>
+					<!-- Provide text that renders the content of the orders portion -->
+					<text>
+						<paragraph>This is a medical order, not an advance directive. For
+							information about POLST and to understand this document, visit:
+							www.polst.org/form </paragraph>
+						<paragraph styleCode="Bold">A. Cardiopulmonary Resuscitation Orders. </paragraph>
+						<paragraph>Follow these orders if patient has no pulse and is not
+							breathing.(Pick 1)</paragraph>
+						<table border="1">
+							<thead>
+								<tr>
+									<td> </td>
+									<td>ORDER OPITIONS</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td> </td>
+									<td>YES CPR: Attempt Resuscitation, including mechanical
+										ventilation, defibrillation and cardioversion. (Requires
+										choosing Full Treatments in Section B)</td>
+								</tr>
+								<tr>
+									<td>SELECTED</td>
+									<td>NO CPR: Do Not Attempt Resuscitation. (May choose any option
+										in Section B) </td>
+								</tr>
+							</tbody>
+						</table>
+						<paragraph styleCode="Bold">B. Initial Treatment Orders.</paragraph>
+						<paragraph>Reassess and discuss interventions with patient or patient
+							representative regularly to ensure treatments are meeting patient’s care
+							goals. Consider a time-trial of interventions based on goals and
+							specific outcomes. </paragraph>
+						<paragraph>Follow these orders if patient has a pulse and/or is breathing.
+							(Pick 1)</paragraph>
+						<table>
+							<thead>
+								<tr>
+									<td> </td>
+									<td>ORDER OPITIONS</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td> </td>
+									<td>Full Treatments (required if choose CPR in Section A). Goal:
+										Attempt to sustain life by all medically effective means.
+										Provide appropriate medical and surgical treatments as
+										indicated to attempt to prolong life, including intensive
+										care.)</td>
+								</tr>
+								<tr>
+									<td> </td>
+									<td>Selective Treatments. Goal: Attempt to restore function
+										while avoiding intensive care and resuscitation efforts
+										(ventilator, defibrillation and cardioversion). May use
+										non-invasive positive airway pressure, antibiotics and IV
+										fluids as indicated. Avoid intensive care. Transfer to
+										hospital if treatment needs cannot be met in current
+										location.</td>
+								</tr>
+								<tr>
+									<td>SELECTED</td>
+									<td>Comfort-focused Treatments. Goal: Maximize comfort through
+										symptom management; allow natural death. Use oxygen, suction
+										and manual treatment of airway obstruction as needed for
+										comfort. Avoid treatments listed in full or select
+										treatments unless consistent with comfort goal. Transfer to
+										hospital only if comfort cannot be achieved in current
+										setting. </td>
+								</tr>
+							</tbody>
+						</table><br/>
+						<paragraph styleCode="Bold">C. Additional Orders or Instructions</paragraph>
+						<paragraph>These orders are in addition to those above (e.g., blood
+							products, dialysis). [EMS protocols may limit emergency responder
+							ability to act on orders in this section.]</paragraph>
+						<table>
+							<tbody>
+								<tr>
+									<td> No additional orders given. </td>
+								</tr>
+							</tbody>
+						</table>
+						<paragraph styleCode="Bold">D. Medically Assisted Nutrition</paragraph>
+						<paragraph>Offer food by mouth if desired by patient, safe and tolerated.
+							(Pick 1)</paragraph>
+						<table>
+							<thead>
+								<tr>
+									<td> </td>
+									<td>ORDER OPITIONS</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td> </td>
+									<td>Provide feeding through new or existing surgically-placed
+										tubes</td>
+								</tr>
+								<tr>
+									<td> </td>
+									<td>Trial period for artificial nutrition but no
+										surgically-placed tubes</td>
+								</tr>
+								<tr>
+									<td>SELECTED</td>
+									<td>No artificial means of nutrition desired</td>
+								</tr>
+								<tr>
+									<td/>
+									<td>Not discussed or no decision made (provide standard of
+										care)</td>
+								</tr>
+							</tbody>
+						</table>
+					</text>
+
+					<!-- National POLST form: A. Cardiopulmonary Resuscitation Order
+						Entry is required (SHALL). -->
+					<entry>
+						<!-- Cardiopulmonary Resuscitation Order Act (ePOLST) entry template -->
+						<templateId root="2.16.840.1.113883.9.275.3.1" extension="2021-12-01"/>
+						<act classCode="ACT" moodCode="INT">
+							<!-- The ACT moodCode="INT", meaning this is an order for an unspecified future time and unspecified order recipient.-->
+							<id root="1b976f98-7f53-4b29-8a42-a3e2291d4911"/>
+							<code code="TEMP-POLST-CPR" codeSystem="2.16.840.1.113883.6.1"
+								codeSystemName="LOINC"
+								displayName="Cardiopulmonary Resuscitation Orders">
+								<originalText>A. Cardiopulmonary Resuscitation Orders. Follow these
+									orders if patient has no pulse and is not
+									breathing.</originalText>
+							</code>
+
+							<entryRelationship typeCode="COMP">
+								<!-- Question: "COMP" (has component) is valid. It means the target act is a component of the source act, with no semantics regarding composition or aggregation implied.-->
+								<!-- Ideally, this should be "DRIV" (derived) but that is not valid. DRIV means the narrative was rendered from the CDA Entries, and contains no clinical content not derived from the entries.
+									Question: Can we put something in the XML to make the narrative render automatically from the coded entries?
+									Would DRIV be valid here if we did?.  
+									If not, use COMP -->
+								<procedure classCode="PROC" moodCode="INT">
+									<!-- Planned CPR Procedure entry template -->
+									<templateId root="2.16.840.1.113883.9.275.3.1.1"
+										extension="2021-12-01"/>
+									<id root="457e2f35-b765-4621-9813-937ae102772f"/>
+
+									<!-- Code must be selected from the value set defined in the guidance and a translation is allowed-->
+									<!-- In this example, the Cardiopulmonary Resuscitation Order option "YES CPR" has been selected.-->
+									<code code="TEMP-POLST-CPR-YES" displayName="YES CPR"
+										codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+										<originalText>YES CPR: Attempt Resuscitation, including
+											mechanical ventilation</originalText>
+										<translation code="441893003"
+											displayName="Active compression decompression cardiopulmonary 
+											resuscitation with use of inspiratory impedance threshold device "
+											codeSystem="2.16.840.1.113883.6.96"
+											codeSystemName="SNOMEDCT"/>
+									</code>
+									<statusCode code="active"/>
+								</procedure>
+							</entryRelationship>
+						</act>
+					</entry>
+
+					<!-- National POLST form: B. Initial Treatment Orders
+						Entry is required (SHALL). -->
+					<entry>
+						<!-- Initial Treatment Orders Act (ePOLST) entry template -->
+						<templateId root="2.16.840.1.113883.9.275.3.2" extension="2021-12-01"/>
+						<act classCode="ACT" moodCode="INT">
+							<id root="b60a9a02-5c62-4ccf-810b-e876132493ad"/>
+							<code code="TEMP-POLST-TREAT" codeSystem="2.16.840.1.113883.6.1"
+								codeSystemName="LOINC" displayName="Initial Treatment Orders">
+								<originalText>B. Initial Treatment Orders. Follow these orders if
+									patient has a pulse and/or is breathing.</originalText>
+							</code>
+
+							<entryRelationship typeCode="COMP">
+								<procedure classCode="PROC" moodCode="INT">
+									<!-- Planned Initial Treatment Procedure entry template -->
+									<templateId root="2.16.840.1.113883.9.275.3.2.1"
+										extension="2021-12-01"/>
+									<id root="98b10d9a-40eb-4cb9-97f8-c323f24b9af0"/>
+
+									<!-- Code must be selected from the value set defined in the guidance and a translation is allowed-->
+									<!-- In this example, the Initial Treatment Orders option "Full Treatments" has been selected.-->
+									<code code="TEMP-POLST-TREAT-FULL" displayName="Full Treatments"
+										codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+										<originalText>Full Treatments (required if choose CPR in
+											Section A). Goal: Attempt to sustain life by all
+											medically effective means. Provide appropriate medical
+											and surgical treatments as indicated to attempt to
+											prolong life, including intensive care.</originalText>
+										<translation nullFlavor="NA"/>
+									</code>
+									<statusCode code="active"/>
+								</procedure>
+							</entryRelationship>
+						</act>
+
+					</entry>
+
+					<!-- National POLST form: C.  Additional Orders or Instructions
+						Entry is required (SHALL). -->
+					<entry>
+						<!-- Additional Orders Act (ePOLST) entry template -->
+						<templateId root="2.16.840.1.113883.9.275.3.3" extension="2021-12-01"/>
+						<act classCode="ACT" moodCode="INT">
+							<id root="a08584fd-f75b-452b-a39d-61b9f7aba3c9"/>
+							<code code="TEMP-POLST-ADD-ORDERS" codeSystem="2.16.840.1.113883.6.1"
+								codeSystemName="LOINC"
+								displayName="Additional Orders or Instructions">
+								<originalText>C. Additional Orders or Instructions. These orders are
+									in addition to those above (e.g., blood products, dialysis).
+									[EMS protocols may limit emergency responder ability to act on
+									orders in this section.]</originalText>
+								<translation nullFlavor="NA"/>
+							</code>
+
+							<entryRelationship typeCode="COMP">
+								<procedure classCode="PROC" moodCode="INT">
+									<!-- Planned Additional Orders Procedure entry template -->
+									<templateId root="2.16.840.1.113883.9.275.3.3.1"
+										extension="2021-12-01"/>
+									<id root="1b2f6703-dd07-416c-9cf0-9b7ff8fc4fcc"/>
+
+									<!-- This is entry allows free text and coded entries. A Null entry is allowed. -->
+									<!-- In this example, free text was used, but no code was included.-->
+									<code nullFlavor="NA"/>
+									<text>Do not provide blood products.</text>
+									<statusCode code="active"/>
+								</procedure>
+							</entryRelationship>
+						</act>
+					</entry>
+
+					<!-- National POLST form: D. Medically Assisted Nutrition
+						Entry is required (SHALL).-->
+					<entry>
+						<!-- Medically Assisted Nutrition Orders Act entry template -->
+						<templateId root="2.16.840.1.113883.9.275.3.4" extension="2021-12-01"/>
+						<act classCode="ACT" moodCode="INT">
+							<id root="c45f21b3-a25a-4209-8969-a644e63850fa"/>
+							<code code="TEMP-POLST-MED-NUTR" codeSystem="2.16.840.1.113883.6.1"
+								codeSystemName="LOINC" displayName="Medically Assisted Nutrition">
+								<originalText>D. Medically Assisted Nutrition (Offer food by mouth
+									if desired by patient, safe and tolerated)</originalText>
+								<translation nullFlavor="NA"/>
+							</code>
+
+							<entryRelationship typeCode="COMP">
+								<procedure classCode="PROC" moodCode="INT">
+									<!-- Planned Medically Assisted Nutrition Orders Procedure entry template -->
+									<templateId root="2.16.840.1.113883.9.275.3.4.1"
+										extension="2021-12-01"/>
+									<id root="562483dc-ee8c-4973-92a3-27f40b6183c3"/>
+
+									<!-- Code must be selected from the value set defined in the guidance and a translation is allowed-->
+									<!-- In this example, the Medically Assisted Nutrition Orders option "No artificial means of nutrition desired" has been selected.-->
+									<code code="TEMP-POLST-MED-NUTR-X"
+										codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+										displayName="No artificial means of nutrition desired">
+										<originalText/>
+										<translation nullFlavor="NA"/>
+									</code>
+									<statusCode code="active"/>
+								</procedure>
+							</entryRelationship>
+						</act>
+					</entry>
+				</section>
+			</component>
+
+<!--			<component>
+				<!-\-
+            	 ********************************************************
+             	POLST Instructions Section
+             	********************************************************
+         	-\->
+				<!-\- Question: This is an experimental section and does not yet agree with Trifolia. Some of this content may become useful. -\->
+<!-\-
+				<section>
+					<templateId root="2.16.840.1.113883.10.20.22.2.21.999999" extension="2021-12-01"/>
+					<templateId root="2.16.840.1.113883.10.20.22.2.21.99999998"/>
+					<code code="TEMP-POLST-INSTR" codeSystem="2.16.840.1.113883.6.1"
+						codeSystemName="LOINC"/>
+					<title>POLST Document Instructions</title>
+
+					<!-\\- Mock-up of POLST Instructions portion of the National POLST form/document. -\\->
+					<!-\\-Healthcare Agent Authority 20200610 entry template in Personal Advance Care Plan (PACP) Document IG 
+					[observation: identifier urn:hl7ii:2.16.840.1.113883.4.823.1.4.4:2020-06-10 (open)]
+					Draft as part of Personal Advance Care Plan V2
+					...is an observation template-\\->
+
+					<text>
+						<paragraph styleCode="Bold">General Instructions </paragraph>
+						<content> Paragraph #1 </content><br/><br/>
+						<content>
+							<content styleCode="Bold"> Bold Sub-heading </content><br/><br/> If
+							Paragraph #2: </content><br/>
+						<list listType="ordered">
+							<item>Item</item>
+							<item>Item</item>
+							<item>Itemn</item>
+							<item>Item</item>
+							<item>Itemy</item>
+							<item>Item</item>
+						</list><br/>
+						<content> Paragraph #3 </content><br/><br/>
+						<content styleCode="Bold"> Bold content </content><br/><br/>
+						<content styleCode="Bold"> Bold content </content><br/><br/>
+						<content> Paragraph #4 </content><br/><br/>
+						<content> Paragraph #5 </content><br/><br/>
+					</text>
+				</section>-\->
+			</component>-->
+		</structuredBody>
+	</component>
+</ClinicalDocument>
