@@ -320,7 +320,7 @@
                     }
                     /* End IE only hack */
                 </style><!-- Javascript for Revisions switch -->
-      <script type="text/javascript">var gStringCollapse = ""; var gStringExpand = "";
+      <script type="text/javascript">var gStringCollapse = "Collapse"; var gStringExpand = "Expand";
                         function expandAllSections() {
                             var toggleButtons = document.getElementsByClassName("expandCollapse");
                             if (toggleButtons != null) {
@@ -418,36 +418,36 @@
          <table xmlns:xhtml="http://www.w3.org/1999/xhtml" class="header_table">
             <tbody>
                <tr>
-                  <td class="td_label"/>
+                  <td class="td_label">Patient</td>
                   <td>
-                     <span class="span_value">: Evelyn  M  BETTERHALF</span>
+                     <span class="span_value">Abel  M  BAKER</span>
                      <span style="float: right; margin-left: 1em;">
                         <span>
-                           <span class="span_label">: </span>
-                           <span class="span_value"> 1, 1975</span>
+                           <span class="span_label">Date of Birth: </span>
+                           <span class="span_value">May  1, 1975</span>
                         </span>
-                        <span class="span_label"/>
-                        <span class="span_value">Female</span>
+                        <span class="span_label">Gender: </span>
+                        <span class="span_value">Male</span>
                      </span>
                      <span style="float: right;" class="print_visible">
-                        <span class="span_label"/>
+                        <span class="span_label">Patient-ID: </span>
                         <span class="span_value">
-                           <span title="US Social Security Administration">***-**-2222()</span>, <span title="River Valley Health Services Locally-assigned Medical Record Number">12345</span>
+                           <span title="US Social Security Administration">***-**-2222 (SSN)(masked)</span>, <span title="River Valley Health Services Locally-assigned Medical Record Number">12345 (2.16.840.1.113883.1.111.12345)</span>
                         </span>
                      </span>
                   </td>
                </tr>
                <tr>
-                  <td class="td_label"/>
+                  <td class="td_label">Guardian</td>
                   <td>
-                     <span class="span_value">Boris  Bo  BETTERHALF - Power of Attorney</span>
+                     <span class="span_value">Eve  BAKER - Power of Attorney</span>
                   </td>
                </tr>
                <tr>
-                  <td class="td_label"/>
+                  <td class="td_label">Author</td>
                   <td>
-                     <span class="span_value">Patricia  Patty  PRIMARY M.D.</span>, <span class="span_label"/>
-                     <span class="span_value"> 15, 2013, 10:30AM -0800</span>
+                     <span class="span_value">Patricia  Patty  PRIMARY M.D.</span>, <span class="span_label">Authored On: </span>
+                     <span class="span_value">August  15, 2013, 10:30AM -0800</span>
                   </td>
                </tr>
             </tbody>
@@ -456,7 +456,7 @@
       <div id="documentbody">
          <div xmlns:xhtml="http://www.w3.org/1999/xhtml" style="margin-left: 0em;" class="section">
             <div class="section-title">
-               <div class="button expandCollapse" onclick="collapseSection(this)" title="">▼</div>
+               <div class="button expandCollapse" onclick="collapseSection(this)" title="Collapse">▼</div>
                <h3 id="section_1">ePOLST Portable Medical Orders </h3>
             </div>
             <div class="section-content">
@@ -490,7 +490,7 @@
 								
                            <tr class="narr_tr">
 									
-                              <td> </td>
+                              <td>SELECTED</td>
 									
                               <td>YES CPR: Attempt Resuscitation, including mechanical
 										ventilation, defibrillation and cardioversion. (Requires
@@ -500,7 +500,7 @@
 								
                            <tr class="narr_tr">
 									
-                              <td>SELECTED</td>
+                              <td/>
 									
                               <td>NO CPR: Do Not Attempt Resuscitation. (May choose any option
 										in Section B) </td>
@@ -539,7 +539,7 @@
 								
                            <tr class="narr_tr">
 									
-                              <td> </td>
+                              <td>SELECTED</td>
 									
                               <td>Full Treatments (required if choose CPR in Section A). Goal:
 										Attempt to sustain life by all medically effective means.
@@ -565,7 +565,7 @@
 								
                            <tr class="narr_tr">
 									
-                              <td>SELECTED</td>
+                              <td/>
 									
                               <td>Comfort-focused Treatments. Goal: Maximize comfort through
 										symptom management; allow natural death. Use oxygen, suction
@@ -594,7 +594,7 @@
 								
                            <tr class="narr_tr">
 									
-                              <td> No additional orders given. </td>
+                              <td>No additional orders.</td>
 								
                            </tr>
 							
@@ -671,12 +671,12 @@
          <table xmlns:xhtml="http://www.w3.org/1999/xhtml" class="header_table">
             <tbody>
                <tr>
-                  <td class="td_label td_label_width"/>
+                  <td class="td_label td_label_width">Document</td>
                   <td style="width: 30%;">
                      <table class="table_simple">
                         <tbody>
                            <tr>
-                              <td class="td_label"/>
+                              <td class="td_label">ID</td>
                               <td>
                                  <span>03b48f86-6216-47ae-822b-2581db2568a3</span>
                               </td>
@@ -684,7 +684,7 @@
                         </tbody>
                      </table>
                   </td>
-                  <td class="td_label td_label_width"/>
+                  <td class="td_label td_label_width">Created On</td>
                   <td/>
                </tr>
             </tbody>
@@ -692,10 +692,10 @@
          <table xmlns:xhtml="http://www.w3.org/1999/xhtml" class="header_table">
             <tbody>
                <tr>
-                  <td class="td_label td_label_width"/>
+                  <td class="td_label td_label_width">Custodian</td>
                   <td style="width: 30%;">Good Health HIE</td>
-                  <td class="td_label td_label_width"/>
-                  <td>: 1009 Healthcare Drive <br/>Portland, OR 99123<br/>US<br/> : +1(555)555-1009</td>
+                  <td class="td_label td_label_width">Contact Details</td>
+                  <td>Workplace: 1009 Healthcare Drive <br/>Portland, OR 99123<br/>US<br/>Tel Workplace: +1(555)555-1009</td>
                </tr>
             </tbody>
          </table>
@@ -703,39 +703,37 @@
          <table xmlns:xhtml="http://www.w3.org/1999/xhtml" class="header_table">
             <tbody>
                <tr>
-                  <td class="td_label td_label_width"/>
-                  <td style="width: 30%;">: Evelyn  M  BETTERHALF, : Eve</td>
-                  <td class="td_label td_label_width"/>
-                  <td style="width: 30%;">
-                     <br/>
+                  <td class="td_label td_label_width">Patient</td>
+                  <td style="width: 30%;">Abel  M  BAKER</td>
+                  <td class="td_label td_label_width">Contact Details</td>
+                  <td style="width: 30%;">not applicable<br/>
                   </td>
                </tr>
                <tr>
-                  <td class="td_label td_label_width"/>
-                  <td style="width: 30%;"> 1, 1975</td>
-                  <td class="td_label td_label_width"/>
-                  <td>Female</td>
+                  <td class="td_label td_label_width">Date of Birth</td>
+                  <td style="width: 30%;">May  1, 1975</td>
+                  <td class="td_label td_label_width">Gender</td>
+                  <td>Male</td>
                </tr>
                <tr>
-                  <td class="td_label td_label_width"/>
-                  <td style="width: 30%;"/>
-                  <td class="td_label td_label_width"/>
-                  <td/>
+                  <td class="td_label td_label_width">Race</td>
+                  <td style="width: 30%;">not applicable</td>
+                  <td class="td_label td_label_width">Ethnicity</td>
+                  <td>not applicable</td>
                </tr>
                <tr>
-                  <td class="td_label td_label_width"/>
+                  <td class="td_label td_label_width">Patient-IDs</td>
                   <td colspan="3">
-                     <span title="US Social Security Administration">***-**-2222()</span>
+                     <span title="US Social Security Administration">***-**-2222 (SSN)(masked)</span>
                      <br/>
-                     <span title="River Valley Health Services Locally-assigned Medical Record Number">12345</span>
+                     <span title="River Valley Health Services Locally-assigned Medical Record Number">12345 (2.16.840.1.113883.1.111.12345)</span>
                   </td>
                </tr>
                <tr>
-                  <td class="td_label td_label_width"/>
-                  <td style="width: 30%;">Boris  Bo  BETTERHALF - Power of Attorney</td>
-                  <td class="td_label td_label_width"/>
-                  <td>
-                     <br/>
+                  <td class="td_label td_label_width">Guardian</td>
+                  <td style="width: 30%;">Eve  BAKER - Power of Attorney</td>
+                  <td class="td_label td_label_width">Contact Details</td>
+                  <td>not applicable<br/>
                   </td>
                </tr>
             </tbody>
@@ -745,44 +743,31 @@
          <table xmlns:xhtml="http://www.w3.org/1999/xhtml" class="header_table">
             <tbody>
                <tr>
-                  <td class="td_label td_label_width"/>
-                  <td style="width: 30%;">Patricia  Patty  PRIMARY M.D. - Adult Medicine</td>
-                  <td class="td_label td_label_width"/>
-                  <td>
-                     <br/> : +1(555)555-1004</td>
+                  <td class="td_label td_label_width">Author</td>
+                  <td style="width: 30%;">Patricia  Patty  PRIMARY M.D. - Code: Adult Medicine</td>
+                  <td class="td_label td_label_width">Contact Details</td>
+                  <td>not applicable<br/>Tel Workplace: +1(555)555-1004</td>
                </tr>
             </tbody>
          </table>
          <table xmlns:xhtml="http://www.w3.org/1999/xhtml" class="header_table">
             <tbody>
                <tr>
-                  <td class="td_label td_label_width"> - </td>
-                  <td style="width: 30%;">Charles  BETTERHALF</td>
-                  <td class="td_label td_label_width"/>
-                  <td>
-                     <br/> : +1(555)555-2008</td>
+                  <td class="td_label td_label_width">Indirect target - emergency contact</td>
+                  <td style="width: 30%;">Charles  BAKER</td>
+                  <td class="td_label td_label_width">Contact Details</td>
+                  <td>not applicable<br/>Tel Mobile: +1(555)555-2008</td>
                </tr>
             </tbody>
          </table>
          <table xmlns:xhtml="http://www.w3.org/1999/xhtml" class="header_table">
             <tbody>
                <tr>
-                  <td class="td_label td_label_width"> - </td>
-                  <td style="width: 30%;">Charles  BETTERHALF</td>
-                  <td class="td_label td_label_width"/>
-                  <td>
-                     <br/> : +1(555)555-2008</td>
-               </tr>
-            </tbody>
-         </table>
-         <table xmlns:xhtml="http://www.w3.org/1999/xhtml" class="header_table">
-            <tbody>
-               <tr>
-                  <td class="td_label td_label_width"/>
+                  <td class="td_label td_label_width">Data Enterer</td>
                   <td style="width: 30%;">
                      <span/>
                   </td>
-                  <td class="td_label td_label_width"/>
+                  <td class="td_label td_label_width">Contact Details</td>
                   <td>
                      <br/>
                   </td>
@@ -792,11 +777,10 @@
          <table xmlns:xhtml="http://www.w3.org/1999/xhtml" class="header_table">
             <tbody>
                <tr>
-                  <td class="td_label td_label_width"/>
-                  <td style="width: 30%;">Boris  Bo  BETTERHALF </td>
-                  <td class="td_label td_label_width"/>
-                  <td>
-                     <br/>
+                  <td class="td_label td_label_width">Authenticator</td>
+                  <td style="width: 30%;">Eve  BAKER signed</td>
+                  <td class="td_label td_label_width">Contact Details</td>
+                  <td>not applicable<br/>
                   </td>
                </tr>
             </tbody>
@@ -804,11 +788,10 @@
          <table xmlns:xhtml="http://www.w3.org/1999/xhtml" class="header_table">
             <tbody>
                <tr>
-                  <td class="td_label td_label_width"/>
-                  <td style="width: 30%;">Patricia  Patty  PRIMARY M.D.  15, 2013, 10:36:15PM -0800</td>
-                  <td class="td_label td_label_width"/>
-                  <td>
-                     <br/>
+                  <td class="td_label td_label_width">Legal Authenticator</td>
+                  <td style="width: 30%;">Patricia  Patty  PRIMARY M.D. signed at August  15, 2013, 10:36:15PM -0800</td>
+                  <td class="td_label td_label_width">Contact Details</td>
+                  <td>not applicable<br/>
                   </td>
                </tr>
             </tbody>

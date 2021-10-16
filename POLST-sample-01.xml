@@ -22,6 +22,7 @@
     -->
 
 <?xml-stylesheet type="text/xsl" href="../my_samples/CDA-Lantana.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../HL7%20cda-core-xsl/CDA.xsl"?>
 <ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="urn:hl7-org:v3 ../HL7cda-core-2.0_SDTC/schema/extensions/SDTC/infrastructure/cda/CDA_SDTC.xsd"
 	xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:voc="urn:hl7-org:v3/voc">
@@ -101,18 +102,18 @@
 			<telecom nullFlavor="NA"/>
 
 			<patient>
-				<name use="L">
-					<given>Evelyn</given>
+				<name>
+					<given>Abel</given>
 					<given>M</given>
-					<!-- The "SP" is "Spouse" from HL7 Code System EntityNamePartQualifier 2.16.840.1.113883.5.43 -->
-					<family qualifier="SP">Betterhalf</family>
+					<family>Baker</family>
 				</name>
+				<!-- Question: For POLST Document, can we add "preferred name?				-->
 				<!-- Recommended way to send patient aliases; note @use='P' (pseudonym) and given/@qualifier='CL' (callme) -->
-				<name use="P">
-					<given qualifier="CL">Eve</given>
-				</name>
+				<!--				<name use="P">
+					<given qualifier="CL">Abe</given>
+				</name>-->
 
-				<administrativeGenderCode code="F" displayName="Female"
+				<administrativeGenderCode code="M" displayName="Male"
 					codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGender"/>
 
 				<!-- Date of birth need only be precise to the day -->
@@ -123,7 +124,7 @@
 				<raceCode nullFlavor="NA"/>
 				<ethnicGroupCode nullFlavor="NA"/>
 
-				<!-- For the ePOLST, use the guardian for "Patient Representative" on the National POLST Form, section E. SIGNATURE: Patient or Patient Representative. -->
+				<!--For the ePOLST, the guardian may be the "Patient Representative" on the National POLST Form, section E. SIGNATURE: Patient or Patient Representative.-->
 				<guardian>
 					<!-- Use the code element to specify the "Authority" of the Patient Representative in section E. SIGNATURE: Patient or Patient Representative. -->
 					<code code="POWATT" displayName="Power of Attorney"
@@ -136,9 +137,9 @@
 					<!-- This is the Patient Representative name in "If other than patient, print full name:" field of E. SIGNATURE: Patient or Patient Representative. -->
 					<guardianPerson>
 						<name>
-							<given>Boris</given>
-							<given qualifier="CL">Bo</given>
-							<family>Betterhalf</family>
+							<given>Eve</given>
+							<!-- The "SP" is "Spouse" from HL7 Code System EntityNamePartQualifier 2.16.840.1.113883.5.43 -->
+							<family qualifier="SP">Baker</family>
 						</name>
 					</guardianPerson>
 				</guardian>
@@ -269,9 +270,8 @@
 			<telecom nullFlavor="NA"/>
 			<assignedPerson>
 				<name>
-					<given>Boris</given>
-					<given qualifier="CL">Bo</given>
-					<family>Betterhalf</family>
+					<given>Eve</given>
+					<family qualifier="SP">Baker</family>
 				</name>
 			</assignedPerson>
 		</assignedEntity>
@@ -283,16 +283,19 @@
         
         Question: Is this the right element for these roles from POLST Form?
         INDIVIDUALS
-        	- Patient Representative
-        	- Emergency Contact
-        	- Other emergency contact
-        	- Legal Representative
-        	- Primary Care Provider
+        	- Patient Representative (if not the guardian)
+        	- Emergency Contact - ECON
+        	- Other emergency contact - ECON
+        	- Legal Representative 
+        		GRDCON (legal guardian consent author) or POACON (healthcare power of attorney consent author) or  from HL7 ParticipationFunction 2.16.840.1.113883.5.88
+        	- Primary Care Provider code = PCP from HL7 ParticipationFunction 2.16.840.1.113883.5.88
         	- Professional Assisting Health Care Provider w/ Form Completion
-        	- Everyone who participated in discussion (check list):
-				• Patient with decision-making capacity
+        	- Everyone who participated in discussion (check list): 
+        		Look at HL7 ParticipationFunction 2.16.840.1.113762.1.4.1099.30  or HL7 ParticipationFunction 2.16.840.1.113883.1.11.10267 
+				• Patient with decision-making capacity  ONESELF	self	RoleCode	HL7V3.0_2021-03	2.16.840.1.113883.5.111
+					or LOINC 45471-0   Patient responsible for self [Minimum Data Set]
 				• Court Appointed Guardian
-				• Parent of Minor
+				• Parent of Minor  PRN	parent	RoleCode	HL7V3.0_2021-03	2.16.840.1.113883.5.111
 				• Legal Surrogate / Health Care Agent
         ORGANIZATION
         	- Hospice Name of Agency
@@ -312,27 +315,12 @@
 			<associatedPerson>
 				<name>
 					<given>Charles</given>
-					<family>Betterhalf</family>
+					<family>Baker</family>
 				</name>
 			</associatedPerson>
 		</associatedEntity>
 	</participant>
-	
-	<participant typeCode="IND">
-		<!-- classCode "RESPRSN" represents a party who has legal responsibility for another. -->
-		<associatedEntity classCode="RESPRSN">
-			<!-- Patient Address and Telephone are not on the National POLST Form-->
-			<!-- Examples of how to have a Null value for these elements-->
-			<addr nullFlavor="NA"/>
-			<telecom value="tel:+1(555)555-2008" use="MC"/>
-			<associatedPerson>
-				<name>
-					<given>Charles</given>
-					<family>Betterhalf</family>
-				</name>
-			</associatedPerson>
-		</associatedEntity>
-	</participant>
+
 
 	<!-- ******************************************************** CDA Body ******************************************************** -->
 	<component>
@@ -361,7 +349,7 @@
 
 					<!-- Provide a title for the orders portion of the form here. -->
 					<title>ePOLST Portable Medical Orders </title>
-					<!-- Provide text that renders the content of the orders portion -->
+					<!-- Provide text that renders the content of this section -->
 					<text>
 						<paragraph>This is a medical order, not an advance directive. For
 							information about POLST and to understand this document, visit:
@@ -378,13 +366,13 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td> </td>
+									<td>SELECTED</td>
 									<td>YES CPR: Attempt Resuscitation, including mechanical
 										ventilation, defibrillation and cardioversion. (Requires
 										choosing Full Treatments in Section B)</td>
 								</tr>
 								<tr>
-									<td>SELECTED</td>
+									<td/>
 									<td>NO CPR: Do Not Attempt Resuscitation. (May choose any option
 										in Section B) </td>
 								</tr>
@@ -406,7 +394,7 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td> </td>
+									<td>SELECTED</td>
 									<td>Full Treatments (required if choose CPR in Section A). Goal:
 										Attempt to sustain life by all medically effective means.
 										Provide appropriate medical and surgical treatments as
@@ -424,7 +412,7 @@
 										location.</td>
 								</tr>
 								<tr>
-									<td>SELECTED</td>
+									<td/>
 									<td>Comfort-focused Treatments. Goal: Maximize comfort through
 										symptom management; allow natural death. Use oxygen, suction
 										and manual treatment of airway obstruction as needed for
@@ -442,7 +430,7 @@
 						<table>
 							<tbody>
 								<tr>
-									<td> No additional orders given. </td>
+									<td>No additional orders.</td>
 								</tr>
 							</tbody>
 						</table>
@@ -588,10 +576,10 @@
 										extension="2021-12-01"/>
 									<id root="1b2f6703-dd07-416c-9cf0-9b7ff8fc4fcc"/>
 
-									<!-- This is entry allows free text and coded entries. A Null entry is allowed. -->
+									<!-- This is entry allows free text and coded entries. A Null entry is NOT allowed. At a minimum, trxt indicating "No additional orders" should be included. -->
 									<!-- In this example, free text was used, but no code was included.-->
 									<code nullFlavor="NA"/>
-									<text>Do not provide blood products.</text>
+									<text>No additional orders.</text>
 									<statusCode code="active"/>
 								</procedure>
 							</entryRelationship>
@@ -624,7 +612,6 @@
 									<code code="TEMP-POLST-MED-NUTR-X"
 										codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
 										displayName="No artificial means of nutrition desired">
-										<originalText/>
 										<translation nullFlavor="NA"/>
 									</code>
 									<statusCode code="active"/>
@@ -635,7 +622,7 @@
 				</section>
 			</component>
 
-<!--			<component>
+			<!--			<component>
 				<!-\-
             	 ********************************************************
              	POLST Instructions Section
