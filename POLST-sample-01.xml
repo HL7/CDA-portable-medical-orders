@@ -158,7 +158,9 @@
 	<author>
 		<time value="201308151030-0800"/>
 		<assignedAuthor>
-			<!-- The id captures the License/Cert. # in section F. SIGNATURE: Health Care Provider.-->
+			<!-- Question: Does this id captures the License/Cert. # in section F. SIGNATURE: Health Care Provider. ?-->
+			<!--			Question: This does not seem to render. How do I make it show on the html?
+-->
 			<id extension="5555555555" root="2.16.840.1.113883.4.6"/>
 			<code code="207QA0505X" displayName="Adult Medicine"
 				codeSystem="2.16.840.1.113883.6.101"
@@ -622,27 +624,19 @@
 				</section>
 			</component>
 
-			<!--			<component>
-				<!-\-
+			<component>
+
+				<!--
             	 ********************************************************
-             	POLST Instructions Section
+             	ePOLST Completion Information Section
+             	This Section has entries for ***************TBD
+             	These entry templates are ***************TBD (Question)
              	********************************************************
-         	-\->
-				<!-\- Question: This is an experimental section and does not yet agree with Trifolia. Some of this content may become useful. -\->
-<!-\-
+         	-->
 				<section>
-					<templateId root="2.16.840.1.113883.10.20.22.2.21.999999" extension="2021-12-01"/>
-					<templateId root="2.16.840.1.113883.10.20.22.2.21.99999998"/>
-					<code code="TEMP-POLST-INSTR" codeSystem="2.16.840.1.113883.6.1"
-						codeSystemName="LOINC"/>
-					<title>POLST Document Instructions</title>
-
-					<!-\\- Mock-up of POLST Instructions portion of the National POLST form/document. -\\->
-					<!-\\-Healthcare Agent Authority 20200610 entry template in Personal Advance Care Plan (PACP) Document IG 
-					[observation: identifier urn:hl7ii:2.16.840.1.113883.4.823.1.4.4:2020-06-10 (open)]
-					Draft as part of Personal Advance Care Plan V2
-					...is an observation template-\\->
-
+					<templateId root="2.16.840.1.113883.9.275.2.2" extension="2021-12-01"/>
+					<title>ePOLST Completion Information Section</title>
+					<!-- Use the <text> to display human-readable content of this section. -->
 					<text>
 						<paragraph styleCode="Bold">General Instructions </paragraph>
 						<content> Paragraph #1 </content><br/><br/>
@@ -652,10 +646,6 @@
 						<list listType="ordered">
 							<item>Item</item>
 							<item>Item</item>
-							<item>Itemn</item>
-							<item>Item</item>
-							<item>Itemy</item>
-							<item>Item</item>
 						</list><br/>
 						<content> Paragraph #3 </content><br/><br/>
 						<content styleCode="Bold"> Bold content </content><br/><br/>
@@ -663,8 +653,47 @@
 						<content> Paragraph #4 </content><br/><br/>
 						<content> Paragraph #5 </content><br/><br/>
 					</text>
-				</section>-\->
-			</component>-->
+					<!-- Overall Question: Should information be handled by:
+							a) one new entry template for everything?
+							b) two new entry templates?
+								for #1-3: ePOLST Review (Observation entry template?)
+								fo #4: ePOLST Completion entry
+							...or...
+							c) one new template that only covers ePOLST Review (#1-3) 
+							and cover the form completion info (#4) in ePOLST document as a participant with a new valsu set -->
+					<!--							On the National POLST Form, this sections contains 4 kinds of information:
+							1. TEXT 
+							Question: Use originalText to hold this?
+								Reviewed patient’s advance directive to confirm no conflict with POLST orders:
+								(A POLST form does not replace an advance directive or living will)
+							
+							2. Un-named CHECK LIST about POLST document review 
+							Question: Use Observation w/ a new value set to hold this?
+								Yes & date of the document reviewed
+								Conflict exists, notified patient (if patient lacks capacity, noted in chart) 
+								Advance directive not available 
+								No advance directive exists
+							
+							3. Un-named CHECK LIST "Check everyone who participated in discussion:"
+							Question: 
+								Patient with decision-making capacity 
+								Court Appointed Guardian 
+								Parent of Minor 
+								Legal Surrogate / Health Care Agent 
+								Other: ____________________________________
+
+							4. Professional Assisting Health Care Provider w/ Form Completion (if applicable):
+								Full Name:
+								Date (mm/dd/yyyy):
+								Phone #:
+								(Role CHECK LIST) This individual is the patient’s: 
+									Social Worker 
+									Nurse 
+									Clergy 
+									Other:-->
+
+				</section>
+			</component>
 		</structuredBody>
 	</component>
 </ClinicalDocument>
