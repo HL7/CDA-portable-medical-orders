@@ -21,11 +21,7 @@
         ********************************************************
     -->
 
-<?xml-stylesheet type="text/xsl" href="../my_samples/CDA-Lantana.xsl"?>
-<?xml-stylesheet type="text/xsl" href="../HL7%20cda-core-xsl/CDA.xsl"?>
-<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="urn:hl7-org:v3 ../HL7cda-core-2.0_SDTC/schema/extensions/SDTC/infrastructure/cda/CDA_SDTC.xsd"
-	xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:voc="urn:hl7-org:v3/voc">
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:voc="urn:hl7-org:v3/voc" xmlns:sdtc="urn:hl7-org:sdtc">
 	<!-- realmCode is required by the US Realm Header and SHALL be realmCode="US".-->
 	<realmCode code="US"/>
 	<!--The following typeID describes an HL7 registered Refined Message Information Models (RMIMs) [root="2.16.840.1.113883.1.3"] 
@@ -347,10 +343,14 @@
 					<!-- Planned Procedure Section (V2) section template is Implied-->
 					<templateId root="2.16.840.1.113883.10.20.22.2.30" extension="2014-06-09"/>
 					<!-- ePOLST Medical Orders Section section template -->
+					<!-- ZG QA 10/18: I get a schematron error here, but this looks correct. -->
 					<templateId root="2.16.840.1.113883.9.275.2.1" extension="2021-12-01"/>
-
+					<!-- ZG QA 10/18: Added the Planned Procedure code for the section here. -->
+					<code code="59772-4" displayName= "Planned Procedure"
+						codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
 					<!-- Provide a title for the orders portion of the form here. -->
 					<title>ePOLST Portable Medical Orders </title>
+					
 					<!-- Provide text that renders the content of this section -->
 					<text>
 						<paragraph>This is a medical order, not an advance directive. For
