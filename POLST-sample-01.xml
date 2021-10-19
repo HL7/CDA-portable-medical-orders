@@ -21,7 +21,8 @@
         ********************************************************
     -->
 
-<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:voc="urn:hl7-org:v3/voc" xmlns:sdtc="urn:hl7-org:sdtc">
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:voc="urn:hl7-org:v3/voc" xmlns:sdtc="urn:hl7-org:sdtc">
 	<!-- realmCode is required by the US Realm Header and SHALL be realmCode="US".-->
 	<realmCode code="US"/>
 	<!--The following typeID describes an HL7 registered Refined Message Information Models (RMIMs) [root="2.16.840.1.113883.1.3"] 
@@ -44,14 +45,14 @@
         Title of this document
         ********************************************************
     -->
-	<title>National ePOLST Form: A Portable Medical Order</title>
+	<title>National ePOLST Form: A Portable Medical Order.</title>
 	<!-- The "National ePOLST Form: A Portable Medical Order" is a CDA electronic specification of the National POLST Form: A Portable Medical Order, available at www.polst.org/form-->
 	<!-- The following example illustrate how the "National ePOLST Form: A Portable Medical Order" applies and further constrains the CDA US Realm Header.-->
 
 
-	<!-- effectiveTime is not used by the National POLST form -->
+	<!-- effectiveTime SHOULD be the date & time the ePOLST Portable Medical Order was signed by the legalAuthenticator. -->
 	<!-- Example of how to have a Null value for thise element-->
-	<effectiveTime nullFlavor="NA"/>
+	<effectiveTime value="20130815223615-0800"/>
 
 	<!-- confidentiality is not used by the National POLST form -->
 	<!-- Example of how to have a Null value for thise element. -->
@@ -92,7 +93,7 @@
 			<id root="2.16.840.1.113883.1.111.12345" extension="12345"
 				assigningAuthorityName="River Valley Health Services Locally-assigned Medical Record Number"/>
 
-			<!-- Patient Address and Telephone are not on the National POLST Form-->
+			<!-- Patient Address and Telephone are not on the National POLST Form for patient-->
 			<!-- Examples of how to have a Null value for these elements-->
 			<addr nullFlavor="NA"/>
 			<telecom nullFlavor="NA"/>
@@ -102,12 +103,10 @@
 					<given>Abel</given>
 					<given>M</given>
 					<family>Baker</family>
-				</name>
-				<!-- Question: For POLST Document, can we add "preferred name?				-->
-				<!-- Recommended way to send patient aliases; note @use='P' (pseudonym) and given/@qualifier='CL' (callme) -->
-				<!--				<name use="P">
+					<!-- @qualifier='CL' (callme) -->
+					<originalText>Preferred name:</originalText>
 					<given qualifier="CL">Abe</given>
-				</name>-->
+				</name>
 
 				<administrativeGenderCode code="M" displayName="Male"
 					codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGender"/>
@@ -120,20 +119,21 @@
 				<raceCode nullFlavor="NA"/>
 				<ethnicGroupCode nullFlavor="NA"/>
 
-				<!--For the ePOLST, the guardian may be the "Patient Representative" on the National POLST Form, section E. SIGNATURE: Patient or Patient Representative.-->
+				<!--
+				********
+				guardian
+				********
+				For the ePOLST, the guardian may be the "Patient Representative" on the National POLST Form, section E. SIGNATURE: Patient or Patient Representative. Use the code element to specify the "Authority". -->
 				<guardian>
-					<!-- Use the code element to specify the "Authority" of the Patient Representative in section E. SIGNATURE: Patient or Patient Representative. -->
 					<code code="POWATT" displayName="Power of Attorney"
 						codeSystem="2.16.840.1.113883.1.11.19830" codeSystemName="ResponsibleParty"/>
-
 					<!-- Patient Representative Address and Telephone are not on the National POLST Form-->
 					<!-- Examples of how to have a Null value for these elements-->
 					<addr nullFlavor="NA"/>
 					<telecom nullFlavor="NA"/>
-					<!-- This is the Patient Representative name in "If other than patient, print full name:" field of E. SIGNATURE: Patient or Patient Representative. -->
 					<guardianPerson>
 						<name>
-							<given>Eve</given>
+							<given>Claire</given>
 							<!-- The "SP" is "Spouse" from HL7 Code System EntityNamePartQualifier 2.16.840.1.113883.5.43 -->
 							<family qualifier="SP">Baker</family>
 						</name>
@@ -155,7 +155,7 @@
 		<time value="201308151030-0800"/>
 		<assignedAuthor>
 			<!-- Question: Does this id captures the License/Cert. # in section F. SIGNATURE: Health Care Provider. ?-->
-			<!--			Question: This does not seem to render. How do I make it show on the html?
+			<!-- Question: This does not seem to render. How do I make it show on the html?
 -->
 			<id extension="5555555555" root="2.16.840.1.113883.4.6"/>
 			<code code="207QA0505X" displayName="Adult Medicine"
@@ -180,17 +180,28 @@
         ********************************************************
         dataEnterer: Person who transferred the content created by the author into the document.
         The dataEnterer is optional, but if used SHALL have an id, which SHOULD be a United States National Provider Identifier OID "2.16.840.1.113883.4.6".
-        For the ePOLST, the dataEnterer could be the Health Care Provider listed in section F. SIGNATURE: Health Care Provider of the National POLST Form.  
+        For the ePOLST, the dataEnterer could be the Professional Assisting Health Care Provider w/ Form Completion on pg.2, Form Completion Information of the National POLST Form.
+        The ePOLST dataEnterer SHALL have full name, date, and role.
         ********************************************************
     -->
 	<dataEnterer>
 		<assignedEntity>
-			<id/>
-			<addr/>
-			<telecom/>
-			<assignedPerson/>
+			<id root="443e9258-5b45-489f-a938-2b36749f71f8"/>
+			<!-- The National POLST Form does not have the address for the the Professional Assisting Health Care Provider w/ Form Completion on pg.2, Form Completion Information section.-->
+			<!-- Examples of how to have a Null value for these elements-->
+			<addr nullFlavor="NA"/>
+			<telecom use="WP" value="tel:+1(555)555-1005"/>
+
+			<assignedPerson>
+				<name>
+					<given>Ellen</given>
+					<family>Enterer</family>
+					<suffix qualifier="AC">RN</suffix>
+				</name>
+			</assignedPerson>
 		</assignedEntity>
 	</dataEnterer>
+
 
 	<!--
         ********************************************************
@@ -252,23 +263,24 @@
 		For the ePOLST, use authenticator for the signer in section "E. Signature: Patient or Patient Representative" of the National POLST Form (either the Patient or Patient's Representative). 
         ********************************************************
 	-->
-	<!-- In this example, the auithenticator is the spouse, who has Power of Attorney ("POWATT") -->
+	<!-- In this example, the auithenticator is the spouse, who has Power of Attorney (POWATT) -->
 	<authenticator>
 		<!--authenticator time is not on the National POLST Form-->
-		<!--Examples of how to have a Null value for these elements-->
+		<!--Examples of how to have a Null value for this element-->
 		<time nullFlavor="NA"/>
 		<signatureCode code="S"/>
 		<assignedEntity>
 			<id root="5e75fff9-f3d9-423f-854a-a648b05cdaf9"/>
 			<code code="POWATT" displayName="Power of Attorney"
 				codeSystem="2.16.840.1.113883.1.11.19830" codeSystemName="ResponsibleParty"/>
-			<!-- authenticator Address and Telephone are not on the National POLST Form-->
+			<!-- authenticator Address and Telephone are not on the National POLST Form for authenticator-->
 			<!-- Examples of how to have a Null value for these elements-->
 			<addr nullFlavor="NA"/>
 			<telecom nullFlavor="NA"/>
 			<assignedPerson>
 				<name>
-					<given>Eve</given>
+					<given>Claire</given>
+					<!-- The "SP" is "Spouse" from HL7 Code System EntityNamePartQualifier 2.16.840.1.113883.5.43 -->
 					<family qualifier="SP">Baker</family>
 				</name>
 			</assignedPerson>
@@ -278,48 +290,62 @@
 	<!--
         ********************************************************
         participant: Any supporting entities or individuals
-        
-        Question: Is this the right element for these roles from POLST Form?
-        INDIVIDUALS
-        	- Patient Representative (if not the guardian)
-        	- Emergency Contact - ECON
-        	- Other emergency contact - ECON
-        	- Legal Representative 
-        		GRDCON (legal guardian consent author) or POACON (healthcare power of attorney consent author) or  from HL7 ParticipationFunction 2.16.840.1.113883.5.88
-        	- Primary Care Provider code = PCP from HL7 ParticipationFunction 2.16.840.1.113883.5.88
-        	- Professional Assisting Health Care Provider w/ Form Completion
-        	- Everyone who participated in discussion (check list): 
-        		Look at HL7 ParticipationFunction 2.16.840.1.113762.1.4.1099.30  or HL7 ParticipationFunction 2.16.840.1.113883.1.11.10267 
-				• Patient with decision-making capacity  ONESELF	self	RoleCode	HL7V3.0_2021-03	2.16.840.1.113883.5.111
-					or LOINC 45471-0   Patient responsible for self [Minimum Data Set]
-				• Court Appointed Guardian
-				• Parent of Minor  PRN	parent	RoleCode	HL7V3.0_2021-03	2.16.840.1.113883.5.111
-				• Legal Surrogate / Health Care Agent
-        ORGANIZATION
-        	- Hospice Name of Agency
-		Ex: 
-		https://terminology.hl7.org/2.1.0/CodeSystem-v3-ParticipationType.html
-		https://terminology.hl7.org/CodeSystem-v3-RoleCode.html
+        In the ePOLST, use participant for the following elements of the National POLST Form, pg. 2 Contact Information section:
+        	• Patient’s Emergency Contact, role, phone
+        	• Primary Care Provider name, phone
+        	• Hospice Agency name, phone
         ********************************************************
 	-->
-
+	<!-- Patient’s Emergency Contact, role (classCode), phone -->
 	<participant typeCode="IND">
 		<!-- classCode "ECON" represents an emergency contact -->
 		<associatedEntity classCode="ECON">
-			<!-- Patient Address and Telephone are not on the National POLST Form-->
-			<!-- Examples of how to have a Null value for these elements-->
+			<!-- Emergency Contact Address is not on the National POLST Form-->
+			<!-- Examples of how to have a Null value for this element-->
 			<addr nullFlavor="NA"/>
-			<telecom value="tel:+1(555)555-2008" use="MC"/>
+			<telecom value="tel:+1(555)777-2021" use="MC"/>
 			<associatedPerson>
 				<name>
-					<given>Charles</given>
+					<given>Daniel</given>
 					<family>Baker</family>
 				</name>
 			</associatedPerson>
 		</associatedEntity>
 	</participant>
 
+	<!-- Patient’s Primary Care Provider name, role (classCode), phone -->
+	<participant typeCode="IND">
+		<!-- classCode "PCP" represents the primary care provider -->
+		<associatedEntity classCode="PCP">
+			<!-- primary care provider Address and Telephone are not on the National POLST Form-->
+			<!-- Examples of how to have a Null value for these elements-->
+			<addr nullFlavor="NA"/>
+			<telecom use="WP" value="tel:+1(555)555-1004"/>
+			<associatedPerson>
+				<name>
+					<given>Patricia</given>
+					<given qualifier="CL">Patty</given>
+					<family>Primary</family>
+					<suffix qualifier="AC">M.D.</suffix>
+				</name>
+			</associatedPerson>
+		</associatedEntity>
+	</participant>
 
+	<!-- Patient’s Hospice Organization name, role (classCode), phone -->
+	<!--	Question: Need help here with a participant organization (not person). In this case, hospice.-->
+	<participant typeCode="IND">
+		<!-- classCode "PROV" represents a healthcare provider, in this case a hospice organization-->
+		<associatedEntity classCode="PROV">
+			<!-- Hospice Address is not on the National POLST Form-->
+			<!-- Examples of how to have a Null value for these elements-->
+			<addr nullFlavor="NA"/>
+			<telecom use="WP" value="tel:+1(555)555-1003"/>
+			<associatedPerson>
+				<name>Local Home Hospice, Inc.</name>
+			</associatedPerson>
+		</associatedEntity>
+	</participant>
 	<!-- ******************************************************** CDA Body ******************************************************** -->
 	<component>
 		<!--
@@ -346,11 +372,11 @@
 					<!-- ZG QA 10/18: I get a schematron error here, but this looks correct. -->
 					<templateId root="2.16.840.1.113883.9.275.2.1" extension="2021-12-01"/>
 					<!-- ZG QA 10/18: Added the Planned Procedure code for the section here. -->
-					<code code="59772-4" displayName= "Planned Procedure"
+					<code code="59772-4" displayName="Planned Procedure"
 						codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
 					<!-- Provide a title for the orders portion of the form here. -->
 					<title>ePOLST Portable Medical Orders </title>
-					
+
 					<!-- Provide text that renders the content of this section -->
 					<text>
 						<paragraph>This is a medical order, not an advance directive. For
@@ -387,7 +413,7 @@
 							specific outcomes. </paragraph>
 						<paragraph>Follow these orders if patient has a pulse and/or is breathing.
 							(Pick 1)</paragraph>
-						<table>
+						<table border="1">
 							<thead>
 								<tr>
 									<td> </td>
@@ -424,12 +450,13 @@
 										setting. </td>
 								</tr>
 							</tbody>
-						</table><br/>
+						</table>
+						<br/>
 						<paragraph styleCode="Bold">C. Additional Orders or Instructions</paragraph>
 						<paragraph>These orders are in addition to those above (e.g., blood
 							products, dialysis). [EMS protocols may limit emergency responder
 							ability to act on orders in this section.]</paragraph>
-						<table>
+						<table border="1">
 							<tbody>
 								<tr>
 									<td>No additional orders.</td>
@@ -439,7 +466,7 @@
 						<paragraph styleCode="Bold">D. Medically Assisted Nutrition</paragraph>
 						<paragraph>Offer food by mouth if desired by patient, safe and tolerated.
 							(Pick 1)</paragraph>
-						<table>
+						<table border="1">
 							<thead>
 								<tr>
 									<td> </td>
@@ -487,11 +514,6 @@
 							</code>
 
 							<entryRelationship typeCode="COMP">
-								<!-- Question: "COMP" (has component) is valid. It means the target act is a component of the source act, with no semantics regarding composition or aggregation implied.-->
-								<!-- Ideally, this should be "DRIV" (derived) but that is not valid. DRIV means the narrative was rendered from the CDA Entries, and contains no clinical content not derived from the entries.
-									Question: Can we put something in the XML to make the narrative render automatically from the coded entries?
-									Would DRIV be valid here if we did?.  
-									If not, use COMP -->
 								<procedure classCode="PROC" moodCode="INT">
 									<!-- Planned CPR Procedure entry template -->
 									<templateId root="2.16.840.1.113883.9.275.3.1.1"
@@ -629,7 +651,20 @@
 				<!--
             	 ********************************************************
              	ePOLST Completion Information Section
-             	This Section has entries for ***************TBD
+             	This Section has entries for pg.2, Form Completion Information section, 
+             	
+             	ePOLST Review entry template
+             	"Check everyone who participated in discussion:"
+        		• Patient with decision-making capacity  ONESELF	self	RoleCode	HL7V3.0_2021-03	2.16.840.1.113883.5.111
+					or LOINC 45471-0   Patient responsible for self [Minimum Data Set]
+				• Court Appointed Guardian
+				• Parent of Minor  PRN	parent	RoleCode	HL7V3.0_2021-03	2.16.840.1.113883.5.111
+				• Legal Surrogate / Health Care Agent
+        ORGANIZATION
+        	- Hospice Name of Agency
+		Ex: 
+		https://terminology.hl7.org/2.1.0/CodeSystem-v3-ParticipationType.html
+		https://terminology.hl7.org/CodeSystem-v3-RoleCode.html
              	These entry templates are ***************TBD (Question)
              	********************************************************
          	-->
@@ -638,21 +673,90 @@
 					<title>ePOLST Completion Information Section</title>
 					<!-- Use the <text> to display human-readable content of this section. -->
 					<text>
-						<paragraph styleCode="Bold">General Instructions </paragraph>
-						<content> Paragraph #1 </content><br/><br/>
-						<content>
-							<content styleCode="Bold"> Bold Sub-heading </content><br/><br/> If
-							Paragraph #2: </content><br/>
-						<list listType="ordered">
-							<item>Item</item>
-							<item>Item</item>
-						</list><br/>
-						<content> Paragraph #3 </content><br/><br/>
-						<content styleCode="Bold"> Bold content </content><br/><br/>
-						<content styleCode="Bold"> Bold content </content><br/><br/>
-						<content> Paragraph #4 </content><br/><br/>
-						<content> Paragraph #5 </content><br/><br/>
+						<paragraph styleCode="Bold">ePOLST and Advance Directive Review</paragraph>
+						<paragraph>Reviewed patient’s advance directive to confirm no conflict with
+							POLST orders:</paragraph>
+						<table border="1">
+							<thead>
+								<tr>
+									<td> </td>
+									<td>REVIEW RESULTS</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>X</td>
+									<td>Yes; date of the document reviewed:</td>
+								</tr>
+								<tr>
+									<td>X</td>
+									<td>Conflict exists, notified patient (if patient lacks
+										capacity, noted in chart)</td>
+								</tr>
+								<tr>
+									<td> </td>
+									<td>Advance directive not available</td>
+								</tr>
+								<tr>
+									<td> </td>
+									<td>No advance directive exists</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<paragraph styleCode="Bold">ePOLST and Advance Directive
+							Discussions</paragraph>
+						<paragraph>Check everyone who participated in discussion:</paragraph>
+						<table border="1">
+							<thead>
+								<tr>
+									<td> </td>
+									<td>ePOLST PARTICIPANTS</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td> </td>
+									<td>Patient with decision-making capacity</td>
+								</tr>
+								<tr>
+									<td> </td>
+									<td>Court Appointed Guardian</td>
+								</tr>
+								<tr>
+									<td> </td>
+									<td>Parent of Minor Legal Surrogate</td>
+								</tr>
+								<tr>
+									<td> X </td>
+									<td>Health Care Agent</td>
+								</tr>
+								<tr>
+									<td> </td>
+									<td>Other:</td>
+								</tr>
+							</tbody>
+						</table>
 					</text>
+
+					<entry>
+						<!-- ePOLST and Advance Directive Review entry -->
+						<templateId root="2.16.840.1.113883.9.275.3.7" extension="2021-12-01"/>
+						<text>Reviewed patient’s advance directive to confirm no conflict with
+							POLST orders:</text>
+						<text>Check everyone who participated in discussion:</text>
+						<act classCode="OBS" moodCode="EVN">
+							<id root="a105ca06-bcde-43f7-90db-af5068b5516a"/>
+							<code code="TEMP-POLST-REVIEW" codeSystem="2.16.840.1.113883.6.1"
+								codeSystemName="LOINC"
+								displayName="ePOLST Review">
+								<originalText/>
+								<translation nullFlavor="NA"/>
+							</code>
+							<statusCode code="active"/>
+						</act>
+					</entry>
+
 					<!-- Overall Question: Should information be handled by:
 							a) one new entry template for everything?
 							b) two new entry templates?
@@ -662,10 +766,7 @@
 							c) one new template that only covers ePOLST Review (#1-3) 
 							and cover the form completion info (#4) in ePOLST document as a participant with a new valsu set -->
 					<!--							On the National POLST Form, this sections contains 4 kinds of information:
-							1. TEXT 
-							Question: Use originalText to hold this?
-								Reviewed patient’s advance directive to confirm no conflict with POLST orders:
-								(A POLST form does not replace an advance directive or living will)
+
 							
 							2. Un-named CHECK LIST about POLST document review 
 							Question: Use Observation w/ a new value set to hold this?
