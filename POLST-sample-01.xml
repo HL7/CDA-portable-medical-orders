@@ -104,10 +104,9 @@
 					<given>Abel</given>
 					<given>M</given>
 					<family>Baker</family>
-					<!-- Schema error on next item -->
+					<!-- Question: Can we put in here the text "Preferred name:" so that the "Call me" is labeled on the rendering?  
+					<originalText>Preferred name:</originalText> DOES NOT work-->
 					<!-- @qualifier='CL' (callme) -->
-					<!--					<originalText>Preferred name:</originalText>
--->
 					<given qualifier="CL">Abe</given>
 				</name>
 
@@ -372,9 +371,6 @@
 					<!-- Planned Procedure Section (V2) section template is Implied-->
 					<templateId root="2.16.840.1.113883.10.20.22.2.30" extension="2014-06-09"/>
 					<!-- ePOLST Medical Orders Section section template -->
-					<!-- ZG QA 10/18: I get a schematron error here, but this looks correct. 
-					DW: Perhaps add also <templateId root="2.16.840.1.113883.10.20.22.1.2"/>  ??
-					Nope, that did not help. Neither did adding <templateId root="2.16.840.1.113883.9.275.2.1"/> below-->
 					<templateId root="2.16.840.1.113883.9.275.2.1" extension="2021-12-01"/>
 					<code code="59772-4" displayName="Planned Procedure"
 						codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
@@ -521,7 +517,8 @@
 							<entryRelationship typeCode="COMP">
 								<!-- Planned CPR Procedure entry template -->
 								<procedure classCode="PROC" moodCode="INT">
-									<templateId root="2.16.840.1.113883.9.275.3.1.1" extension="2021-12-01"/>
+									<templateId root="2.16.840.1.113883.9.275.3.1.1"
+										extension="2021-12-01"/>
 									<id root="a5a06285-98de-494c-9c97-2be5e00a79e5"/>
 
 									<!-- Code must be selected from the value set defined in the guidance and a translation is allowed-->
@@ -539,9 +536,8 @@
 									<statusCode code="active"/>
 								</procedure>
 							</entryRelationship>
-							<!-- DW 10/21: I get a schematron error here when I try to add in the 2nd entryRelationship: ePOLST Clinical Instructions entry template. -->
-<!--							<entryRelationship typeCode="COMP">
-								<!-\- ePOLST Clinical Instructions entry template -\->
+							<entryRelationship typeCode="COMP">
+								<!-- ePOLST Clinical Instructions entry template -->
 								<act classCode="ACT" moodCode="INT">
 									<templateId root="2.16.840.1.113883.9.275.3.5"
 										extension="2021-12-01"/>
@@ -550,7 +546,7 @@
 										codeSystemName="LOINC" displayName="Clinical information"> </code>
 									<text> </text>
 								</act>
-							</entryRelationship>-->
+							</entryRelationship>
 						</act>
 					</entry>
 
@@ -589,10 +585,8 @@
 								</procedure>
 							</entryRelationship>
 
-							<!-- DW 10/21: I get a schematron error here when I try to add in the 2nd entryRelationship: ePOLST Clinical Instructions entry template. -->
-		
-<!--							<entryRelationship typeCode="COMP">
-								<!-\- ePOLST Clinical Instructions entry template -\->
+							<entryRelationship typeCode="COMP">
+								<!-- ePOLST Clinical Instructions entry template -->
 								<act classCode="ACT" moodCode="INT">
 									<templateId root="2.16.840.1.113883.9.275.3.5"
 										extension="2021-12-01"/>
@@ -601,7 +595,7 @@
 										codeSystemName="LOINC" displayName="Clinical information"> </code>
 									<text> </text>
 								</act>
-							</entryRelationship>-->
+							</entryRelationship>
 						</act>
 
 					</entry>
@@ -644,8 +638,8 @@
 						Entry is required (SHALL).-->
 					<entry>
 						<!-- Medically Assisted Nutrition Orders Act entry template -->
-						<templateId root="2.16.840.1.113883.9.275.3.4" extension="2021-12-01"/>
 						<act classCode="ACT" moodCode="INT">
+							<templateId root="2.16.840.1.113883.9.275.3.4" extension="2021-12-01"/>
 							<id root="43c286c9-9958-4907-9566-224fe3aca37a"/>
 							<code code="TEMP-POLST-MED-NUTR" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC" displayName="Medically Assisted Nutrition">
@@ -759,7 +753,6 @@
 						<!-- Order Review (ePOLST) entry template-->
 
 						<act classCode="ACT" moodCode="EVN">
-							<!-- DW 10/22/2021: Question: The form has a time stamp for this Review, but the schema will not allow that here. Must we have only the time stamp of the legalAuthenticator? -->
 							<templateId root="2.16.840.1.113883.9.275.3.7" extension="2021-12-01"/>
 							<id root="220f151d-3fce-4107-901f-666e2eb366dd"/>
 							<code code="TEMP-POLST-REVIEW" codeSystem="2.16.840.1.113883.6.1"
@@ -770,38 +763,7 @@
 								<translation nullFlavor="NA"/>
 							</code>
 
-							<!-- In this example, 3 codes are selected. Each is held in a separate entryRelationship-->
-							<entryRelationship typeCode="COMP">
-								<act classCode="ACT" moodCode="EVN">
-									<code code="TEMP-POLST-R1"
-										displayName="Yes the document was reviewed"
-										codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
-										<originalText>Yes the document was reviewed</originalText>
-									</code>
-								</act>
-							</entryRelationship>
-							
-							<!-- DW 10/21: I get a schematron error here when I try to add in more than 1 act/code for the Order Review (ePOLST) entry template value set "check all that apply".. -->
-							
-<!--							<entryRelationship typeCode="COMP">
-								<act classCode="ACT" moodCode="EVN">
-									<code code="TEMP-POLST-R4"
-										displayName="No advance directive exists"
-										codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
-										<originalText>No advance directive exists</originalText>
-									</code>
-								</act>
-							</entryRelationship>-->
-<!--							<entryRelationship typeCode="COMP">
-								<act classCode="ACT" moodCode="EVN">
-									<code code="TEMP-POLST-R8"
-										displayName="Legal Surrogate / Health Care Agent participated"
-										codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
-										<originalText>Legal Surrogate / Health Care Agent
-											participated</originalText>
-									</code>
-								</act>
-							</entryRelationship>-->
+
 						</act>
 					</entry>
 				</section>
