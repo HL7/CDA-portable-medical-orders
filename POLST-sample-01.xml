@@ -21,6 +21,7 @@
         ********************************************************
     -->
 
+<?xml-stylesheet type="text/css" href="../cda_r2_normativewebedition2010(2)/styles/cda_styles.css"?>
 <ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:voc="urn:hl7-org:v3/voc" xmlns:sdtc="urn:hl7-org:sdtc">
 	<!-- realmCode is required by the US Realm Header and SHALL be realmCode="US".-->
@@ -34,7 +35,7 @@
 	<templateId root="2.16.840.1.113883.10.20.22.1.2"/>
 
 	<!-- Globally unique identifier for this document (can be a randomly generated GUID (Globally Unique Identifier) or UUID (Universally Unique Identifier). -->
-	<id root="03b48f86-6216-47ae-822b-2581db2568a3"/>
+	<id root="5f6e4733-5fb4-4752-8d81-32420e9976b9"/>
 
 	<!-- Code for this document type (NOT the template OID)-->
 	<code code="TEMP-POLST-ORDERS" displayName="National ePOLST Form: A Portable Medical Order"
@@ -103,8 +104,10 @@
 					<given>Abel</given>
 					<given>M</given>
 					<family>Baker</family>
+					<!-- Schema error on next item -->
 					<!-- @qualifier='CL' (callme) -->
-					<originalText>Preferred name:</originalText>
+					<!--					<originalText>Preferred name:</originalText>
+-->
 					<given qualifier="CL">Abe</given>
 				</name>
 
@@ -186,7 +189,7 @@
     -->
 	<dataEnterer>
 		<assignedEntity>
-			<id root="443e9258-5b45-489f-a938-2b36749f71f8"/>
+			<id root="fbba629a-0dc3-4cd4-a0bc-0bd3913f8088"/>
 			<!-- The National POLST Form does not have the address for the the Professional Assisting Health Care Provider w/ Form Completion on pg.2, Form Completion Information section.-->
 			<!-- Examples of how to have a Null value for these elements-->
 			<addr nullFlavor="NA"/>
@@ -270,7 +273,7 @@
 		<time nullFlavor="NA"/>
 		<signatureCode code="S"/>
 		<assignedEntity>
-			<id root="5e75fff9-f3d9-423f-854a-a648b05cdaf9"/>
+			<id root="e013a784-1dda-46f1-a872-5947acd27852"/>
 			<code code="POWATT" displayName="Power of Attorney"
 				codeSystem="2.16.840.1.113883.1.11.19830" codeSystemName="ResponsibleParty"/>
 			<!-- authenticator Address and Telephone are not on the National POLST Form for authenticator-->
@@ -371,7 +374,6 @@
 					<!-- ePOLST Medical Orders Section section template -->
 					<!-- ZG QA 10/18: I get a schematron error here, but this looks correct. -->
 					<templateId root="2.16.840.1.113883.9.275.2.1" extension="2021-12-01"/>
-					<!-- ZG QA 10/18: Added the Planned Procedure code for the section here. -->
 					<code code="59772-4" displayName="Planned Procedure"
 						codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
 					<!-- Provide a title for the orders portion of the form here. -->
@@ -409,7 +411,7 @@
 						<paragraph styleCode="Bold">B. Initial Treatment Orders.</paragraph>
 						<paragraph>Reassess and discuss interventions with patient or patient
 							representative regularly to ensure treatments are meeting patient’s care
-							goals. Consider a time-trial of interventions based on goals and
+							goals. Consider a time-t+rial of interventions based on goals and
 							specific outcomes. </paragraph>
 						<paragraph>Follow these orders if patient has a pulse and/or is breathing.
 							(Pick 1)</paragraph>
@@ -501,10 +503,11 @@
 						Entry is required (SHALL). -->
 					<entry>
 						<!-- Cardiopulmonary Resuscitation Order Act (ePOLST) entry template -->
-						<templateId root="2.16.840.1.113883.9.275.3.1" extension="2021-12-01"/>
+						<!-- The ACT moodCode="INT", meaning this is an order for an unspecified future time and unspecified order recipient.-->
 						<act classCode="ACT" moodCode="INT">
-							<!-- The ACT moodCode="INT", meaning this is an order for an unspecified future time and unspecified order recipient.-->
-							<id root="1b976f98-7f53-4b29-8a42-a3e2291d4911"/>
+							<templateId root="2.16.840.1.113883.9.275.3.1" extension="2021-12-01"/>
+
+							<id root="51ac291d-fc5e-4ac1-bb81-5cc9b8df7bf8"/>
 							<code code="TEMP-POLST-CPR" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC"
 								displayName="Cardiopulmonary Resuscitation Orders">
@@ -514,11 +517,10 @@
 							</code>
 
 							<entryRelationship typeCode="COMP">
+								<!-- Planned CPR Procedure entry template -->
 								<procedure classCode="PROC" moodCode="INT">
-									<!-- Planned CPR Procedure entry template -->
-									<templateId root="2.16.840.1.113883.9.275.3.1.1"
-										extension="2021-12-01"/>
-									<id root="457e2f35-b765-4621-9813-937ae102772f"/>
+									<templateId root="2.16.840.1.113883.9.275.3.1.1" extension="2021-12-01"/>
+									<id root="a5a06285-98de-494c-9c97-2be5e00a79e5"/>
 
 									<!-- Code must be selected from the value set defined in the guidance and a translation is allowed-->
 									<!-- In this example, the Cardiopulmonary Resuscitation Order option "YES CPR" has been selected.-->
@@ -535,6 +537,18 @@
 									<statusCode code="active"/>
 								</procedure>
 							</entryRelationship>
+							<!-- DW 10/21: I get a schematron error here when I try to add in the 2nd entryRelationship: ePOLST Clinical Instructions entry template. -->
+<!--							<entryRelationship typeCode="COMP">
+								<!-\- ePOLST Clinical Instructions entry template -\->
+								<act classCode="ACT" moodCode="INT">
+									<templateId root="2.16.840.1.113883.9.275.3.5"
+										extension="2021-12-01"/>
+									<id root="61c73d9d-2775-4030-b4bc-715f637e75b8"/>
+									<code code="55752-0" codeSystem="2.16.840.1.113883.6.1"
+										codeSystemName="LOINC" displayName="Clinical information"> </code>
+									<text> </text>
+								</act>
+							</entryRelationship>-->
 						</act>
 					</entry>
 
@@ -542,9 +556,9 @@
 						Entry is required (SHALL). -->
 					<entry>
 						<!-- Initial Treatment Orders Act (ePOLST) entry template -->
-						<templateId root="2.16.840.1.113883.9.275.3.2" extension="2021-12-01"/>
 						<act classCode="ACT" moodCode="INT">
-							<id root="b60a9a02-5c62-4ccf-810b-e876132493ad"/>
+							<templateId root="2.16.840.1.113883.9.275.3.2" extension="2021-12-01"/>
+							<id root="61c73d9d-2775-4030-b4bc-715f637e75b8"/>
 							<code code="TEMP-POLST-TREAT" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC" displayName="Initial Treatment Orders">
 								<originalText>B. Initial Treatment Orders. Follow these orders if
@@ -552,11 +566,11 @@
 							</code>
 
 							<entryRelationship typeCode="COMP">
+								<!-- Planned Initial Treatment Procedure entry template -->
 								<procedure classCode="PROC" moodCode="INT">
-									<!-- Planned Initial Treatment Procedure entry template -->
 									<templateId root="2.16.840.1.113883.9.275.3.2.1"
 										extension="2021-12-01"/>
-									<id root="98b10d9a-40eb-4cb9-97f8-c323f24b9af0"/>
+									<id root="3645208a-5d5e-4d4c-8f0b-55b7ee870a41"/>
 
 									<!-- Code must be selected from the value set defined in the guidance and a translation is allowed-->
 									<!-- In this example, the Initial Treatment Orders option "Full Treatments" has been selected.-->
@@ -572,6 +586,20 @@
 									<statusCode code="active"/>
 								</procedure>
 							</entryRelationship>
+
+							<!-- DW 10/21: I get a schematron error here when I try to add in the 2nd entryRelationship: ePOLST Clinical Instructions entry template. -->
+		
+<!--							<entryRelationship typeCode="COMP">
+								<!-\- ePOLST Clinical Instructions entry template -\->
+								<act classCode="ACT" moodCode="INT">
+									<templateId root="2.16.840.1.113883.9.275.3.5"
+										extension="2021-12-01"/>
+									<id root="5f91e661-da90-42ef-844a-0bd8332b6284"/>
+									<code code="55752-0" codeSystem="2.16.840.1.113883.6.1"
+										codeSystemName="LOINC" displayName="Clinical information"> </code>
+									<text> </text>
+								</act>
+							</entryRelationship>-->
 						</act>
 
 					</entry>
@@ -580,9 +608,9 @@
 						Entry is required (SHALL). -->
 					<entry>
 						<!-- Additional Orders Act (ePOLST) entry template -->
-						<templateId root="2.16.840.1.113883.9.275.3.3" extension="2021-12-01"/>
 						<act classCode="ACT" moodCode="INT">
-							<id root="a08584fd-f75b-452b-a39d-61b9f7aba3c9"/>
+							<templateId root="2.16.840.1.113883.9.275.3.3" extension="2021-12-01"/>
+							<id root="24f33931-faf1-4f88-be99-2d3e2496d2e4"/>
 							<code code="TEMP-POLST-ADD-ORDERS" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC"
 								displayName="Additional Orders or Instructions">
@@ -594,11 +622,11 @@
 							</code>
 
 							<entryRelationship typeCode="COMP">
+								<!-- Planned Additional Orders Procedure entry template -->
 								<procedure classCode="PROC" moodCode="INT">
-									<!-- Planned Additional Orders Procedure entry template -->
 									<templateId root="2.16.840.1.113883.9.275.3.3.1"
 										extension="2021-12-01"/>
-									<id root="1b2f6703-dd07-416c-9cf0-9b7ff8fc4fcc"/>
+									<id root="75bc54ba-47f0-4330-b4ad-179d26e4f930"/>
 
 									<!-- This is entry allows free text and coded entries. A Null entry is NOT allowed. At a minimum, trxt indicating "No additional orders" should be included. -->
 									<!-- In this example, free text was used, but no code was included.-->
@@ -616,7 +644,7 @@
 						<!-- Medically Assisted Nutrition Orders Act entry template -->
 						<templateId root="2.16.840.1.113883.9.275.3.4" extension="2021-12-01"/>
 						<act classCode="ACT" moodCode="INT">
-							<id root="c45f21b3-a25a-4209-8969-a644e63850fa"/>
+							<id root="43c286c9-9958-4907-9566-224fe3aca37a"/>
 							<code code="TEMP-POLST-MED-NUTR" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC" displayName="Medically Assisted Nutrition">
 								<originalText>D. Medically Assisted Nutrition (Offer food by mouth
@@ -625,11 +653,11 @@
 							</code>
 
 							<entryRelationship typeCode="COMP">
+								<!-- Planned Medically Assisted Nutrition Orders Procedure entry template -->
 								<procedure classCode="PROC" moodCode="INT">
-									<!-- Planned Medically Assisted Nutrition Orders Procedure entry template -->
 									<templateId root="2.16.840.1.113883.9.275.3.4.1"
 										extension="2021-12-01"/>
-									<id root="562483dc-ee8c-4973-92a3-27f40b6183c3"/>
+									<id root="2c7a0f50-2b07-4c41-93cc-03a13e1b05c6"/>
 
 									<!-- Code must be selected from the value set defined in the guidance and a translation is allowed-->
 									<!-- In this example, the Medically Assisted Nutrition Orders option "No artificial means of nutrition desired" has been selected.-->
@@ -640,6 +668,18 @@
 									</code>
 									<statusCode code="active"/>
 								</procedure>
+							</entryRelationship>
+
+							<entryRelationship typeCode="COMP">
+								<!-- ePOLST Clinical Instructions entry template -->
+								<act classCode="ACT" moodCode="INT">
+									<templateId root="2.16.840.1.113883.9.275.3.5"
+										extension="2021-12-01"/>
+									<id root="7544d5bb-6943-4a05-9749-4ca2cfaa3955"/>
+									<code code="55752-0" codeSystem="2.16.840.1.113883.6.1"
+										codeSystemName="LOINC" displayName="Clinical information"> </code>
+									<text> </text>
+								</act>
 							</entryRelationship>
 						</act>
 					</entry>
@@ -652,26 +692,14 @@
             	 ********************************************************
              	ePOLST Completion Information Section
              	This Section has entries for pg.2, Form Completion Information section, 
-             	
-             	ePOLST Review entry template
-             	"Check everyone who participated in discussion:"
-        		• Patient with decision-making capacity  ONESELF	self	RoleCode	HL7V3.0_2021-03	2.16.840.1.113883.5.111
-					or LOINC 45471-0   Patient responsible for self [Minimum Data Set]
-				• Court Appointed Guardian
-				• Parent of Minor  PRN	parent	RoleCode	HL7V3.0_2021-03	2.16.840.1.113883.5.111
-				• Legal Surrogate / Health Care Agent
-        ORGANIZATION
-        	- Hospice Name of Agency
-		Ex: 
-		https://terminology.hl7.org/2.1.0/CodeSystem-v3-ParticipationType.html
-		https://terminology.hl7.org/CodeSystem-v3-RoleCode.html
-             	These entry templates are ***************TBD (Question)
              	********************************************************
          	-->
 				<section>
 					<templateId root="2.16.840.1.113883.9.275.2.2" extension="2021-12-01"/>
 					<title>ePOLST Completion Information Section</title>
+
 					<!-- Use the <text> to display human-readable content of this section. -->
+
 					<text>
 						<paragraph styleCode="Bold">ePOLST and Advance Directive Review</paragraph>
 						<paragraph>Reviewed patient’s advance directive to confirm no conflict with
@@ -686,113 +714,93 @@
 							<tbody>
 								<tr>
 									<td>X</td>
-									<td>Yes; date of the document reviewed:</td>
+									<td>Yes the document was reviewed</td>
 								</tr>
 								<tr>
-									<td>X</td>
-									<td>Conflict exists, notified patient (if patient lacks
-										capacity, noted in chart)</td>
+									<td> </td>
+									<td>Conflict exists, notified patient</td>
 								</tr>
 								<tr>
 									<td> </td>
 									<td>Advance directive not available</td>
 								</tr>
 								<tr>
-									<td> </td>
+									<td>X</td>
 									<td>No advance directive exists</td>
 								</tr>
-							</tbody>
-						</table>
-
-						<paragraph styleCode="Bold">ePOLST and Advance Directive
-							Discussions</paragraph>
-						<paragraph>Check everyone who participated in discussion:</paragraph>
-						<table border="1">
-							<thead>
 								<tr>
 									<td> </td>
-									<td>ePOLST PARTICIPANTS</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td> </td>
-									<td>Patient with decision-making capacity</td>
+									<td>Patient with decision-making capacity participated </td>
 								</tr>
 								<tr>
 									<td> </td>
-									<td>Court Appointed Guardian</td>
+									<td>Court appointed guardian participated</td>
 								</tr>
 								<tr>
 									<td> </td>
-									<td>Parent of Minor Legal Surrogate</td>
+									<td>Parent of minor participated</td>
 								</tr>
 								<tr>
-									<td> X </td>
-									<td>Health Care Agent</td>
+									<td>X</td>
+									<td>Legal surrogate / health care agent participated</td>
 								</tr>
 								<tr>
 									<td> </td>
-									<td>Other:</td>
+									<td>Other participated</td>
 								</tr>
 							</tbody>
 						</table>
 					</text>
 
 					<entry>
-						<!-- ePOLST and Advance Directive Review entry -->
-						<templateId root="2.16.840.1.113883.9.275.3.7" extension="2021-12-01"/>
-						<text>Reviewed patient’s advance directive to confirm no conflict with
-							POLST orders:</text>
-						<text>Check everyone who participated in discussion:</text>
-						<act classCode="OBS" moodCode="EVN">
-							<id root="a105ca06-bcde-43f7-90db-af5068b5516a"/>
+
+						<!-- Order Review (ePOLST) entry template-->
+
+						<act classCode="ACT" moodCode="EVN">
+							<templateId root="2.16.840.1.113883.9.275.3.7" extension="2021-12-01"/>
+							<id root="220f151d-3fce-4107-901f-666e2eb366dd"/>
 							<code code="TEMP-POLST-REVIEW" codeSystem="2.16.840.1.113883.6.1"
-								codeSystemName="LOINC"
-								displayName="ePOLST Review">
-								<originalText/>
+								codeSystemName="LOINC" displayName="ePOLST Review">
+								<originalText>Reviewed patient’s advance directive to confirm no
+									conflict with POLST orders. Check everyone who participated in
+									discussion: </originalText>
 								<translation nullFlavor="NA"/>
 							</code>
-							<statusCode code="active"/>
+
+							<!-- In this example, 3 codes are selected. Each is held in a separate entryRelationship-->
+							<entryRelationship typeCode="COMP">
+								<act classCode="ACT" moodCode="EVN">
+									<code code="TEMP-POLST-R1"
+										displayName="Yes the document was reviewed"
+										codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+										<originalText>Yes the document was reviewed</originalText>
+									</code>
+								</act>
+							</entryRelationship>
+							
+							<!-- DW 10/21: I get a schematron error here when I try to add in more than 1 act/code for the Order Review (ePOLST) entry template value set "check all that apply".. -->
+							
+<!--							<entryRelationship typeCode="COMP">
+								<act classCode="ACT" moodCode="EVN">
+									<code code="TEMP-POLST-R4"
+										displayName="No advance directive exists"
+										codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+										<originalText>No advance directive exists</originalText>
+									</code>
+								</act>
+							</entryRelationship>-->
+<!--							<entryRelationship typeCode="COMP">
+								<act classCode="ACT" moodCode="EVN">
+									<code code="TEMP-POLST-R8"
+										displayName="Legal Surrogate / Health Care Agent participated"
+										codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+										<originalText>Legal Surrogate / Health Care Agent
+											participated</originalText>
+									</code>
+								</act>
+							</entryRelationship>-->
 						</act>
 					</entry>
-
-					<!-- Overall Question: Should information be handled by:
-							a) one new entry template for everything?
-							b) two new entry templates?
-								for #1-3: ePOLST Review (Observation entry template?)
-								fo #4: ePOLST Completion entry
-							...or...
-							c) one new template that only covers ePOLST Review (#1-3) 
-							and cover the form completion info (#4) in ePOLST document as a participant with a new valsu set -->
-					<!--							On the National POLST Form, this sections contains 4 kinds of information:
-
-							
-							2. Un-named CHECK LIST about POLST document review 
-							Question: Use Observation w/ a new value set to hold this?
-								Yes & date of the document reviewed
-								Conflict exists, notified patient (if patient lacks capacity, noted in chart) 
-								Advance directive not available 
-								No advance directive exists
-							
-							3. Un-named CHECK LIST "Check everyone who participated in discussion:"
-							Question: 
-								Patient with decision-making capacity 
-								Court Appointed Guardian 
-								Parent of Minor 
-								Legal Surrogate / Health Care Agent 
-								Other: ____________________________________
-
-							4. Professional Assisting Health Care Provider w/ Form Completion (if applicable):
-								Full Name:
-								Date (mm/dd/yyyy):
-								Phone #:
-								(Role CHECK LIST) This individual is the patient’s: 
-									Social Worker 
-									Nurse 
-									Clergy 
-									Other:-->
-
 				</section>
 			</component>
 		</structuredBody>
