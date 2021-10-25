@@ -6,7 +6,7 @@
  Created by:   Lantana Consulting Group, Inc.
  Updated by:   Lantana Consulting Group, Inc. 
  
- LastChangedDate: 10/15/2021, Diana Wright
+ LastChangedDate: 10/24/2021, Diana Wright
   
  ********************************************************
  Disclaimer: This sample file contains representative data elements for an ePOLST: Resuscitation and Treatment Portable Medical Orders document (ePOLST). 
@@ -24,6 +24,7 @@
 <?xml-stylesheet type="text/css" href="../cda_r2_normativewebedition2010(2)/styles/cda_styles.css"?>
 <ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:voc="urn:hl7-org:v3/voc" xmlns:sdtc="urn:hl7-org:sdtc">
+	
 	<!-- realmCode is required by the US Realm Header and SHALL be realmCode="US".-->
 	<realmCode code="US"/>
 	<!--The following typeID describes an HL7 registered Refined Message Information Models (RMIMs) [root="2.16.840.1.113883.1.3"] 
@@ -34,6 +35,10 @@
 	<templateId root="2.16.840.1.113883.10.20.22.1.2" extension="2015-08-01"/>
 	<templateId root="2.16.840.1.113883.10.20.22.1.2"/>
 
+<!--	<!-\- [ePOLST] ePOLST Medical Orders Document template -\->
+	<templateId root="2.16.840.1.113883.9.275.1" extension="2021-12-01" />-->
+	
+	
 	<!-- Globally unique identifier for this document (can be a randomly generated GUID (Globally Unique Identifier) or UUID (Universally Unique Identifier). -->
 	<id root="5f6e4733-5fb4-4752-8d81-32420e9976b9"/>
 
@@ -57,9 +62,6 @@
 
 	<!-- confidentiality is not used by the National POLST form -->
 	<!-- Example of how to have a Null value for thise element. -->
-	<!-- Question: Is it correct to say (here in comments) that... Another option is:
-	<confidentialityCode code="N" displayName="normal" codeSystem="2.16.840.1.113883.5.25"
-		codeSystemName="Confidentiality"/>-->
 	<confidentialityCode nullFlavor="NA"/>
 
 	<!-- langauge is not used by the National POLST form -->
@@ -79,8 +81,6 @@
 			This example is available at http://hl7-c-cda-examples.herokuapp.com/examples/view/Header/
 			Note: When recording SSN in the extension, dashes (-) are permitted but not required.
 			Note: An id with a nullFlavor of "MSK" SHALL NOT be used for matching or indexing -->
-
-			<!-- Question: Would that last Note be a problem for POLST registries and for queries? -->
 			<id assigningAuthorityName="US Social Security Administration"
 				root="2.16.840.1.113883.4.1" extension="***-**-2222" nullFlavor="MSK"/>
 
@@ -104,8 +104,7 @@
 					<given>Abel</given>
 					<given>M</given>
 					<family>Baker</family>
-					<!-- Question: Can we put in here the text "Preferred name:" so that the "Call me" is labeled on the rendering?  
-					<originalText>Preferred name:</originalText> DOES NOT work-->
+					<!-- Question: Can we add "preferred name:" text here? OriginalText does not work with schema.-->
 					<!-- @qualifier='CL' (callme) -->
 					<given qualifier="CL">Abe</given>
 				</name>
@@ -124,8 +123,10 @@
 				<!--
 				********
 				guardian
+				For the ePOLST, the guardian may be the "Patient Representative" on the National POLST Form, section E. SIGNATURE: Patient or Patient Representative. 
+				Use the code element to specify the "Authority". 
 				********
-				For the ePOLST, the guardian may be the "Patient Representative" on the National POLST Form, section E. SIGNATURE: Patient or Patient Representative. Use the code element to specify the "Authority". -->
+				-->
 				<guardian>
 					<code code="POWATT" displayName="Power of Attorney"
 						codeSystem="2.16.840.1.113883.1.11.19830" codeSystemName="ResponsibleParty"/>
@@ -209,10 +210,9 @@
         ********************************************************
         custodian: Organization charged with maintaining the original source document 
         This is not specified in the National POLST Form and may be different from the author.
-        Implementers of the ePOLST may want to use the custodian for a POLST registry organization.
+        Implementers of the ePOLST may use the custodian for a POLST registry organization.
         ********************************************************
     -->
-	<!-- Question: Is the above statement about registries OK to include? -->
 	<custodian>
 		<assignedCustodian>
 			<representedCustodianOrganization>
@@ -370,7 +370,9 @@
 				<section>
 					<!-- Planned Procedure Section (V2) section template is Implied-->
 					<templateId root="2.16.840.1.113883.10.20.22.2.30" extension="2014-06-09"/>
-					<!-- ePOLST Medical Orders Section section template -->
+					
+					<!-- ePOLST Medical Orders Section section template 
+					Entry is required (SHALL)-->
 					<templateId root="2.16.840.1.113883.9.275.2.1" extension="2021-12-01"/>
 					<code code="59772-4" displayName="Planned Procedure"
 						codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
@@ -497,14 +499,38 @@
 						</table>
 					</text>
 
-					<!-- National POLST form: A. Cardiopulmonary Resuscitation Order
-						Entry is required (SHALL). -->
+					<!-- ePOLST Clinical Instructions entry template 
+					Entry is optional (MAY)-->
 					<entry>
-						<!-- Cardiopulmonary Resuscitation Order Act (ePOLST) entry template -->
+						<act classCode="ACT" moodCode="INT">
+							<templateId root="2.16.840.1.113883.9.275.3.5"
+								extension="2021-12-01"/>
+							<id root="61c73d9d-2775-4030-b4bc-715f637e75b8"/>
+							<code code="55752-0" codeSystem="2.16.840.1.113883.6.1"
+								codeSystemName="LOINC" displayName="Clinical information"> </code>
+							<text> </text>
+						</act>
+					</entry>
+					<!-- ePOLST Administrative Information entry template
+					Entry is optional (MAY)-->
+					<entry>
+						<act classCode="ACT" moodCode="INT">
+							<templateId root="2.16.840.1.113883.9.275.3.6"
+								extension="2021-12-01"/>
+							<id root="61c73d9d-2775-4030-b4bc-715f637e75b8"/>
+							<code code="TEMP-POLST-ADMIN-INFO" codeSystem="2.16.840.1.113883.6.1"
+								codeSystemName="LOINC" displayName="ePOLST Administrative Information"> </code>
+							<text> </text>
+						</act>
+					</entry>
+					
+					<!-- National POLST form: A. Cardiopulmonary Resuscitation Order-->
+					<entry>
+						<!-- Cardiopulmonary Resuscitation Order Act (ePOLST) entry template
+						Entry is required (SHALL). -->
 						<!-- The ACT moodCode="INT", meaning this is an order for an unspecified future time and unspecified order recipient.-->
 						<act classCode="ACT" moodCode="INT">
 							<templateId root="2.16.840.1.113883.9.275.3.1" extension="2021-12-01"/>
-
 							<id root="51ac291d-fc5e-4ac1-bb81-5cc9b8df7bf8"/>
 							<code code="TEMP-POLST-CPR" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC"
@@ -513,9 +539,9 @@
 									orders if patient has no pulse and is not
 									breathing.</originalText>
 							</code>
-
 							<entryRelationship typeCode="COMP">
-								<!-- Planned CPR Procedure entry template -->
+								<!-- Planned CPR Procedure entry template
+								Entry is required (SHALL). -->
 								<procedure classCode="PROC" moodCode="INT">
 									<templateId root="2.16.840.1.113883.9.275.3.1.1"
 										extension="2021-12-01"/>
@@ -537,7 +563,8 @@
 								</procedure>
 							</entryRelationship>
 							<entryRelationship typeCode="COMP">
-								<!-- ePOLST Clinical Instructions entry template -->
+								<!-- ePOLST Clinical Instructions entry template
+									Entry is optional (MAY). -->
 								<act classCode="ACT" moodCode="INT">
 									<templateId root="2.16.840.1.113883.9.275.3.5"
 										extension="2021-12-01"/>
@@ -550,10 +577,10 @@
 						</act>
 					</entry>
 
-					<!-- National POLST form: B. Initial Treatment Orders
-						Entry is required (SHALL). -->
+					<!-- National POLST form: B. Initial Treatment Orders -->
 					<entry>
-						<!-- Initial Treatment Orders Act (ePOLST) entry template -->
+						<!-- Initial Treatment Orders Act (ePOLST) entry template
+						Entry is required (SHALL). -->
 						<act classCode="ACT" moodCode="INT">
 							<templateId root="2.16.840.1.113883.9.275.3.2" extension="2021-12-01"/>
 							<id root="61c73d9d-2775-4030-b4bc-715f637e75b8"/>
@@ -562,9 +589,9 @@
 								<originalText>B. Initial Treatment Orders. Follow these orders if
 									patient has a pulse and/or is breathing.</originalText>
 							</code>
-
 							<entryRelationship typeCode="COMP">
-								<!-- Planned Initial Treatment Procedure entry template -->
+								<!-- Planned Initial Treatment Procedure entry template
+								Entry is required (SHALL). -->
 								<procedure classCode="PROC" moodCode="INT">
 									<templateId root="2.16.840.1.113883.9.275.3.2.1"
 										extension="2021-12-01"/>
@@ -584,9 +611,9 @@
 									<statusCode code="active"/>
 								</procedure>
 							</entryRelationship>
-
 							<entryRelationship typeCode="COMP">
-								<!-- ePOLST Clinical Instructions entry template -->
+								<!-- ePOLST Clinical Instructions entry template
+									Entry is optional (MAY). -->
 								<act classCode="ACT" moodCode="INT">
 									<templateId root="2.16.840.1.113883.9.275.3.5"
 										extension="2021-12-01"/>
@@ -597,13 +624,12 @@
 								</act>
 							</entryRelationship>
 						</act>
-
 					</entry>
 
-					<!-- National POLST form: C.  Additional Orders or Instructions
-						Entry is required (SHALL). -->
+					<!-- National POLST form: C.  Additional Orders or Instructions -->
 					<entry>
-						<!-- Additional Orders Act (ePOLST) entry template -->
+						<!-- Additional Orders Act (ePOLST) entry template 
+						Entry is required (SHALL). -->
 						<act classCode="ACT" moodCode="INT">
 							<templateId root="2.16.840.1.113883.9.275.3.3" extension="2021-12-01"/>
 							<id root="24f33931-faf1-4f88-be99-2d3e2496d2e4"/>
@@ -616,14 +642,13 @@
 									orders in this section.]</originalText>
 								<translation nullFlavor="NA"/>
 							</code>
-
 							<entryRelationship typeCode="COMP">
-								<!-- Planned Additional Orders Procedure entry template -->
+								<!-- Planned Additional Orders Procedure entry template
+								Entry is required (SHALL). -->
 								<procedure classCode="PROC" moodCode="INT">
 									<templateId root="2.16.840.1.113883.9.275.3.3.1"
 										extension="2021-12-01"/>
 									<id root="75bc54ba-47f0-4330-b4ad-179d26e4f930"/>
-
 									<!-- This is entry allows free text and coded entries. A Null entry is NOT allowed. At a minimum, trxt indicating "No additional orders" should be included. -->
 									<!-- In this example, free text was used, but no code was included.-->
 									<code nullFlavor="NA"/>
@@ -631,13 +656,25 @@
 									<statusCode code="active"/>
 								</procedure>
 							</entryRelationship>
+							<entryRelationship typeCode="COMP">
+								<!-- ePOLST Clinical Instructions entry template
+									Entry is optional (MAY). -->
+								<act classCode="ACT" moodCode="INT">
+									<templateId root="2.16.840.1.113883.9.275.3.5"
+										extension="2021-12-01"/>
+									<id root="5f91e661-da90-42ef-844a-0bd8332b6284"/>
+									<code code="55752-0" codeSystem="2.16.840.1.113883.6.1"
+										codeSystemName="LOINC" displayName="Clinical information"> </code>
+									<text> </text>
+								</act>
+							</entryRelationship>
 						</act>
 					</entry>
 
-					<!-- National POLST form: D. Medically Assisted Nutrition
-						Entry is required (SHALL).-->
+					<!-- National POLST form: D. Medically Assisted Nutrition-->
 					<entry>
-						<!-- Medically Assisted Nutrition Orders Act entry template -->
+						<!-- Medically Assisted Nutrition Orders Act entry template
+						Entry is required (SHALL). -->
 						<act classCode="ACT" moodCode="INT">
 							<templateId root="2.16.840.1.113883.9.275.3.4" extension="2021-12-01"/>
 							<id root="43c286c9-9958-4907-9566-224fe3aca37a"/>
@@ -647,14 +684,13 @@
 									if desired by patient, safe and tolerated)</originalText>
 								<translation nullFlavor="NA"/>
 							</code>
-
 							<entryRelationship typeCode="COMP">
-								<!-- Planned Medically Assisted Nutrition Orders Procedure entry template -->
+								<!-- Planned Medically Assisted Nutrition Orders Procedure entry template
+								Entry is required (SHALL). -->
 								<procedure classCode="PROC" moodCode="INT">
 									<templateId root="2.16.840.1.113883.9.275.3.4.1"
 										extension="2021-12-01"/>
 									<id root="2c7a0f50-2b07-4c41-93cc-03a13e1b05c6"/>
-
 									<!-- Code must be selected from the value set defined in the guidance and a translation is allowed-->
 									<!-- In this example, the Medically Assisted Nutrition Orders option "No artificial means of nutrition desired" has been selected.-->
 									<code code="TEMP-POLST-MED-NUTR-X"
@@ -665,9 +701,9 @@
 									<statusCode code="active"/>
 								</procedure>
 							</entryRelationship>
-
 							<entryRelationship typeCode="COMP">
-								<!-- ePOLST Clinical Instructions entry template -->
+								<!-- ePOLST Clinical Instructions entry template
+									Entry is optional (MAY). -->
 								<act classCode="ACT" moodCode="INT">
 									<templateId root="2.16.840.1.113883.9.275.3.5"
 										extension="2021-12-01"/>
@@ -687,11 +723,17 @@
 				<!--
             	 ********************************************************
              	ePOLST Completion Information Section
-             	This Section has entries for pg.2, Form Completion Information section, 
+             	This Section has entries for pg.2, Form Completion Information section.
+             	Section is optional (MAY). 
              	********************************************************
          	-->
+				
+
 				<section>
 					<templateId root="2.16.840.1.113883.9.275.2.2" extension="2021-12-01"/>
+					<code code="TEMP-POLST-COMP" displayName="ePOLST Completion Information"
+						codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<!-- Provide a title for the orders portion of the form here. -->
 					<title>ePOLST Completion Information Section</title>
 
 					<!-- Use the <text> to display human-readable content of this section. -->
@@ -748,13 +790,16 @@
 						</table>
 					</text>
 
+					<!-- Order Review (ePOLST) entry template
+					If section is included, entry is required (SHALL). -->
+					
+					<!-- Question: Last Schematron error (10/25/2021): 
+						SHALL contain exactly one [1..1] entry (CONF:4511-33132) such that it SHALL contain exactly one [1..1] Orders Review (ePOLST) 
+						(identifier: urn:hl7ii:2.16.840.1.113883.9.275.3.7:2021-12-01) (CONF:4511-33172). ID:a-4511-33132 -->
 					<entry>
-
-						<!-- Order Review (ePOLST) entry template-->
-
-						<act classCode="ACT" moodCode="EVN">
+						<act classCode="OBS" moodCode="EVN">
 							<templateId root="2.16.840.1.113883.9.275.3.7" extension="2021-12-01"/>
-							<id root="220f151d-3fce-4107-901f-666e2eb366dd"/>
+							<id root="752c8114-46b0-44db-af46-561a672f30ff"/>
 							<code code="TEMP-POLST-REVIEW" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC" displayName="ePOLST Review">
 								<originalText>Reviewed patient’s advance directive to confirm no
@@ -762,8 +807,19 @@
 									discussion: </originalText>
 								<translation nullFlavor="NA"/>
 							</code>
-
-
+						</act>
+					</entry>
+					
+					<!-- ePOLST Administrative Information entry template
+						Entry is optional (MAY). -->
+					<entry>
+						<act classCode="ACT" moodCode="INT">
+							<templateId root="2.16.840.1.113883.9.275.3.6"
+								extension="2021-12-01"/>
+							<id root="61c73d9d-2775-4030-b4bc-715f637e75b8"/>
+							<code code="TEMP-POLST-ADMIN-INFO" codeSystem="2.16.840.1.113883.6.1"
+								codeSystemName="LOINC" displayName="ePOLST Administrative Information"> </code>
+							<text> </text>
 						</act>
 					</entry>
 				</section>
