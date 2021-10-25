@@ -43,7 +43,10 @@
 	<!-- Code for this document type (NOT the template OID)-->
 	<code code="TEMP-POLST-ORDERS" displayName="National ePOLST Form: A Portable Medical Order"
 		codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
-
+	<!-- Response:  SHALL Have a SET ID -->
+	<setId extension="sTT988" root="2.16.840.1.113883.19.5.99999.19"/>
+	<!-- Response:  SHALL Have a Version Number -->
+	<versionNumber value="1"/>
 	<!--
         ********************************************************
         Title of this document
