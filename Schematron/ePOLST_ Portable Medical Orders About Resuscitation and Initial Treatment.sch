@@ -2,7 +2,7 @@
 <!--
 
 THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL LANTANA CONSULTING GROUP LLC, OR ANY OF THEIR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-Schematron generated from Trifolia on 10/22/2021
+Schematron generated from Trifolia on 10/25/2021
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:cda="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron">
   <sch:ns prefix="voc" uri="http://www.lantanagroup.com/voc" />
@@ -455,7 +455,7 @@ Schematron generated from Trifolia on 10/22/2021
     </sch:rule>
     <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.9.275.3.6-2021-12-01-errors" context="cda:act[cda:templateId[@root='2.16.840.1.113883.9.275.3.6' and @extension='2021-12-01']]">
       <sch:extends rule="r-urn-hl7ii-2.16.840.1.113883.9.275.3.6-2021-12-01-errors-abstract" />
-      <sch:assert id="a-4511-33051" test="count(cda:templateId[@root='2.16.840.1.113883.9.275.3.5'][@extension='2021-12-01'])=1">SHALL contain exactly one [1..1] templateId (CONF:4511-33051) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.9.275.3.5" (CONF:4511-33052). SHALL contain exactly one [1..1] @extension="2021-12-01" (CONF:4511-33053).</sch:assert>
+      <sch:assert id="a-4511-33051" test="count(cda:templateId[@root='2.16.840.1.113883.9.275.3.6'][@extension='2021-12-01'])=1">SHALL contain exactly one [1..1] templateId (CONF:4511-33051) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.9.275.3.6" (CONF:4511-33052). SHALL contain exactly one [1..1] @extension="2021-12-01" (CONF:4511-33053).</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-urn-hl7ii-2.16.840.1.113883.9.275.2.2-2021-12-01-errors">
@@ -463,9 +463,10 @@ Schematron generated from Trifolia on 10/22/2021
       <sch:assert id="a-4511-33129" test="count(cda:templateId)=1">SHALL contain exactly one [1..1] templateId (CONF:4511-33129).</sch:assert>
       <sch:assert id="a-4511-33130" test="cda:templateId[@root='2.16.840.1.113883.9.275.2.2']">This templateId SHALL contain exactly one [1..1] @root="2.16.840.1.113883.9.275.2.2" (CONF:4511-33130).</sch:assert>
       <sch:assert id="a-4511-33131" test="cda:templateId[@extension='2021-12-01']">This templateId SHALL contain exactly one [1..1] @extension="2021-12-01" (CONF:4511-33131).</sch:assert>
-      <sch:assert id="a-4511-33132" test="count(cda:entry)=1">SHALL contain exactly one [1..1] entry (CONF:4511-33132).</sch:assert>
-      <sch:assert id="a-4511-33172" test="cda:entry[count(cda:observation[cda:templateId[@root='2.16.840.1.113883.9.275.3.7' and @extension='2021-12-01']])=1]">This entry SHALL contain exactly one [1..1] Orders Review (ePOLST) (identifier: urn:hl7ii:2.16.840.1.113883.9.275.3.7:2021-12-01) (CONF:4511-33172).</sch:assert>
-      <sch:assert id="a-4511-33173" test="count(cda:code[@code='TEMP-POLST-COMP'][@codeSystem='2.16.840.1.113883.6.1' or @nullFlavor])=1">SHALL contain exactly one [1..1] code="TEMP-POLST-COMP" ePOLST Completion Information (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:4511-33173).</sch:assert>
+      <sch:assert id="a-4511-33132" test="count(cda:entry[count(cda:observation[cda:templateId[@root='2.16.840.1.113883.9.275.3.7' and @extension='2021-12-01']])=1])=1">SHALL contain exactly one [1..1] entry (CONF:4511-33132) such that it SHALL contain exactly one [1..1] Orders Review (ePOLST) (identifier: urn:hl7ii:2.16.840.1.113883.9.275.3.7:2021-12-01) (CONF:4511-33172).</sch:assert>
+      <sch:assert id="a-4511-33173" test="count(cda:code)=1">SHALL contain exactly one [1..1] code (CONF:4511-33173).</sch:assert>
+      <sch:assert id="a-4511-33176" test="cda:code[@code='TEMP-POLST-COMP']">This code SHALL contain exactly one [1..1] @code="TEMP-POLST-COMP" ePOLST Completion Information (CONF:4511-33176).</sch:assert>
+      <sch:assert id="a-4511-33177" test="cda:code[@codeSystem='2.16.840.1.113883.6.1']">This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.1" (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:4511-33177).</sch:assert>
     </sch:rule>
     <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.9.275.2.2-2021-12-01-errors" context="cda:section[cda:templateId[@root='2.16.840.1.113883.9.275.2.2' and @extension='2021-12-01']]">
       <sch:extends rule="r-urn-hl7ii-2.16.840.1.113883.9.275.2.2-2021-12-01-errors-abstract" />
