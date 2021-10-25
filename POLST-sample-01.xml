@@ -22,9 +22,7 @@
     -->
 
 <?xml-stylesheet type="text/css" href="../cda_r2_normativewebedition2010(2)/styles/cda_styles.css"?>
-<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:voc="urn:hl7-org:v3/voc" xmlns:sdtc="urn:hl7-org:sdtc">
-	
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:voc="urn:hl7-org:v3/voc" xmlns:sdtc="urn:hl7-org:sdtc">
 	<!-- realmCode is required by the US Realm Header and SHALL be realmCode="US".-->
 	<realmCode code="US"/>
 	<!--The following typeID describes an HL7 registered Refined Message Information Models (RMIMs) [root="2.16.840.1.113883.1.3"] 
@@ -106,6 +104,7 @@
 					<family>Baker</family>
 					<!-- Question: Can we add "preferred name:" text here? OriginalText does not work with schema.-->
 					<!-- @qualifier='CL' (callme) -->
+					<!-- Response:  Yes.  I would just say in your comment "Insert preferred name here" to show this maps to this part of the form. -->
 					<given qualifier="CL">Abe</given>
 				</name>
 
@@ -158,8 +157,12 @@
 		<time value="201308151030-0800"/>
 		<assignedAuthor>
 			<!-- Question: Does this id captures the License/Cert. # in section F. SIGNATURE: Health Care Provider. ?-->
-			<!-- Question: This does not seem to render. How do I make it show on the html?
--->
+			<!-- Response: The actual ID that you have specified here in the ePOLST is the NPI whichis different from a state issued medical License/certification number. 
+				So, you will want to add this ID To the legal authenticator for the signature. I belive this is what they use for authentification.  -->
+				<!--Question: This does not seem to render. How do I make it show on the html?-->
+			<!-- Response: This is a stylesheet design issue. Please check with Rick to see if he can fix the stylesheet for you? -->
+
+
 			<id extension="5555555555" root="2.16.840.1.113883.4.6"/>
 			<code code="207QA0505X" displayName="Adult Medicine"
 				codeSystem="2.16.840.1.113883.6.101"
@@ -241,6 +244,10 @@
 		<time value="20130815223615-0800"/>
 		<signatureCode code="S"/>
 		<assignedEntity>
+			<!-- Response:  DW, this is where you want to put guidance to insert the medical license so it aligns with section F.
+			In TWB, I added as an editor note "At minimum, include the medical license or certification number of the health care provider signing the document  in this ID element."
+			Since you already have this as a  [1...*], I didn't change the constraints.  I think it's fine to also include the NPI as a MAY. There is no OID for the medical
+			license/certificate numbers. -->
 			<id extension="5555555555" root="2.16.840.1.113883.4.6"/>
 			<code code="207QA0505X" displayName="Adult Medicine"
 				codeSystem="2.16.840.1.113883.6.101"
@@ -336,6 +343,8 @@
 
 	<!-- Patient’s Hospice Organization name, role (classCode), phone -->
 	<!--	Question: Need help here with a participant organization (not person). In this case, hospice.-->
+	<!--	Response: Not sure what you are asking, Is this the part under contact information?  If so, then you would just
+		tie to DocumentationOf, I added this below -->
 	<participant typeCode="IND">
 		<!-- classCode "PROV" represents a healthcare provider, in this case a hospice organization-->
 		<associatedEntity classCode="PROV">
@@ -348,6 +357,54 @@
 			</associatedPerson>
 		</associatedEntity>
 	</participant>
+	
+	<!-- Response: Added to represent a Hospice Agency and telephone number -->
+	<documentationOf>
+		<serviceEvent classCode="PCPR">		  
+			<effectiveTime>
+				<low value="20211001"/>
+				<!-- The low value represents when the patient started hospice care -->
+				<high value="NA"/>			c
+			</effectiveTime>
+			<performer typeCode="PRF">
+				<functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Provider">
+					<originalText>Primary Care Provider</originalText>
+				</functionCode>
+				<assignedEntity>
+				<!--	<id extension="5555555555" root="2.16.840.1.113883.4.6"/>
+					<code code="207QA0505X" displayName="Adult Medicine" codeSystem="2.16.840.1.113883.6.101" codeSystemName="Healthcare Provider Taxonomy (HIPAA)"/>
+					<addr>
+						<streetAddressLine>1004 Healthcare Drive </streetAddressLine>
+						<city>Portland</city>
+						<state>OR</state>
+						<postalCode>99123</postalCode>
+						<country>US</country>
+					</addr>
+					<telecom use="WP" value="tel:+1(555)555-1004"/>-->
+					<assignedPerson>
+						<name>
+							<given>Patricia</given>
+							<given qualifier="CL">Patty</given>
+							<family>Primary</family>
+							<suffix qualifier="AC">M.D.</suffix>
+						</name>
+					</assignedPerson>
+					<representedOrganization>
+						<id extension="219BX" root="1.2.16.840.1.113883.4.6"/>
+						<name>The Hospice Caring Group</name>
+						<telecom use="WP" value="tel: +1(555)555-5000"/>
+						<addr>
+							<streetAddressLine>1004 Comfort Care Drive</streetAddressLine>
+							<city>Portland</city>
+							<state>OR</state>
+							<postalCode>99123</postalCode>
+							<country>US</country>
+						</addr>
+					</representedOrganization>
+				</assignedEntity>
+			</performer>
+		</serviceEvent>
+	</documentationOf>
 	<!-- ******************************************************** CDA Body ******************************************************** -->
 	<component>
 		<!--
@@ -796,18 +853,20 @@
 					<!-- Question: Last Schematron error (10/25/2021): 
 						SHALL contain exactly one [1..1] entry (CONF:4511-33132) such that it SHALL contain exactly one [1..1] Orders Review (ePOLST) 
 						(identifier: urn:hl7ii:2.16.840.1.113883.9.275.3.7:2021-12-01) (CONF:4511-33172). ID:a-4511-33132 -->
-					<entry>
-						<act classCode="OBS" moodCode="EVN">
+					<entry typeCode="SUBJ">
+						<!-- Response:  Dw, I updated this to an observation element.  This was an act element. It got rid of the schematron erro. -->
+						<observation classCode="OBS" moodCode="EVN">
 							<templateId root="2.16.840.1.113883.9.275.3.7" extension="2021-12-01"/>
 							<id root="752c8114-46b0-44db-af46-561a672f30ff"/>
-							<code code="TEMP-POLST-REVIEW" codeSystem="2.16.840.1.113883.6.1"
+							<!-- Response:  Dw, I updated this code from one in the value set. -->
+							<code code="TEMP-POLST-R1" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC" displayName="ePOLST Review">
 								<originalText>Reviewed patient’s advance directive to confirm no
 									conflict with POLST orders. Check everyone who participated in
 									discussion: </originalText>
 								<translation nullFlavor="NA"/>
 							</code>
-						</act>
+						</observation>
 					</entry>
 					
 					<!-- ePOLST Administrative Information entry template
