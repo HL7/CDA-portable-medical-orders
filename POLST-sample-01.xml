@@ -566,6 +566,20 @@
 							<code code="55752-0" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC" displayName="Clinical information"> </code>
 							<text> </text>
+							<!--<statusCode></statusCode>
+							<effectiveTime></effectiveTime>
+							<value></value>-->
+							<!-- RESPONSE: DW, I inserted the External Reference here as an example of 
+							clinical information. I made this a SHOULD in TWB. We can recommend in Volume 1
+							that they put this here at the Section Level.  Also, you can add this to the
+							description in the Section Level Template in TWB. -->
+							<reference typeCode="REFR"/>
+							<externalDocument>
+								<id root="61c73d9d-2744-4030-b4bc-715f637e75b8"/>
+								<text>ePOLST Portable Medical Orders National Form. 
+									See https://polst.org/wp-content/uploads/2021/03/2020.05.11-National-POLST-Form-with-Instructions-r2.pdf</text>
+							</externalDocument>
+							 
 						</act>
 					</entry>
 					<!-- ePOLST Administrative Information entry template
@@ -857,15 +871,17 @@
 						<!-- Response:  Dw, I updated this to an observation element.  This was an act element. It got rid of the schematron erro. -->
 						<observation classCode="OBS" moodCode="EVN">
 							<templateId root="2.16.840.1.113883.9.275.3.7" extension="2021-12-01"/>
-							<id root="752c8114-46b0-44db-af46-561a672f30ff"/>
-							<!-- Response:  Dw, I updated this code from one in the value set. -->
-							<code code="TEMP-POLST-R1" codeSystem="2.16.840.1.113883.6.1"
-								codeSystemName="LOINC" displayName="ePOLST Review">
+							<id root="752c8114-46b0-44db-af46-561a672f30ff"/>						
+							<code code="TEMP-POLST-REVIEW" codeSystem="2.16.840.1.113883.6.1"
+								codeSystemName="LOINC" displayName=" ePOLST Review">
 								<originalText>Reviewed patient’s advance directive to confirm no
 									conflict with POLST orders. Check everyone who participated in
 									discussion: </originalText>
 								<translation nullFlavor="NA"/>
 							</code>
+							<!-- Response:  Dw, I updated this code from one in the value set. -->
+							<value code="TEMP-POLST-R1" codeSystem="2.16.840.1.113883.6.1"
+								codeSystemName="LOINC" displayName="Yes the document was reviewed"/>
 						</observation>
 					</entry>
 					
