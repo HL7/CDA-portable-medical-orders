@@ -22,7 +22,8 @@
     -->
 
 <?xml-stylesheet type="text/css" href="../cda_r2_normativewebedition2010(2)/styles/cda_styles.css"?>
-<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:voc="urn:hl7-org:v3/voc" xmlns:sdtc="urn:hl7-org:sdtc">
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:voc="urn:hl7-org:v3/voc" xmlns:sdtc="urn:hl7-org:sdtc">
 	<!-- realmCode is required by the US Realm Header and SHALL be realmCode="US".-->
 	<realmCode code="US"/>
 	<!--The following typeID describes an HL7 registered Refined Message Information Models (RMIMs) [root="2.16.840.1.113883.1.3"] 
@@ -33,19 +34,22 @@
 	<templateId root="2.16.840.1.113883.10.20.22.1.2" extension="2015-08-01"/>
 	<templateId root="2.16.840.1.113883.10.20.22.1.2"/>
 
-<!--	<!-\- [ePOLST] ePOLST Medical Orders Document template -\->
+	<!--	<!-\- [ePOLST] ePOLST Medical Orders Document template -\->
 	<templateId root="2.16.840.1.113883.9.275.1" extension="2021-12-01" />-->
-	
-	
+
+
 	<!-- Globally unique identifier for this document (can be a randomly generated GUID (Globally Unique Identifier) or UUID (Universally Unique Identifier). -->
 	<id root="5f6e4733-5fb4-4752-8d81-32420e9976b9"/>
 
 	<!-- Code for this document type (NOT the template OID)-->
 	<code code="TEMP-POLST-ORDERS" displayName="National ePOLST Form: A Portable Medical Order"
 		codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
-	<!-- Response:  SHALL Have a SET ID -->
+
+	<!-- The setId represents an identifier that is common across all document revisions, 
+		and the versionNumber is an integer that indicates the order of successive replacement documents. 
+		The setId and versionNumber, along with the document type code and patient identifiers, provide the information required 
+		for identification and management of successive ePOLST documents for a patient.-->
 	<setId extension="sTT988" root="2.16.840.1.113883.19.5.99999.19"/>
-	<!-- Response:  SHALL Have a Version Number -->
 	<versionNumber value="1"/>
 	<!--
         ********************************************************
@@ -105,9 +109,8 @@
 					<given>Abel</given>
 					<given>M</given>
 					<family>Baker</family>
-					<!-- Question: Can we add "preferred name:" text here? OriginalText does not work with schema.-->
+					<!-- Insert preferred name here.-->
 					<!-- @qualifier='CL' (callme) -->
-					<!-- Response:  Yes.  I would just say in your comment "Insert preferred name here" to show this maps to this part of the form. -->
 					<given qualifier="CL">Abe</given>
 				</name>
 
@@ -159,13 +162,7 @@
 	<author>
 		<time value="201308151030-0800"/>
 		<assignedAuthor>
-			<!-- Question: Does this id captures the License/Cert. # in section F. SIGNATURE: Health Care Provider. ?-->
-			<!-- Response: The actual ID that you have specified here in the ePOLST is the NPI whichis different from a state issued medical License/certification number. 
-				So, you will want to add this ID To the legal authenticator for the signature. I belive this is what they use for authentification.  -->
-				<!--Question: This does not seem to render. How do I make it show on the html?-->
-			<!-- Response: This is a stylesheet design issue. Please check with Rick to see if he can fix the stylesheet for you? -->
-
-
+			<!-- In this example, the author and the legalAuthenticator are the same person.-->
 			<id extension="5555555555" root="2.16.840.1.113883.4.6"/>
 			<code code="207QA0505X" displayName="Adult Medicine"
 				codeSystem="2.16.840.1.113883.6.101"
@@ -247,10 +244,8 @@
 		<time value="20130815223615-0800"/>
 		<signatureCode code="S"/>
 		<assignedEntity>
-			<!-- Response:  DW, this is where you want to put guidance to insert the medical license so it aligns with section F.
-			In TWB, I added as an editor note "At minimum, include the medical license or certification number of the health care provider signing the document  in this ID element."
-			Since you already have this as a  [1...*], I didn't change the constraints.  I think it's fine to also include the NPI as a MAY. There is no OID for the medical
-			license/certificate numbers. -->
+			<!-- Recommendation: Implementers should show the legalAuthenticator's id on the rendered form. 
+				At minimum, include the medical license or certification number of the health care provider signing the document in this ID element.-->
 			<id extension="5555555555" root="2.16.840.1.113883.4.6"/>
 			<code code="207QA0505X" displayName="Adult Medicine"
 				codeSystem="2.16.840.1.113883.6.101"
@@ -345,9 +340,6 @@
 	</participant>
 
 	<!-- Patient’s Hospice Organization name, role (classCode), phone -->
-	<!--	Question: Need help here with a participant organization (not person). In this case, hospice.-->
-	<!--	Response: Not sure what you are asking, Is this the part under contact information?  If so, then you would just
-		tie to DocumentationOf, I added this below -->
 	<participant typeCode="IND">
 		<!-- classCode "PROV" represents a healthcare provider, in this case a hospice organization-->
 		<associatedEntity classCode="PROV">
@@ -360,30 +352,20 @@
 			</associatedPerson>
 		</associatedEntity>
 	</participant>
-	
-	<!-- Response: Added to represent a Hospice Agency and telephone number -->
+
+	<!-- Represents a Hospice Agency and telephone number -->
 	<documentationOf>
-		<serviceEvent classCode="PCPR">		  
+		<serviceEvent classCode="PCPR">
 			<effectiveTime>
 				<low value="20211001"/>
 				<!-- The low value represents when the patient started hospice care -->
-				<high value="NA"/>			c
-			</effectiveTime>
+				<high value="NA"/> c </effectiveTime>
 			<performer typeCode="PRF">
-				<functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" codeSystemName="ParticipationFunction" displayName="Primary Care Provider">
+				<functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88"
+					codeSystemName="ParticipationFunction" displayName="Primary Care Provider">
 					<originalText>Primary Care Provider</originalText>
 				</functionCode>
 				<assignedEntity>
-				<!--	<id extension="5555555555" root="2.16.840.1.113883.4.6"/>
-					<code code="207QA0505X" displayName="Adult Medicine" codeSystem="2.16.840.1.113883.6.101" codeSystemName="Healthcare Provider Taxonomy (HIPAA)"/>
-					<addr>
-						<streetAddressLine>1004 Healthcare Drive </streetAddressLine>
-						<city>Portland</city>
-						<state>OR</state>
-						<postalCode>99123</postalCode>
-						<country>US</country>
-					</addr>
-					<telecom use="WP" value="tel:+1(555)555-1004"/>-->
 					<assignedPerson>
 						<name>
 							<given>Patricia</given>
@@ -430,7 +412,7 @@
 				<section>
 					<!-- Planned Procedure Section (V2) section template is Implied-->
 					<templateId root="2.16.840.1.113883.10.20.22.2.30" extension="2014-06-09"/>
-					
+
 					<!-- ePOLST Medical Orders Section section template 
 					Entry is required (SHALL)-->
 					<templateId root="2.16.840.1.113883.9.275.2.1" extension="2021-12-01"/>
@@ -441,12 +423,45 @@
 
 					<!-- Provide text that renders the content of this section -->
 					<text>
-						<paragraph>This is a medical order, not an advance directive. For
-							information about POLST and to understand this document, visit:
-							www.polst.org/form </paragraph>
-						<paragraph styleCode="Bold">A. Cardiopulmonary Resuscitation Orders. </paragraph>
-						<paragraph>Follow these orders if patient has no pulse and is not
-							breathing.(Pick 1)</paragraph>
+						<paragraph styleCode="Bold">ePOLST Clinical Instructions</paragraph>
+						<paragraph> Health care providers should complete this form only after a
+							conversation with their patient or the patient’s representative. The
+							POLST decision-making process is for patients who are at risk for a
+							life-threatening clinical event because they have a serious
+							life-limiting medical condition, which may include advanced frailty
+							(www.polst.org/guidance-appropriate-patients-pdf). </paragraph>
+						<paragraph styleCode="Bold">ePOLST Administrative Information</paragraph>
+						<paragraph>HIPAA PERMITS DISCLOSURE OF POLST ORDERS TO HEALTH CARE PROVIDERS
+							AS NECESSARY FOR TREATMENT SEND FORM WITH PATIENT WHENEVER TRANSFERRED
+							OR DISCHARGED
+							<br>This form does not expire. The most recently completed
+								valid POLST form supersedes all previously completed POLST
+								forms.</br>
+							<br>This is a medical order, not an advance directive. For information
+								about POLST and to understand this document, visit: www.polst.org/form</br>
+						</paragraph>
+							<paragraph styleCode="Bold">SIGNATURES</paragraph>
+						<paragraph> Having a POLST form is always voluntary. Patient or Patient
+								Representative signature indicates: "I understand this form is
+								voluntary. I have discussed my treatment options and goals of care with
+								my provider. If signing as the patient’s representative, the treatments
+								are consistent with the patient’s known wishes and in their best
+								interest." 
+							<br> </br>
+							<br>Health Care Provider signature indicates: “I have discussed
+								this order with the patient or his/her representative. The orders
+								reflect the patient’s known wishes, to the best of my knowledge.” [Note:
+								Only licensed health care providers authorized by law to sign POLST form
+								in state where completed may sign this order]</br>
+							 </paragraph>
+						
+						<paragraph styleCode="Bold">A. Cardiopulmonary Resuscitation Orders.</paragraph>
+						<paragraph styleCode="Bold">ePOLST Clinical Instructions</paragraph>
+						<paragraph>Follow these orders if patient has no pulse and is not breathing.
+							<br>Pick 1.</br>
+							<br>YES CPR requires choosing Full Treatments in Initial Treatment Orders.</br>
+							<br>NO CPR may choose any option in Initial Treatment Orders.</br>
+						</paragraph>
 						<table border="1">
 							<thead>
 								<tr>
@@ -468,13 +483,16 @@
 								</tr>
 							</tbody>
 						</table>
+						
 						<paragraph styleCode="Bold">B. Initial Treatment Orders.</paragraph>
-						<paragraph>Reassess and discuss interventions with patient or patient
-							representative regularly to ensure treatments are meeting patient’s care
-							goals. Consider a time-t+rial of interventions based on goals and
-							specific outcomes. </paragraph>
+						<paragraph styleCode="Bold">ePOLST Clinical Instructions</paragraph>
 						<paragraph>Follow these orders if patient has a pulse and/or is breathing.
-							(Pick 1)</paragraph>
+							<br>Reassess and discuss interventions with patient or patient representative regularly 
+								to ensure treatments are meeting patient’s care goals.</br>
+							<br>Consider a time-trial of interventions based on goals and specific outcomes.</br>
+							<br>Full Treatments are required if YES CPR in Cardiopulmonary Resuscitation Order.</br>
+							<br>Pick 1</br>
+						</paragraph>
 						<table border="1">
 							<thead>
 								<tr>
@@ -513,11 +531,13 @@
 								</tr>
 							</tbody>
 						</table>
-						<br/>
+						
 						<paragraph styleCode="Bold">C. Additional Orders or Instructions</paragraph>
+						<paragraph styleCode="Bold">ePOLST Clinical Instructions</paragraph>
 						<paragraph>These orders are in addition to those above (e.g., blood
-							products, dialysis). [EMS protocols may limit emergency responder
-							ability to act on orders in this section.]</paragraph>
+							products, dialysis).
+							<br>[EMS protocols may limit emergency responder
+								ability to act on orders in this section.]</br></paragraph>
 						<table border="1">
 							<tbody>
 								<tr>
@@ -525,9 +545,11 @@
 								</tr>
 							</tbody>
 						</table>
+						<br> </br>
 						<paragraph styleCode="Bold">D. Medically Assisted Nutrition</paragraph>
+						<paragraph styleCode="Bold">ePOLST Clinical Instructions</paragraph>
 						<paragraph>Offer food by mouth if desired by patient, safe and tolerated.
-							(Pick 1)</paragraph>
+							<br>Pick 1.</br></paragraph>
 						<table border="1">
 							<thead>
 								<tr>
@@ -563,8 +585,7 @@
 					Entry is optional (MAY)-->
 					<entry>
 						<act classCode="ACT" moodCode="INT">
-							<templateId root="2.16.840.1.113883.9.275.3.5"
-								extension="2021-12-01"/>
+							<templateId root="2.16.840.1.113883.9.275.3.5" extension="2021-12-01"/>
 							<id root="61c73d9d-2775-4030-b4bc-715f637e75b8"/>
 							<code code="55752-0" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC" displayName="Clinical information"> </code>
@@ -572,32 +593,30 @@
 							<!--<statusCode></statusCode>
 							<effectiveTime></effectiveTime>
 							<value></value>-->
-							<!-- RESPONSE: DW, I inserted the External Reference here as an example of 
-							clinical information. I made this a SHOULD in TWB. We can recommend in Volume 1
-							that they put this here at the Section Level.  Also, you can add this to the
-							description in the Section Level Template in TWB. -->
+							<!-- Question: Should we consider using the "relatedDocument" on the ePLST Doc template instead? Here is the xml guidance for this spot if you choose to leave it as-is:
+								The reference in this ePOLST Clinical Instructions entry template here can point to the relevant blank POLST form.-->
 							<reference typeCode="REFR"/>
 							<externalDocument>
 								<id root="61c73d9d-2744-4030-b4bc-715f637e75b8"/>
-								<text>ePOLST Portable Medical Orders National Form. 
-									See https://polst.org/wp-content/uploads/2021/03/2020.05.11-National-POLST-Form-with-Instructions-r2.pdf</text>
+								<text>ePOLST Portable Medical Orders National Form. See
+									https://polst.org/wp-content/uploads/2021/03/2020.05.11-National-POLST-Form-with-Instructions-r2.pdf</text>
 							</externalDocument>
-							 
+
 						</act>
 					</entry>
 					<!-- ePOLST Administrative Information entry template
 					Entry is optional (MAY)-->
 					<entry>
 						<act classCode="ACT" moodCode="INT">
-							<templateId root="2.16.840.1.113883.9.275.3.6"
-								extension="2021-12-01"/>
+							<templateId root="2.16.840.1.113883.9.275.3.6" extension="2021-12-01"/>
 							<id root="61c73d9d-2775-4030-b4bc-715f637e75b8"/>
 							<code code="TEMP-POLST-ADMIN-INFO" codeSystem="2.16.840.1.113883.6.1"
-								codeSystemName="LOINC" displayName="ePOLST Administrative Information"> </code>
+								codeSystemName="LOINC"
+								displayName="ePOLST Administrative Information"> </code>
 							<text> </text>
 						</act>
 					</entry>
-					
+
 					<!-- National POLST form: A. Cardiopulmonary Resuscitation Order-->
 					<entry>
 						<!-- Cardiopulmonary Resuscitation Order Act (ePOLST) entry template
@@ -801,7 +820,7 @@
              	Section is optional (MAY). 
              	********************************************************
          	-->
-				
+
 
 				<section>
 					<templateId root="2.16.840.1.113883.9.275.2.2" extension="2021-12-01"/>
@@ -813,9 +832,22 @@
 					<!-- Use the <text> to display human-readable content of this section. -->
 
 					<text>
+						<paragraph>
+							ePOLST Administrative Information
+							<text>
+								Reviewed patient’s advance directive to assess any conflict with POLST orders.
+								(A POLST form does not replace an advance directive or living will.)
+								List everyone who participated in discussion.
+							</text>
+							
+							
+						</paragraph>
 						<paragraph styleCode="Bold">ePOLST and Advance Directive Review</paragraph>
-						<paragraph>Reviewed patient’s advance directive to confirm no conflict with
-							POLST orders:</paragraph>
+						<paragraph styleCode="Bold">ePOLST Administrative Information</paragraph>
+						<paragraph>Reviewed patient’s advance directive to assess any conflict with POLST orders. (A POLST form does not replace an advance directive or living will.)
+							<br>List everyone who participated in discussion.</br>
+							</paragraph>
+						
 						<table border="1">
 							<thead>
 								<tr>
@@ -866,15 +898,10 @@
 
 					<!-- Order Review (ePOLST) entry template
 					If section is included, entry is required (SHALL). -->
-					
-					<!-- Question: Last Schematron error (10/25/2021): 
-						SHALL contain exactly one [1..1] entry (CONF:4511-33132) such that it SHALL contain exactly one [1..1] Orders Review (ePOLST) 
-						(identifier: urn:hl7ii:2.16.840.1.113883.9.275.3.7:2021-12-01) (CONF:4511-33172). ID:a-4511-33132 -->
 					<entry typeCode="SUBJ">
-						<!-- Response:  Dw, I updated this to an observation element.  This was an act element. It got rid of the schematron erro. -->
 						<observation classCode="OBS" moodCode="EVN">
 							<templateId root="2.16.840.1.113883.9.275.3.7" extension="2021-12-01"/>
-							<id root="752c8114-46b0-44db-af46-561a672f30ff"/>						
+							<id root="752c8114-46b0-44db-af46-561a672f30ff"/>
 							<code code="TEMP-POLST-REVIEW" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC" displayName=" ePOLST Review">
 								<originalText>Reviewed patient’s advance directive to confirm no
@@ -882,21 +909,22 @@
 									discussion: </originalText>
 								<translation nullFlavor="NA"/>
 							</code>
-							<!-- Response:  Dw, I updated this code from one in the value set. -->
+							<!-- Response:  Dw, I updated this code from one in the value set. 
+							Question: How can we include more than 1 value (i.e., for "check all that apply")?-->
 							<value code="TEMP-POLST-R1" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC" displayName="Yes the document was reviewed"/>
 						</observation>
 					</entry>
-					
+
 					<!-- ePOLST Administrative Information entry template
 						Entry is optional (MAY). -->
 					<entry>
 						<act classCode="ACT" moodCode="INT">
-							<templateId root="2.16.840.1.113883.9.275.3.6"
-								extension="2021-12-01"/>
+							<templateId root="2.16.840.1.113883.9.275.3.6" extension="2021-12-01"/>
 							<id root="61c73d9d-2775-4030-b4bc-715f637e75b8"/>
 							<code code="TEMP-POLST-ADMIN-INFO" codeSystem="2.16.840.1.113883.6.1"
-								codeSystemName="LOINC" displayName="ePOLST Administrative Information"> </code>
+								codeSystemName="LOINC"
+								displayName="ePOLST Administrative Information"> </code>
 							<text> </text>
 						</act>
 					</entry>
