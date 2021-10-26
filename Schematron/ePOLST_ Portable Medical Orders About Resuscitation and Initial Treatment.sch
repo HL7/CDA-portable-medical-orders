@@ -2,7 +2,7 @@
 <!--
 
 THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL LANTANA CONSULTING GROUP LLC, OR ANY OF THEIR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-Schematron generated from Trifolia on 10/25/2021
+Schematron generated from Trifolia on 10/26/2021
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:cda="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron">
   <sch:ns prefix="voc" uri="http://www.lantanagroup.com/voc" />
@@ -445,6 +445,12 @@ Schematron generated from Trifolia on 10/25/2021
       <sch:extends rule="r-urn-hl7ii-2.16.840.1.113883.9.275.3.5-2021-12-01-errors-abstract" />
       <sch:assert id="a-4511-7393" test="count(cda:templateId[@root='2.16.840.1.113883.9.275.3.5'][@extension='2021-12-01'])=1">SHALL contain exactly one [1..1] templateId (CONF:4511-7393) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.9.275.3.5" (CONF:4511-10503). SHALL contain exactly one [1..1] @extension="2021-12-01" (CONF:4511-32598).</sch:assert>
     </sch:rule>
+    <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.9.275.3.5-2021-12-01-33179-branch-33179-errors-abstract" abstract="true">
+      <sch:assert id="a-4511-33183-branch-33179" test="not(cda:externalDocument) or cda:externalDocument[count(cda:id) &gt; 0]">This externalDocument SHALL contain at least one [1..*] id (CONF:4511-33183).</sch:assert>
+    </sch:rule>
+    <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.9.275.3.5-2021-12-01-33179-branch-33179-errors" context="cda:act[cda:templateId[@root='2.16.840.1.113883.9.275.3.5' and @extension='2021-12-01']]/cda:reference[cda:externalDocument][@typeCode='REFR']">
+      <sch:extends rule="r-urn-hl7ii-2.16.840.1.113883.9.275.3.5-2021-12-01-33179-branch-33179-errors-abstract" />
+    </sch:rule>
   </sch:pattern>
   <sch:pattern id="p-urn-hl7ii-2.16.840.1.113883.9.275.3.6-2021-12-01-errors">
     <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.9.275.3.6-2021-12-01-errors-abstract" abstract="true">
@@ -506,6 +512,8 @@ Schematron generated from Trifolia on 10/25/2021
       <sch:assert id="a-4511-33138" test="cda:component[count(cda:structuredBody)=1]">This component SHALL contain exactly one [1..1] structuredBody (CONF:4511-33138).</sch:assert>
       <sch:assert id="a-4511-33139" test="cda:component/cda:structuredBody[count(cda:component[count(cda:section[cda:templateId[@root='2.16.840.1.113883.9.275.2.1' and @extension='2021-12-01']])=1])=1]">This structuredBody SHALL contain exactly one [1..1] component (CONF:4511-33139) such that it SHALL contain exactly one [1..1] ePOLST Medical Orders Section  (identifier: urn:hl7ii:2.16.840.1.113883.9.275.2.1:2021-12-01) (CONF:4511-33140).</sch:assert>
       <sch:assert id="a-4511-33141" test="cda:component/cda:structuredBody[count(cda:component[count(cda:section[cda:templateId[@root='2.16.840.1.113883.9.275.2.2' and @extension='2021-12-01']])=1])=1]">This structuredBody SHALL contain exactly one [1..1] component (CONF:4511-33141) such that it SHOULD contain exactly one [1..1] ePOLST Completion Information Section (identifier: urn:hl7ii:2.16.840.1.113883.9.275.2.2:2021-12-01) (CONF:4511-33142).</sch:assert>
+      <sch:assert id="a-4511-33187" test="count(cda:setId)=1">SHALL contain exactly one [1..1] setId (CONF:4511-33187).</sch:assert>
+      <sch:assert id="a-4511-33188" test="count(cda:versionNumber)=1">SHALL contain exactly one [1..1] versionNumber (CONF:4511-33188).</sch:assert>
     </sch:rule>
     <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.9.275.1-2021-12-01-errors" context="cda:ClinicalDocument[cda:templateId[@root='2.16.840.1.113883.9.275.1' and @extension='2021-12-01']]">
       <sch:extends rule="r-urn-hl7ii-2.16.840.1.113883.9.275.1-2021-12-01-errors-abstract" />
@@ -749,7 +757,7 @@ Schematron generated from Trifolia on 10/25/2021
   </sch:pattern>
   <sch:pattern id="p-urn-hl7ii-2.16.840.1.113883.9.275.3.5-2021-12-01-warnings">
     <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.9.275.3.5-2021-12-01-warnings-abstract" abstract="true">
-      <sch:assert test="."></sch:assert>
+      <sch:assert id="a-4511-33179" test="count(cda:reference[@typeCode='REFR'][count(cda:externalDocument)=1])=1">SHOULD contain zero or one [0..1] reference (CONF:4511-33179) such that it SHALL contain exactly one [1..1] externalDocument (CONF:4511-33180). SHALL contain exactly one [1..1] @typeCode="REFR" (CodeSystem: HL7ActRelationshipType urn:oid:2.16.840.1.113883.5.1002) (CONF:4511-33182).</sch:assert>
     </sch:rule>
     <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.9.275.3.5-2021-12-01-warnings" context="cda:act[cda:templateId[@root='2.16.840.1.113883.9.275.3.5' and @extension='2021-12-01']]">
       <sch:extends rule="r-urn-hl7ii-2.16.840.1.113883.9.275.3.5-2021-12-01-warnings-abstract" />
