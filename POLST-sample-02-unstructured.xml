@@ -23,7 +23,6 @@
 
 <?xml-stylesheet type="text/css" href="../cda_r2_normativewebedition2010(2)/styles/cda_styles.css"?>
 <ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="urn:hl7-org:v3 ../wg-sdwg/CDA_SDTC/infrastructure/cda/CDA_SDTC.xsd"
  xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:voc="urn:hl7-org:v3/voc">
 	<!-- realmCode is required by the US Realm Header and SHALL be realmCode="US".-->
 	<realmCode code="US"/>
