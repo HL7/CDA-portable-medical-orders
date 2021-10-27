@@ -348,45 +348,7 @@
 			</associatedPerson>
 		</associatedEntity>
 	</participant>
-
-	<!-- Represents a Hospice Agency and telephone number
-	Question: I don't think we need this documentationOf. The preious participant captures all the Hospice info on the National POLST Form. Please remove if you agree-->
-	<!--<documentationOf>
-		<serviceEvent classCode="PCPR">
-			<effectiveTime>
-				<low value="20211001"/>
-				<!-\- The low value represents when the patient started hospice care -\->
-				<high value="NA"/> c </effectiveTime>
-			<performer typeCode="PRF">
-				<functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88"
-					codeSystemName="ParticipationFunction" displayName="Primary Care Provider">
-					<originalText>Primary Care Provider</originalText>
-				</functionCode>
-				<assignedEntity>
-					<assignedPerson>
-						<name>
-							<given>Patricia</given>
-							<given qualifier="CL">Patty</given>
-							<family>Primary</family>
-							<suffix qualifier="AC">M.D.</suffix>
-						</name>
-					</assignedPerson>
-					<representedOrganization>
-						<id extension="219BX" root="1.2.16.840.1.113883.4.6"/>
-						<name>The Hospice Caring Group</name>
-						<telecom use="WP" value="tel: +1(555)555-5000"/>
-						<addr>
-							<streetAddressLine>1004 Comfort Care Drive</streetAddressLine>
-							<city>Portland</city>
-							<state>OR</state>
-							<postalCode>99123</postalCode>
-							<country>US</country>
-						</addr>
-					</representedOrganization>
-				</assignedEntity>
-			</performer>
-		</serviceEvent>
-	</documentationOf>-->
+	
 	<!-- ******************************************************** CDA Body ******************************************************** -->
 	<component>
 		<!--
