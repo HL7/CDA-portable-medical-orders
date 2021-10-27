@@ -6,7 +6,7 @@
  Created by:   Lantana Consulting Group, Inc.
  Updated by:   Lantana Consulting Group, Inc. 
  
- LastChangedDate: 10/24/2021, Diana Wright
+ LastChangedDate: 10/26/2021, Diana Wright
   
  ********************************************************
  Disclaimer: This sample file contains representative data elements for an ePOLST: Resuscitation and Treatment Portable Medical Orders document (ePOLST). 
@@ -591,8 +591,7 @@
 							<code code="55752-0" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC" displayName="Clinical information"> </code>
 							<text> </text>
-							<!-- Question: Should we consider using the "relatedDocument" on the ePLST Doc template instead? Here is the xml guidance for this spot if you choose to leave it as-is:
-								The reference in this ePOLST Clinical Instructions entry template here can point to the relevant blank POLST form.-->
+							<!-- The reference in this ePOLST Clinical Instructions entry template here can point to the relevant blank POLST form.-->
 							<reference typeCode="REFR">
 								<externalDocument>
 								<id root="61c73d9d-2744-4030-b4bc-715f637e75b8"/>
@@ -600,7 +599,6 @@
 									https://polst.org/wp-content/uploads/2021/03/2020.05.11-National-POLST-Form-with-Instructions-r2.pdf</text>
 								</externalDocument>
 							</reference>
-
 						</act>
 					</entry>
 					<!-- ePOLST Administrative Information entry template
@@ -664,6 +662,12 @@
 									<code code="55752-0" codeSystem="2.16.840.1.113883.6.1"
 										codeSystemName="LOINC" displayName="Clinical information"> </code>
 									<text> </text>
+									<reference typeCode="REFR">
+										<externalDocument>
+											<id/>
+											<text> </text>
+										</externalDocument>
+									</reference>
 								</act>
 							</entryRelationship>
 						</act>
@@ -713,6 +717,12 @@
 									<code code="55752-0" codeSystem="2.16.840.1.113883.6.1"
 										codeSystemName="LOINC" displayName="Clinical information"> </code>
 									<text> </text>
+									<reference typeCode="REFR">
+										<externalDocument>
+											<id/>
+											<text> </text>
+										</externalDocument>
+									</reference>
 								</act>
 							</entryRelationship>
 						</act>
@@ -758,6 +768,12 @@
 									<code code="55752-0" codeSystem="2.16.840.1.113883.6.1"
 										codeSystemName="LOINC" displayName="Clinical information"> </code>
 									<text> </text>
+									<reference typeCode="REFR">
+										<externalDocument>
+											<id/>
+											<text> </text>
+										</externalDocument>
+									</reference>
 								</act>
 							</entryRelationship>
 						</act>
@@ -803,6 +819,12 @@
 									<code code="55752-0" codeSystem="2.16.840.1.113883.6.1"
 										codeSystemName="LOINC" displayName="Clinical information"> </code>
 									<text> </text>
+									<reference typeCode="REFR">
+										<externalDocument>
+											<id/>
+											<text> </text>
+										</externalDocument>
+									</reference>
 								</act>
 							</entryRelationship>
 						</act>
