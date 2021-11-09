@@ -89,8 +89,7 @@
 				root="2.16.840.1.113883.4.1" extension="***-**-2222" nullFlavor="MSK"/>
 
 			<!-- Example of the patient's Medical Record Number.
-				 This example was created by Lisa Nelson, MaxMD.
-				 This example is available at http://hl7-c-cda-examples.herokuapp.com-->
+				 This example was created by Lisa Nelson, MaxMD, and is available at http://hl7-c-cda-examples.herokuapp.com-->
 			<!-- This examples assumes the OID 2.16.840.1.113883.1.111.12345 
                  uniquely identifies the encompassed Provider Organization's local 
                  medical record number assigning system.
@@ -232,7 +231,7 @@
         ********************************************************
         legalAuthenticator: Individual who is responsible for the document.
         For the ePOLST, use legalAuthenticator for the signer in "Section F. Signature: Health Care Provider" of the National POLST Form (either the "Health Care Provider" or the "Supervising physician". 
-        Note: POLST only allows for ONE person to sign in "Section F. Signature: Health Care Provider", so this specification futher constarins the US Realm Header legalAuthenticator to SHALL [1..1].
+        Note: POLST only allows for ONE person to sign in "Section F. Signature: Health Care Provider", so this specification futher constrains the US Realm Header legalAuthenticator to SHALL [1..1].
         ********************************************************
 	-->
 	<legalAuthenticator>
@@ -240,7 +239,7 @@
 		<signatureCode code="S"/>
 		<assignedEntity>
 			<!-- Recommendation: Implementers should show the legalAuthenticator's id on the rendered form. 
-				At minimum, include the medical license or certification number of the health care provider signing the document in this ID element.-->
+				At minimum, include the medical  or certification number of the health care provider signing the document in this ID element.-->
 			<id extension="5555555555" root="2.16.840.1.113883.4.6"/>
 			<code code="207QA0505X" displayName="Adult Medicine"
 				codeSystem="2.16.840.1.113883.6.101"
@@ -411,7 +410,7 @@
 						<paragraph styleCode="Bold"> Health Care Provider signature indicates:</paragraph> 
 						<paragraph>“I have discussed this order with the patient or his/her representative. 
 							The orders reflect the patient’s known wishes, to the best of my knowledge.”</paragraph> 
-							<paragraph>[Note: Only licensed health care providers authorized by law to sign POLST form in state 
+							<paragraph>[Note: Only d health care providers authorized by law to sign POLST form in state 
 									where completed may sign this order]</paragraph>
 						
 						<paragraph styleCode="Bold">A. Cardiopulmonary Resuscitation Orders.</paragraph>

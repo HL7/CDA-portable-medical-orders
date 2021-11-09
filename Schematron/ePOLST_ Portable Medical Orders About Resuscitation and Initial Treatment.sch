@@ -2,7 +2,7 @@
 <!--
 
 THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL LANTANA CONSULTING GROUP LLC, OR ANY OF THEIR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-Schematron generated from Trifolia on 10/28/2021
+Schematron generated from Trifolia on 11/9/2021
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:cda="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron">
   <sch:ns prefix="voc" uri="http://www.lantanagroup.com/voc" />
@@ -459,6 +459,9 @@ Schematron generated from Trifolia on 10/28/2021
       <sch:assert id="a-4511-33031" test="count(cda:entry[count(cda:act[cda:templateId[@root='2.16.840.1.113883.9.275.3.2' and @extension='2021-12-01']])=1])=1">SHALL contain exactly one [1..1] entry (CONF:4511-33031) such that it SHALL contain exactly one [1..1] Initial Treatment Orders Act (ePOLST) (identifier: urn:hl7ii:2.16.840.1.113883.9.275.3.2:2021-12-01) (CONF:4511-33032).</sch:assert>
       <sch:assert id="a-4511-33033" test="count(cda:entry[count(cda:act[cda:templateId[@root='2.16.840.1.113883.9.275.3.4' and @extension='2021-12-01']])=1])=1">SHALL contain exactly one [1..1] entry (CONF:4511-33033) such that it SHALL contain exactly one [1..1] Medically Assisted Nutrition Orders Act (ePOLST) (identifier: urn:hl7ii:2.16.840.1.113883.9.275.3.4:2021-12-01) (CONF:4511-33034).</sch:assert>
       <sch:assert id="a-4511-33035" test="count(cda:entry[count(cda:act[cda:templateId[@root='2.16.840.1.113883.9.275.3.3' and @extension='2021-12-01']])=1])=1">SHALL contain exactly one [1..1] entry (CONF:4511-33035) such that it SHALL contain exactly one [1..1] Additional Orders Act (ePOLST) (identifier: urn:hl7ii:2.16.840.1.113883.9.275.3.3:2021-12-01) (CONF:4511-33036).</sch:assert>
+      <sch:assert id="a-4511-33244" test="count(cda:code)=1">SHALL contain exactly one [1..1] code (CONF:4511-33244).</sch:assert>
+      <sch:assert id="a-4511-33245" test="cda:code[@code='TEMP-POLST-ORDERS-SECTION']">This code SHALL contain exactly one [1..1] @code="TEMP-POLST-ORDERS-SECTION" ePOLST Medical Orders Section (CONF:4511-33245).</sch:assert>
+      <sch:assert id="a-4511-33246" test="cda:code[@codeSystem='2.16.840.1.113883.6.1']">This code SHALL contain exactly one [1..1] @codeSystem="2.16.840.1.113883.6.1" (CodeSystem: LOINC urn:oid:2.16.840.1.113883.6.1) (CONF:4511-33246).</sch:assert>
     </sch:rule>
     <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.9.275.2.1-2021-12-01-errors" context="cda:section[cda:templateId[@root='2.16.840.1.113883.9.275.2.1' and @extension='2021-12-01']]">
       <sch:extends rule="r-urn-hl7ii-2.16.840.1.113883.9.275.2.1-2021-12-01-errors-abstract" />
