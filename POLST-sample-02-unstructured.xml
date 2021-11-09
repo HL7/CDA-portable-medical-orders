@@ -20,10 +20,8 @@
         CDA Header
         ********************************************************
     -->
-
-<?xml-stylesheet type="text/css" href="../cda_r2_normativewebedition2010(2)/styles/cda_styles.css"?>
-<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:voc="urn:hl7-org:v3/voc">
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sdtc="urn:hl7-org:sdtc" xmlns:voc="urn:hl7-org:v3/voc">
 	<!-- realmCode is required by the US Realm Header and SHALL be realmCode="US".-->
 	<realmCode code="US"/>
 	<!--The following typeID describes an HL7 registered Refined Message Information Models (RMIMs) [root="2.16.840.1.113883.1.3"] 
@@ -34,9 +32,10 @@
 	<templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
 	<templateId root="2.16.840.1.113883.10.20.22.1.1"/>
 
-		<!-- [ePOLST] ePOLST Medical Orders Document template -->
-<!--	<templateId root="2.16.840.1.113883.9.275.11" extension="2021-12-01" />-->
-
+	<!-- Unstructured Document (V3) template -->
+	<templateId root="2.16.840.1.113883.10.20.22.1.10" extension="2015-08-01"/>
+	<!-- [ePOLST] ePOLST  Medical Orders-Unstructured document-level template -->
+	<templateId root="2.16.840.1.113883.9.275.11" extension="2021-12-01"/>
 
 	<!-- Globally unique identifier for this document (can be a randomly generated GUID (Globally Unique Identifier) or UUID (Universally Unique Identifier). -->
 	<id root="5f6e4733-5fb4-4752-8d81-32420e9976b9"/>
@@ -72,7 +71,7 @@
 		for identification and management of successive ePOLST documents for a patient.-->
 	<setId extension="sTT988" root="2.16.840.1.113883.19.5.99999.19"/>
 	<versionNumber value="1"/>
-	
+
 	<!--
         ********************************************************
         recordTarget is the medical record (patient chart) that this document belongs to.
@@ -348,7 +347,7 @@
 			</associatedPerson>
 		</associatedEntity>
 	</participant>
-	
+
 	<!-- ******************************************************** CDA Body ******************************************************** -->
 	<component>
 		<nonXMLBody>

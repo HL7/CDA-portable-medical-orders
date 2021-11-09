@@ -20,8 +20,6 @@
         CDA Header
         ********************************************************
     -->
-
-<?xml-stylesheet type="text/css" href="../cda_r2_normativewebedition2010(2)/styles/cda_styles.css"?>
 <ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:voc="urn:hl7-org:v3/voc" xmlns:sdtc="urn:hl7-org:sdtc">
 	<!-- realmCode is required by the US Realm Header and SHALL be realmCode="US".-->
@@ -34,9 +32,8 @@
 	<templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
 	<templateId root="2.16.840.1.113883.10.20.22.1.1"/>
 
-		<!-- [ePOLST] ePOLST Medical Orders Document template -->
-<!--	<templateId root="2.16.840.1.113883.9.275.1" extension="2021-12-01" />-->
-
+	<!-- [ePOLST] ePOLST Medical Orders Document template -->
+		<templateId root="2.16.840.1.113883.9.275.1" extension="2021-12-01" />
 
 	<!-- Globally unique identifier for this document (can be a randomly generated GUID (Globally Unique Identifier) or UUID (Universally Unique Identifier). -->
 	<id root="5f6e4733-5fb4-4752-8d81-32420e9976b9"/>
@@ -71,7 +68,7 @@
 		for identification and management of successive ePOLST documents for a patient.-->
 	<setId extension="sTT988" root="2.16.840.1.113883.19.5.99999.19"/>
 	<versionNumber value="1"/>
-	
+
 	<!--
         ********************************************************
         recordTarget is the medical record (patient chart) that this document belongs to.
@@ -268,8 +265,11 @@
 	<authenticator>
 		<!--authenticator time is not on the National POLST Form-->
 		<!--Examples of how to have a Null value for this element-->
+		<!-- Schema error if we remove <time> completely.
+			Schematron error if we null time-->
 		<time nullFlavor="NA"/>
 		<signatureCode code="S"/>
+		<!-- Schema error -->
 		<assignedEntity>
 			<id root="e013a784-1dda-46f1-a872-5947acd27852"/>
 			<code code="POWATT" displayName="Power of Attorney"
@@ -346,7 +346,7 @@
 			</associatedPerson>
 		</associatedEntity>
 	</participant>
-	
+
 	<!-- ******************************************************** CDA Body ******************************************************** -->
 	<component>
 		<!--
@@ -367,14 +367,19 @@
              	********************************************************
          	-->
 				<section>
-					<!-- Planned Procedure Section (V2) section template is Implied-->
+					<!-- Schema error if we include Planned Procedure Section (V2) template ID, etc.
+						Schematron error if we don't include-->
+<!--					<!-\- Planned Procedure Section (V2) section template is Implied-\->
 					<templateId root="2.16.840.1.113883.10.20.22.2.30" extension="2014-06-09"/>
-
+					<code code="59772-4" displayName="Planned Procedure"
+						codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<title> </title>-->
 					<!-- ePOLST Medical Orders Section section template 
 					Entry is required (SHALL)-->
 					<templateId root="2.16.840.1.113883.9.275.2.1" extension="2021-12-01"/>
-					<code code="59772-4" displayName="Planned Procedure"
+					<code code="TEMP-POLST-ORDERS-SECTION" displayName="ePOLST Medical Orders Section"
 						codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					
 					<!-- Provide a title for the orders portion of the form here. -->
 					<title>ePOLST Portable Medical Orders </title>
 
@@ -382,9 +387,10 @@
 					<text>
 						<paragraph styleCode="Bold">ePOLST Clinical Instructions</paragraph>
 						<paragraph> Health care providers should complete this form only after a
-							conversation with their patient or the patient’s representative.</paragraph>
-							<paragraph>The POLST decision-making process is for patients who are at risk for a
-							life-threatening clinical event because they have a serious
+							conversation with their patient or the patient’s
+							representative.</paragraph>
+						<paragraph>The POLST decision-making process is for patients who are at risk
+							for a life-threatening clinical event because they have a serious
 							life-limiting medical condition, which may include advanced frailty
 							(www.polst.org/guidance-appropriate-patients-pdf).</paragraph>
 						<paragraph styleCode="Bold">ePOLST Administrative Information</paragraph>
@@ -393,32 +399,37 @@
 							OR DISCHARGED</paragraph>
 						<list>
 							<item>This form does not expire.</item>
-							<item>The most recently completed
-								valid POLST form supersedes all previously completed POLST
-								forms.</item>
+							<item>The most recently completed valid POLST form supersedes all
+								previously completed POLST forms.</item>
 							<item>This is a medical order, not an advance directive. For information
-								about POLST and to understand this document, visit: www.polst.org/form</item>
+								about POLST and to understand this document, visit:
+								www.polst.org/form</item>
 						</list>
-							<paragraph styleCode="Bold">SIGNATURES</paragraph>
-						<paragraph> Having a POLST form is always voluntary. </paragraph> 
-						<paragraph styleCode="Bold"> Patient or Patient Representative signature indicates:</paragraph> 
-						<paragraph> "I understand this form is
-								voluntary. I have discussed my treatment options and goals of care with
-								my provider. If signing as the patient’s representative, the treatments
-								are consistent with the patient’s known wishes and in their best
-								interest."</paragraph> 
-						<paragraph styleCode="Bold"> Health Care Provider signature indicates:</paragraph> 
-						<paragraph>“I have discussed this order with the patient or his/her representative. 
-							The orders reflect the patient’s known wishes, to the best of my knowledge.”</paragraph> 
-							<paragraph>[Note: Only d health care providers authorized by law to sign POLST form in state 
-									where completed may sign this order]</paragraph>
-						
-						<paragraph styleCode="Bold">A. Cardiopulmonary Resuscitation Orders.</paragraph>
+						<paragraph styleCode="Bold">SIGNATURES</paragraph>
+						<paragraph> Having a POLST form is always voluntary. </paragraph>
+						<paragraph styleCode="Bold"> Patient or Patient Representative signature
+							indicates:</paragraph>
+						<paragraph> "I understand this form is voluntary. I have discussed my
+							treatment options and goals of care with my provider. If signing as the
+							patient’s representative, the treatments are consistent with the
+							patient’s known wishes and in their best interest."</paragraph>
+						<paragraph styleCode="Bold"> Health Care Provider signature
+							indicates:</paragraph>
+						<paragraph>“I have discussed this order with the patient or his/her
+							representative. The orders reflect the patient’s known wishes, to the
+							best of my knowledge.”</paragraph>
+						<paragraph>[Note: Only d health care providers authorized by law to sign
+							POLST form in state where completed may sign this order]</paragraph>
+
+						<paragraph styleCode="Bold">A. Cardiopulmonary Resuscitation
+							Orders.</paragraph>
 						<paragraph styleCode="Bold">ePOLST Clinical Instructions</paragraph>
-						<paragraph>Follow these orders if patient has no pulse and is not breathing.</paragraph>
+						<paragraph>Follow these orders if patient has no pulse and is not
+							breathing.</paragraph>
 						<list>
 							<item>Pick 1.</item>
-							<item>YES CPR requires choosing Full Treatments in Initial Treatment Orders.</item>
+							<item>YES CPR requires choosing Full Treatments in Initial Treatment
+								Orders.</item>
 							<item>NO CPR may choose any option in Initial Treatment Orders.</item>
 						</list>
 						<table border="1">
@@ -442,15 +453,19 @@
 								</tr>
 							</tbody>
 						</table>
-						
+
 						<paragraph styleCode="Bold">B. Initial Treatment Orders.</paragraph>
 						<paragraph styleCode="Bold">ePOLST Clinical Instructions</paragraph>
-						<paragraph>Follow these orders if patient has a pulse and/or is breathing.</paragraph>
+						<paragraph>Follow these orders if patient has a pulse and/or is
+							breathing.</paragraph>
 						<list>
-							<item>Reassess and discuss interventions with patient or patient representative regularly 
-								to ensure treatments are meeting patient’s care goals.</item>
-							<item>Consider a time-trial of interventions based on goals and specific outcomes.</item>
-							<item>Full Treatments are required if YES CPR in Cardiopulmonary Resuscitation Order.</item>
+							<item>Reassess and discuss interventions with patient or patient
+								representative regularly to ensure treatments are meeting patient’s
+								care goals.</item>
+							<item>Consider a time-trial of interventions based on goals and specific
+								outcomes.</item>
+							<item>Full Treatments are required if YES CPR in Cardiopulmonary
+								Resuscitation Order.</item>
 							<item>Pick 1.</item>
 						</list>
 						<table border="1">
@@ -491,13 +506,12 @@
 								</tr>
 							</tbody>
 						</table>
-						
+
 						<paragraph styleCode="Bold">C. Additional Orders or Instructions</paragraph>
 						<paragraph styleCode="Bold">ePOLST Clinical Instructions</paragraph>
 						<paragraph>These orders are in addition to those above (e.g., blood
-							products, dialysis).
-							[EMS protocols may limit emergency responder
-								ability to act on orders in this section.]</paragraph>
+							products, dialysis). [EMS protocols may limit emergency responder
+							ability to act on orders in this section.]</paragraph>
 						<table border="1">
 							<tbody>
 								<tr>
@@ -507,7 +521,8 @@
 						</table>
 						<paragraph styleCode="Bold">D. Medically Assisted Nutrition</paragraph>
 						<paragraph styleCode="Bold">ePOLST Clinical Instructions</paragraph>
-						<paragraph>Offer food by mouth if desired by patient, safe and tolerated.</paragraph>
+						<paragraph>Offer food by mouth if desired by patient, safe and
+							tolerated.</paragraph>
 						<list>
 							<item>Pick 1.</item>
 						</list>
@@ -554,9 +569,9 @@
 							<!-- The reference in this ePOLST Clinical Instructions entry template here can point to the relevant blank POLST form.-->
 							<reference typeCode="REFR">
 								<externalDocument>
-								<id root="61c73d9d-2744-4030-b4bc-715f637e75b8"/>
-								<text>ePOLST Portable Medical Orders National Form. See
-									https://polst.org/wp-content/uploads/2021/03/2020.05.11-National-POLST-Form-with-Instructions-r2.pdf</text>
+									<id root="61c73d9d-2744-4030-b4bc-715f637e75b8"/>
+									<text>ePOLST Portable Medical Orders National Form. See
+										https://polst.org/wp-content/uploads/2021/03/2020.05.11-National-POLST-Form-with-Instructions-r2.pdf</text>
 								</externalDocument>
 							</reference>
 						</act>
@@ -814,17 +829,15 @@
 
 					<text>
 						<paragraph styleCode="Bold">ePOLST Administrative Information</paragraph>
-						<paragraph>
-								Reviewed patient’s advance directive to assess any conflict with POLST orders.
-								(A POLST form does not replace an advance directive or living will.)
-								List everyone who participated in discussion.
-						</paragraph>
+						<paragraph> Reviewed patient’s advance directive to assess any conflict with
+							POLST orders. (A POLST form does not replace an advance directive or
+							living will.) List everyone who participated in discussion. </paragraph>
 						<paragraph styleCode="Bold">ePOLST and Advance Directive Review</paragraph>
 						<paragraph styleCode="Bold">ePOLST Administrative Information</paragraph>
-						<paragraph>Reviewed patient’s advance directive to assess any conflict with POLST orders. (A POLST form does not replace an advance directive or living will.)
-							List everyone who participated in discussion.
-							</paragraph>
-						
+						<paragraph>Reviewed patient’s advance directive to assess any conflict with
+							POLST orders. (A POLST form does not replace an advance directive or
+							living will.) List everyone who participated in discussion. </paragraph>
+
 						<table border="1">
 							<thead>
 								<tr>
@@ -888,9 +901,15 @@
 							</code>
 							<!-- Codes must be selected from the value set defined in the guidance. More than one value may be selected. Select all that apply.-->
 							<!-- In this example, three values have been selected been selected.-->
-							<value xsi:type="CD" code="TEMP-POLST-R1" displayName="Yes the document was reviewed" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
-							<value xsi:type="CD" code="TEMP-POLST-R4" displayName="No advance directive exists" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
-							<value xsi:type="CD" code="TEMP-POLST-R8" displayName="Legal surrogate / health care agent participated" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+							<value xsi:type="CD" code="TEMP-POLST-R1"
+								displayName="Yes the document was reviewed"
+								codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+							<value xsi:type="CD" code="TEMP-POLST-R4"
+								displayName="No advance directive exists"
+								codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+							<value xsi:type="CD" code="TEMP-POLST-R8"
+								displayName="Legal surrogate / health care agent participated"
+								codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
 						</observation>
 					</entry>
 
