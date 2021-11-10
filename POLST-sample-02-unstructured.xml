@@ -99,9 +99,18 @@
 			<id root="2.16.840.1.113883.1.111.12345" extension="12345"
 				assigningAuthorityName="River Valley Health Services Locally-assigned Medical Record Number"/>
 
-			<!-- Patient Address and Telephone are not on the National POLST Form for patient-->
-			<!-- Examples of how to have a Null value for these elements-->
-			<addr nullFlavor="NA"/>
+			<!-- Patient Address is not shown on the National POLST Form,
+				however the National POLST Form does have "State where form was completed" entry in the Patient information.
+				The state address of the legalAuthenticator is one option for that data; the state address of the Patient in also an option for that data. -->
+			<addr>
+				<streetAddressLine> </streetAddressLine>
+				<city> </city>
+				<state>OR</state>
+				<postalCode> </postalCode>
+				<country> </country>
+			</addr>
+			<!-- Patient Telephone is not shown on the National POLST Form, -->
+			<!-- Examples of how to have a Null value for this element-->
 			<telecom nullFlavor="NA"/>
 
 			<patient>
@@ -237,23 +246,26 @@
         ********************************************************
 	-->
 	<legalAuthenticator>
-		<time value="20130815223615-0800"/>
+		<time value="20210815223615-0800"/>
 		<signatureCode code="S"/>
 		<assignedEntity>
 			<!-- Recommendation: Implementers should show the legalAuthenticator's id on the rendered form. 
-				At minimum, include the medical license or certification number of the health care provider signing the document in this ID element.-->
+				At minimum, include the medical  or certification number of the health care provider signing the document in this ID element.-->
 			<id extension="5555555555" root="2.16.840.1.113883.4.6"/>
 			<code code="207QA0505X" displayName="Adult Medicine"
 				codeSystem="2.16.840.1.113883.6.101"
 				codeSystemName="Healthcare Provider Taxonomy (HIPAA)"/>
-			<!--The National POLST Form section "F. Signature: Health Care Provider" does not use address or telecom.-->
-			<!-- Examples of how to have a Null value for these elements-->
-			<addr nullFlavor="NA"/>
-			<telecom nullFlavor="NA"/>
-			<!-- SCHEMATRON ERROR: This is the same XML and constraintsa as in the structured body sample "POLST-sample-01", 
-				but there, I get no error. 
-				Error Description: This assignedPerson SHALL contain at least one [1..*] US Realm Person Name (PN.US.FIELDED) 
-				(identifier: urn:oid:2.16.840.1.113883.10.20.22.5.1.1) (CONF:4511-33213). -->
+			<!--The National POLST Form section "F. Signature: Health Care Provider" does not use address, 
+				however the National POLST Form does have "State where form was completed" entry in the Patient information.
+				The state address of the legalAuthenticator is one option for that data; the state address of the Patient in also an option for that data. -->
+			<addr use="WP">
+				<streetAddressLine> </streetAddressLine>
+				<city> </city>
+				<state>OR</state>
+				<postalCode> </postalCode>
+				<country> </country>
+			</addr>
+			<telecom use="WP" value="tel:+1(555)555-1004"/>
 			<assignedPerson>
 				<name>
 					<given>Patricia</given>
