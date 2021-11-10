@@ -32,8 +32,9 @@
 	<templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
 	<templateId root="2.16.840.1.113883.10.20.22.1.1"/>
 
+	<!-- SCHEMATRON ERROR: Description: SHALL contain exactly one [1..1] templateId (CONF:4511-5252). -->
 	<!-- [ePOLST] ePOLST Medical Orders Document template -->
-		<templateId root="2.16.840.1.113883.9.275.1" extension="2021-12-01" />
+	<templateId root="2.16.840.1.113883.9.275.1" extension="2021-12-01"/>
 
 	<!-- Globally unique identifier for this document (can be a randomly generated GUID (Globally Unique Identifier) or UUID (Universally Unique Identifier). -->
 	<id root="5f6e4733-5fb4-4752-8d81-32420e9976b9"/>
@@ -49,17 +50,17 @@
     -->
 	<title>National ePOLST Form: A Portable Medical Order.</title>
 	<!-- The "National ePOLST Form: A Portable Medical Order" is a CDA electronic specification of the National POLST Form: A Portable Medical Order, available at www.polst.org/form-->
-	<!-- The following example illustrate how the "National ePOLST Form: A Portable Medical Order" applies and further constrains the CDA US Realm Header.-->
+	<!-- The following  illustrate how the "National ePOLST Form: A Portable Medical Order" applies and further constrains the CDA US Realm Header.-->
 
 	<!-- effectiveTime SHOULD be the date & time the ePOLST Portable Medical Order was signed by the legalAuthenticator. -->
 	<effectiveTime value="20130815223615-0800"/>
 
-	<!-- confidentiality is not used by the National POLST form -->
-	<!-- Example of how to have a Null value for thise element. -->
+	<!-- confidentiality is not used by the National POLST form. -->
+	<!-- Example of how to have a Null value for this element. -->
 	<confidentialityCode nullFlavor="NA"/>
 
-	<!-- langauge is not used by the National POLST form -->
-	<!-- Example of how to have a Null value for thise element-->
+	<!-- langauge is not used by the National POLST form. -->
+	<!-- Example of how to have a Null value for this element. -->
 	<languageCode nullFlavor="NA"/>
 
 	<!-- The setId represents an identifier that is common across all document revisions, 
@@ -76,25 +77,25 @@
     -->
 	<recordTarget>
 		<patientRole>
-			<!-- Example of a Masked Social Security Number example of id using the root for the Social Security Administion assigningAuthority.
-			This example was created by Lisa Nelson, MaxMD.
+			<!--  of a Masked Social Security Number  of id using the root for the Social Security Administion assigningAuthority.
+			This  was created by Lisa Nelson, MaxMD.
 			It represent a social security number (SSN) that has been masked to show only the last four digits.
-			This example is available at http://hl7-c-cda-examples.herokuapp.com/examples/view/Header/
+			This  is available at http://hl7-c-cda-s.herokuapp.com/s/view/Header/
 			Note: When recording SSN in the extension, dashes (-) are permitted but not required.
 			Note: An id with a nullFlavor of "MSK" SHALL NOT be used for matching or indexing -->
 			<id assigningAuthorityName="US Social Security Administration"
 				root="2.16.840.1.113883.4.1" extension="***-**-2222" nullFlavor="MSK"/>
 
-			<!-- Example of the patient's Medical Record Number.
-				 This example was created by Lisa Nelson, MaxMD, and is available at http://hl7-c-cda-examples.herokuapp.com-->
-			<!-- This examples assumes the OID 2.16.840.1.113883.1.111.12345 
+			<!--  of the patient's Medical Record Number.
+				 This  was created by Lisa Nelson, MaxMD, and is available at http://hl7-c-cda-s.herokuapp.com-->
+			<!-- This s assumes the OID 2.16.840.1.113883.1.111.12345 
                  uniquely identifies the encompassed Provider Organization's local 
                  medical record number assigning system.
                  Note: A receiving system only knows this is an MRN by looking up the root oid in a repository. -->
 			<id root="2.16.840.1.113883.1.111.12345" extension="12345"
 				assigningAuthorityName="River Valley Health Services Locally-assigned Medical Record Number"/>
 
-			<!-- Patient Address and Telephone are not on the National POLST Form for patient-->
+			<!-- Patient Address and Telephone are not shown on the National POLST Form.-->
 			<!-- Examples of how to have a Null value for these elements-->
 			<addr nullFlavor="NA"/>
 			<telecom nullFlavor="NA"/>
@@ -115,7 +116,7 @@
 				<!-- Date of birth need only be precise to the day -->
 				<birthTime value="19750501"/>
 
-				<!-- Race and ethnicity are not on the National POLST Form. -->
+				<!-- Race and ethnicity are not shown on the National POLST Form. -->
 				<!-- Examples of how to have a Null value for these elements-->
 				<raceCode nullFlavor="NA"/>
 				<ethnicGroupCode nullFlavor="NA"/>
@@ -130,7 +131,7 @@
 				<guardian>
 					<code code="POWATT" displayName="Power of Attorney"
 						codeSystem="2.16.840.1.113883.1.11.19830" codeSystemName="ResponsibleParty"/>
-					<!-- Patient Representative Address and Telephone are not on the National POLST Form-->
+					<!-- Patient Representative Address and Telephone are not shown on the National POLST Form-->
 					<!-- Examples of how to have a Null value for these elements-->
 					<addr nullFlavor="NA"/>
 					<telecom nullFlavor="NA"/>
@@ -162,9 +163,8 @@
 				codeSystem="2.16.840.1.113883.6.101"
 				codeSystemName="Healthcare Provider Taxonomy (HIPAA)"/>
 			<!-- The National POLST Form does not have Health Care Provider address in section F. SIGNATURE: Health Care Provider. -->
-			<!-- Examples of how to have a Null value for these elements-->
+			<!-- Example of how to have a Null value for this element-->
 			<addr nullFlavor="NA"/>
-
 			<telecom use="WP" value="tel:+1(555)555-1004"/>
 			<assignedPerson>
 				<name>
@@ -188,7 +188,7 @@
 		<assignedEntity>
 			<id root="fbba629a-0dc3-4cd4-a0bc-0bd3913f8088"/>
 			<!-- The National POLST Form does not have the address for the the Professional Assisting Health Care Provider w/ Form Completion on pg.2, Form Completion Information section.-->
-			<!-- Examples of how to have a Null value for these elements-->
+			<!-- Example of how to have a Null value for this element-->
 			<addr nullFlavor="NA"/>
 			<telecom use="WP" value="tel:+1(555)555-1005"/>
 
@@ -232,7 +232,7 @@
         ********************************************************
 	-->
 	<legalAuthenticator>
-		<time value="20130815223615-0800"/>
+		<time value="20210815223615-0800"/>
 		<signatureCode code="S"/>
 		<assignedEntity>
 			<!-- Recommendation: Implementers should show the legalAuthenticator's id on the rendered form. 
@@ -241,10 +241,10 @@
 			<code code="207QA0505X" displayName="Adult Medicine"
 				codeSystem="2.16.840.1.113883.6.101"
 				codeSystemName="Healthcare Provider Taxonomy (HIPAA)"/>
-			<!--The National POLST Form section "F. Signature: Health Care Provider" does not use address or telecom.-->
-			<!-- Examples of how to have a Null value for these elements-->
+			<!--The National POLST Form section "F. Signature: Health Care Provider" does not use address.-->
+			<!-- Example of how to have a Null value for these elements-->
 			<addr nullFlavor="NA"/>
-			<telecom nullFlavor="NA"/>
+			<telecom use="WP" value="tel:+1(555)555-1004"/>
 			<assignedPerson>
 				<name>
 					<given>Patricia</given>
@@ -263,21 +263,22 @@
 	-->
 	<!-- In this example, the auithenticator is the spouse, who has Power of Attorney (POWATT) -->
 	<authenticator>
-		<!--authenticator time is not on the National POLST Form-->
-		<!--Examples of how to have a Null value for this element-->
-		<!-- Schema error if we remove <time> completely.
-			Schematron error if we null time-->
-		<time nullFlavor="NA"/>
+		<!--authenticator time is not shown on the National POLST Form.
+			Implementers are encouraged to render only the information required or suggested by the Form when printing or producing a rendering for the patient.-->
+		<!-- SCHEMATRON ERROR if I null the time, but no error if I don't include it at all. -->
+		<!--Schema error if time is NOT included: Description: Invalid content was found starting with element '{"urn:hl7-org:v3":signatureCode}'. 
+			One of '{"urn:hl7-org:v3":realmCode, "urn:hl7-org:v3":typeId, "urn:hl7-org:v3":templateId, "urn:hl7-org:v3":time}' is expected. -->
+		<time value="20130815223615-0800"/>
 		<signatureCode code="S"/>
-		<!-- Schema error -->
 		<assignedEntity>
 			<id root="e013a784-1dda-46f1-a872-5947acd27852"/>
 			<code code="POWATT" displayName="Power of Attorney"
 				codeSystem="2.16.840.1.113883.1.11.19830" codeSystemName="ResponsibleParty"/>
-			<!-- authenticator Address and Telephone are not on the National POLST Form for authenticator-->
+			<!-- authenticator Address and Telephone are not shown on the National POLST Form.-->
 			<!-- Examples of how to have a Null value for these elements-->
 			<addr nullFlavor="NA"/>
 			<telecom nullFlavor="NA"/>
+
 			<assignedPerson>
 				<name>
 					<given>Claire</given>
@@ -302,7 +303,7 @@
 		<!-- classCode "ECON" represents an emergency contact -->
 		<associatedEntity classCode="ECON">
 			<!-- Emergency Contact Address is not on the National POLST Form-->
-			<!-- Examples of how to have a Null value for this element-->
+			<!-- Example of how to have a Null value for this element-->
 			<addr nullFlavor="NA"/>
 			<telecom value="tel:+1(555)777-2021" use="MC"/>
 			<associatedPerson>
@@ -318,8 +319,8 @@
 	<participant typeCode="IND">
 		<!-- classCode "PCP" represents the primary care provider -->
 		<associatedEntity classCode="PCP">
-			<!-- primary care provider Address and Telephone are not on the National POLST Form-->
-			<!-- Examples of how to have a Null value for these elements-->
+			<!-- primary care provider Address ais not shown on the National POLST Form-->
+			<!-- Example of how to have a Null value for this element-->
 			<addr nullFlavor="NA"/>
 			<telecom use="WP" value="tel:+1(555)555-1004"/>
 			<associatedPerson>
@@ -338,7 +339,7 @@
 		<!-- classCode "PROV" represents a healthcare provider, in this case a hospice organization-->
 		<associatedEntity classCode="PROV">
 			<!-- Hospice Address is not on the National POLST Form-->
-			<!-- Examples of how to have a Null value for these elements-->
+			<!-- Example of how to have a Null value for this element-->
 			<addr nullFlavor="NA"/>
 			<telecom use="WP" value="tel:+1(555)555-1003"/>
 			<associatedPerson>
@@ -367,19 +368,13 @@
              	********************************************************
          	-->
 				<section>
-					<!-- Schema error if we include Planned Procedure Section (V2) template ID, etc.
-						Schematron error if we don't include-->
-<!--					<!-\- Planned Procedure Section (V2) section template is Implied-\->
+					<!-- Planned Procedure Section (V2) section template is Implied-->
 					<templateId root="2.16.840.1.113883.10.20.22.2.30" extension="2014-06-09"/>
-					<code code="59772-4" displayName="Planned Procedure"
-						codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
-					<title> </title>-->
 					<!-- ePOLST Medical Orders Section section template 
 					Entry is required (SHALL)-->
 					<templateId root="2.16.840.1.113883.9.275.2.1" extension="2021-12-01"/>
-					<code code="TEMP-POLST-ORDERS-SECTION" displayName="ePOLST Medical Orders Section"
+					<code code="59772-4" displayName="Planned Procedure"
 						codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
-					
 					<!-- Provide a title for the orders portion of the form here. -->
 					<title>ePOLST Portable Medical Orders </title>
 
@@ -726,8 +721,8 @@
 									<templateId root="2.16.840.1.113883.9.275.3.3.1"
 										extension="2021-12-01"/>
 									<id root="75bc54ba-47f0-4330-b4ad-179d26e4f930"/>
-									<!-- This is entry allows free text and coded entries. A Null entry is NOT allowed. At a minimum, trxt indicating "No additional orders" should be included. -->
-									<!-- In this example, free text was used, but no code was included.-->
+									<!-- This is entry allows free text and coded entries. A Null entry is NOT allowed. At a minimum, text indicating "No additional orders" should be included. -->
+									<!-- In this example, free text was used, and no code was included.-->
 									<code nullFlavor="NA"/>
 									<text>No additional orders.</text>
 									<statusCode code="active"/>
@@ -900,7 +895,7 @@
 								<translation nullFlavor="NA"/>
 							</code>
 							<!-- Codes must be selected from the value set defined in the guidance. More than one value may be selected. Select all that apply.-->
-							<!-- In this example, three values have been selected been selected.-->
+							<!-- In this example , three values have been selected been selected.-->
 							<value xsi:type="CD" code="TEMP-POLST-R1"
 								displayName="Yes the document was reviewed"
 								codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>

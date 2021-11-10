@@ -34,6 +34,7 @@
 
 	<!-- Unstructured Document (V3) template -->
 	<templateId root="2.16.840.1.113883.10.20.22.1.10" extension="2015-08-01"/>
+	<!-- SCHEMATRON ERROR: Description: SHALL contain exactly one [1..1] templateId (CONF:4511-33190). -->
 	<!-- [ePOLST] ePOLST  Medical Orders-Unstructured document-level template -->
 	<templateId root="2.16.840.1.113883.9.275.11" extension="2021-12-01"/>
 
@@ -249,6 +250,10 @@
 			<!-- Examples of how to have a Null value for these elements-->
 			<addr nullFlavor="NA"/>
 			<telecom nullFlavor="NA"/>
+			<!-- SCHEMATRON ERROR: This is the same XML and constraintsa as in the structured body sample "POLST-sample-01", 
+				but there, I get no error. 
+				Error Description: This assignedPerson SHALL contain at least one [1..*] US Realm Person Name (PN.US.FIELDED) 
+				(identifier: urn:oid:2.16.840.1.113883.10.20.22.5.1.1) (CONF:4511-33213). -->
 			<assignedPerson>
 				<name>
 					<given>Patricia</given>
@@ -267,9 +272,12 @@
 	-->
 	<!-- In this example, the auithenticator is the spouse, who has Power of Attorney (POWATT) -->
 	<authenticator>
-		<!--authenticator time is not on the National POLST Form-->
-		<!--Examples of how to have a Null value for this element-->
-		<time nullFlavor="NA"/>
+		<!--authenticator time is not shown on the National POLST Form.
+			Implementers are encouraged to render only the information required or suggested by the Form when printing or producing a rendering for the patient.-->
+		<!-- SCHEMATRON ERROR if I null the time, but no error if I don't include it at all. -->
+		<!--Schema error if time is NOT included: Description: Invalid content was found starting with element '{"urn:hl7-org:v3":signatureCode}'. 
+			One of '{"urn:hl7-org:v3":realmCode, "urn:hl7-org:v3":typeId, "urn:hl7-org:v3":templateId, "urn:hl7-org:v3":time}' is expected. -->
+		<time value="20130815223615-0800"/>
 		<signatureCode code="S"/>
 		<assignedEntity>
 			<id root="e013a784-1dda-46f1-a872-5947acd27852"/>
