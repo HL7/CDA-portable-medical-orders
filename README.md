@@ -20,13 +20,19 @@ Contents of this package:
 	
 Additional resources are available at:
 •	GitHub repository for the project files: https://github.com/HL7/cda-portable-medical-orders-ig
-    o	Sample Files:
-        •	POLST-sample-01.xml & POLST-sample-01.html
-        •	POLST-sample-02-unstructured.xml
-    o	Validation Schematron File: ePOLST_ Portable Medical Orders About Resuscitation and Initial Treatment.sch
-    o	ReadMe.txt
+    o	examples:
+        •	ePOLST-structured-example-01.html
+        •	ePOLST-structured-example-01.xml
+        •	ePOLST-unstructured-example-02.xml
+    o	images:
+        •	2020.05.11-National-POLST-Form-with-Instructions_Page_2.png
+        •	2020.05.11-National-POLST-Form-with-Instructions_Page_3.png
+    o	validation: 
+        •	ePOLST_2021-11-10t.sch
+        •	voc.xml
+    o	READMM.txt
     
-•	CDA_SDTC.xsd schema file: https://github.com/HL7/cda-core-2.0
+•	CDA_SDTC.xsd schema file: https://github.com/HL7/cda-core-2.0/tree/master/schema/extensions/SDTC
 •	CDA.xsl style sheet for rendering xml to html: https://github.com/HL7/cda-core-xsl
 
 A Github account is required. See https://github.com/signup & https://github.com/HL7/ for access information.
