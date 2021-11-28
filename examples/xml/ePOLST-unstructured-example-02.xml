@@ -2,11 +2,11 @@
 <?xml-stylesheet type="text/xsl" href="CDA.xsl"?>
 <!--
  Title:        ePOLST: Resuscitation and Treatment Portable Medical Orders
- Filename:     ePOLST_sample.xml 
+ Filename:     ePOLST-unstructured-example-02.xml 
  Created by:   Lantana Consulting Group, Inc.
  Updated by:   Lantana Consulting Group, Inc. 
  
- LastChangedDate: 10/26/2021, Diana Wright
+ LastChangedDate: 10/28/2021, Diana Wright
   
  ********************************************************
  Disclaimer: This sample file contains representative data elements for an ePOLST: Resuscitation and Treatment Portable Medical Orders document (ePOLST). 
@@ -368,7 +368,7 @@
 	<component>
 		<nonXMLBody>
 			<text>
-				<reference value="2020.05.11-National-POLST-Form.pdf"/>
+				<reference value="SAMPLE_PATIENT-2020.05.11-National-POLST-Form.pdf"/>
 			</text>
 		</nonXMLBody>
 	</component>

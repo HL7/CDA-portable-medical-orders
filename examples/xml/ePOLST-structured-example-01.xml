@@ -2,11 +2,11 @@
 <?xml-stylesheet type="text/xsl" href="CDA.xsl"?>
 <!--
  Title:        ePOLST: Resuscitation and Treatment Portable Medical Orders
- Filename:     ePOLST_sample-01.xml 
+ Filename:     ePOLST-structured-example-01.xml 
  Created by:   Lantana Consulting Group, Inc.
  Updated by:   Lantana Consulting Group, Inc. 
  
- LastChangedDate: 11/10/2021, Diana Wright
+ LastChangedDate: 11/28/2021, Diana Wright
   
  ********************************************************
  Disclaimer: This sample file contains representative data elements for an ePOLST: Resuscitation and Treatment Portable Medical Orders document (ePOLST). 
@@ -567,11 +567,10 @@
 								codeSystemName="LOINC" displayName="Clinical information"> </code>
 							<text> Health care providers should complete this form only after a
 									conversation with their patient or the patient’s
-									representative.
-								<paragraph>The POLST decision-making process is for patients who are at risk
+									representative. The POLST decision-making process is for patients who are at risk
 									for a life-threatening clinical event because they have a serious
 									life-limiting medical condition, which may include advanced frailty
-									(www.polst.org/guidance-appropriate-patients-pdf).</paragraph>
+									(www.polst.org/guidance-appropriate-patients-pdf).
 							</text>
 							<!-- The reference in this ePOLST Clinical Instructions entry template here can point to the relevant blank POLST form.-->
 							<reference typeCode="REFR">
@@ -594,12 +593,9 @@
 								displayName="ePOLST Administrative Information"> </code>
 							<text> 
 								HIPAA PERMITS DISCLOSURE OF POLST ORDERS TO HEALTH CARE PROVIDERS AS NECESSARY FOR TREATMENT SEND FORM WITH PATIENT WHENEVER TRANSFERRED OR DISCHARGED
-								<item>This form does not expire.</item>
-								<item>The most recently completed valid POLST form supersedes all
-									previously completed POLST forms.</item>
-								<item>This is a medical order, not an advance directive. For information
-									about POLST and to understand this document, visit:
-									www.polst.org/form</item>
+								This form does not expire.
+								The most recently completed valid POLST form supersedes all previously completed POLST forms.
+								This is a medical order, not an advance directive. For information about POLST and to understand this document, visit: www.polst.org/form
 							</text>
 						</act>
 					</entry>
