@@ -36,6 +36,7 @@ and footer will change when the Implementation Guide is published through HL7. <
             o   ePOLST-structured-example-01.html
             o   ePOLST-unstructured-example-02.html
             o   ePOLST-hybrid-example-03.html
+			o   SAMPLE_PATIENT-2020.05.11-National-POLST-Form.pdf
     o	validation: 
         •	ePOLST_2021-11-10t.sch
         •	voc.xml
