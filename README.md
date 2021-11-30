@@ -26,7 +26,7 @@ and footer will change when the Implementation Guide is published through HL7. <
     o	backups
        •	CDAR2_IG_POLST_R1_D1_2022JAN_Vol1_Introductory_Material — The ePOLST implementation guide (IG) introductory and background material
        •	CDAR2_IG_POLST_R1_D1_2022JAN_Vol2_Templates_and_Supporting_Material — The ePOLST implementation guide (IG) computable constraints with example code (Figures) and vocabulary OID listing
-       •	images 
+       •	images: PNG and PDF files used in production of volumes 1 & 2 and examples 
     o	examples
        •	xml
             o   ePOLST-structured-example-01.xml
@@ -36,7 +36,6 @@ and footer will change when the Implementation Guide is published through HL7. <
             o   ePOLST-structured-example-01.html
             o   ePOLST-unstructured-example-02.html
             o   ePOLST-hybrid-example-03.html
-			o   SAMPLE_PATIENT-2020.05.11-National-POLST-Form.pdf
     o	validation: 
         •	ePOLST_2021-11-10t.sch
         •	voc.xml
