@@ -1,16 +1,13 @@
 # README
-This readme file is included in a package release of "HL7 CDA R2 Implementation Guide: ePOLST: Portable Medical Orders About Resuscitation and Initial Treatment, Release 1-US Realm"
-Please extract and place all of the supplied files in a folder together for use.
+This readme file is included in a package release of "HL7 CDA R2 Implementation Guide: ePOLST: Portable Medical Orders About Resuscitation and Initial Treatment, Release 1-US Realm". Please extract and place all of the supplied files in a folder together for use.
 ## Package Information
 <ul>
-<li>**Title**: HL7 CDA® R2 Implementation Guide: ePOLST: Portable Medical Orders About Resuscitation and Initial Treatment, Release 1-US Realm</dd>
-<li>**Edition**: Release 1 STU 1 Ballot</li>
-<li>**Realm**: US Realm</li>
-<li>**Release status**: Standard for Trial Use (STU)</li>
-<li>**Prepared by**: Lantana Consulting Group, Inc.</li>
-<li>**Date**: June 30, 2022 (NOTE: The date specified in this README file is the Lantana Consulting Group
-delivery date for this ballot. Dates on the Implementation Guide cover page 
-and footer will change when the Implementation Guide is published through HL7.</li>
+<li>Title: HL7 CDA® R2 Implementation Guide: ePOLST: Portable Medical Orders About Resuscitation and Initial Treatment, Release 1-US Realm</dd>
+<li>Edition: Release 1 STU 1 Ballot</li>
+<li>Realm: US Realm</li>
+<li>Release status: Standard for Trial Use (STU)</li>
+<li>Prepared by: Lantana Consulting Group, Inc.</li>
+<li>Date: June 30, 2022 (NOTE: The date specified in this README file is the Lantana Consulting Group delivery date for this package. Dates on the Implementation Guide cover page and footer will change when the Implementation Guide is published through HL7.</li>
 </ul>
 
 ## Contents of the Package
@@ -32,7 +29,7 @@ and footer will change when the Implementation Guide is published through HL7.</
 <ul><li>ePOLST-structured-example-01.html</li>
 <li>ePOLST-unstructured-example-02.htmlv
 <li>ePOLST-hybrid-example-03.html</li></ul></ul>
-<li>validation: </li>
+<li>validation</li>
 <ul>
 <li>ePOLST_2021-11-10t.sch</li>
 <li>voc.xml</li></ul></ul>
