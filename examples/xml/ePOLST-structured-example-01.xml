@@ -22,7 +22,7 @@
         CDA Header
         ********************************************************
     -->
-<?xml-stylesheet type="text/xsl" href="../../../CDA-core-xsl/CDA.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../../../CDA-core-xsl-master/CDA-core-xsl-master/CDA.xsl"?>
 <ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="urn:hl7-org:v3 ../../../CDA-core-2.0/schema/extensions/SDTC/infrastructure/cda/CDA_SDTC.xsd"
  xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:voc="urn:hl7-org:v3/voc">
@@ -50,7 +50,7 @@
         Title of this document
         ********************************************************
     -->
-	<title>National ePOLST Form: A Portable Medical Order.</title>
+	<title>National ePOLST Form: A Portable Medical Order</title>
 	<!-- The "National ePOLST Form: A Portable Medical Order" is a CDA electronic specification of the National POLST Form: A Portable Medical Order, available at www.polst.org/form-->
 	<!-- The following  illustrate how the "National ePOLST Form: A Portable Medical Order" applies and further constrains the CDA US Realm Header.-->
 
@@ -174,7 +174,7 @@
 			<!-- The National POLST Form does not have Health Care Provider address in section F. SIGNATURE: Health Care Provider. -->
 			<!-- Example of how to have a Null value for this element-->
 			<addr nullFlavor="NA"/>
-			<telecom use="WP" value="tel:+1(555)555-1004"/>
+			<telecom use="WP" value="tel:+1(480)555-1004"/>
 			<assignedPerson>
 				<name>
 					<given>Patricia</given>
@@ -199,7 +199,7 @@
 			<!-- The National POLST Form does not have the address for the the Professional Assisting Health Care Provider w/ Form Completion on pg.2, Form Completion Information section.-->
 			<!-- Example of how to have a Null value for this element-->
 			<addr nullFlavor="NA"/>
-			<telecom use="WP" value="tel:+1(555)555-1005"/>
+			<telecom use="WP" value="tel:+1(480)555-1005"/>
 			<assignedPerson>
 				<name>
 					<given>Ellen</given>
@@ -221,12 +221,12 @@
 			<representedCustodianOrganization>
 				<id extension="321CX" root="2.16.840.1.113883.4.6"/>
 				<name>Good Health HIE</name>
-				<telecom use="WP" value="tel:+1(555)555-1009"/>
+				<telecom use="WP" value="tel:+1(480)555-1009"/>
 				<addr use="WP">
 					<streetAddressLine>1009 Healthcare Drive </streetAddressLine>
-					<city>Portland</city>
+					<city>Phoenix</city>
 					<state>AZ</state>
-					<postalCode>99123</postalCode>
+					<postalCode>85001</postalCode>
 					<country>US</country>
 				</addr>
 			</representedCustodianOrganization>
@@ -259,7 +259,7 @@
 				<postalCode> </postalCode>
 				<country> </country>
 			</addr>
-			<telecom use="WP" value="tel:+1(555)555-1004"/>
+			<telecom use="WP" value="tel:+1(480)555-1004"/>
 			<assignedPerson>
 				<name>
 					<given>Patricia</given>
@@ -315,7 +315,7 @@
 			<!-- Emergency Contact Address is not on the National POLST Form-->
 			<!-- Example of how to have a Null value for this element-->
 			<addr nullFlavor="NA"/>
-			<telecom value="tel:+1(555)777-2021" use="MC"/>
+			<telecom value="tel:+1(480)777-2021" use="MC"/>
 			<associatedPerson>
 				<name>
 					<given>Daniel</given>
@@ -332,7 +332,7 @@
 			<!-- primary care provider Address ais not shown on the National POLST Form-->
 			<!-- Example of how to have a Null value for this element-->
 			<addr nullFlavor="NA"/>
-			<telecom use="WP" value="tel:+1(555)555-1004"/>
+			<telecom use="WP" value="tel:+1(480)555-1004"/>
 			<associatedPerson>
 				<name>
 					<given>Patricia</given>
@@ -351,7 +351,7 @@
 			<!-- Hospice Address is not on the National POLST Form-->
 			<!-- Example of how to have a Null value for this element-->
 			<addr nullFlavor="NA"/>
-			<telecom use="WP" value="tel:+1(555)555-1003"/>
+			<telecom use="WP" value="tel:+1(480)555-1003"/>
 			<associatedPerson>
 				<name>Local Home Hospice, Inc.</name>
 			</associatedPerson>

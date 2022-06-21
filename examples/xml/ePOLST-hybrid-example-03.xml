@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="../../cda-core-xsl/CDA.xsl"?>
+<!--
+ Title:        ePOLST: Resuscitation and Treatment Portable Medical Orders
+ Filename:     ePOLST-hybrid-example-03.xml 
+ Created by:   Lantana Consulting Group, Inc.
+ Updated by:   Lantana Consulting Group, Inc. 
+ 
+ LastChangedDate: 
+ 6/21/2022, Diana Wright
+ 11/10/2021, Lisa Nelson, MaxMD.
+  
+ ********************************************************
+ Disclaimer: This sample file contains representative data elements for an ePOLST: Portable Medical Orders About Resuscitation and Initial Treatment document (ePOLST). 
+ The file depicts a fictional character's health data. Any resemblance to a real person is coincidental. 
+ To illustrate as many data elements as possible, the clinical scenario may not be plausible. 
+ The data in this sample file are not intended to represent real patients, people or clinical events. 
+ ********************************************************
+ -->
+<!--
+        ********************************************************
+        CDA Header
+        ********************************************************
+    -->
 <ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="urn:hl7-org:v3 ../../../CDA-core-2.0/schema/extensions/SDTC/infrastructure/cda/CDA_SDTC.xsd"
  xmlns="urn:hl7-org:v3">
@@ -13,7 +35,7 @@
 
     <code code="93037-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Portable medical order form" />
     <title>Portable Medical Order Form</title>
-    <effectiveTime value="20201120122459-0700" />
+    <effectiveTime value="20201120224129-0500" />
     <confidentialityCode code="N" codeSystem="2.16.840.1.113883.1.11.16926" />
     <languageCode code="en-US" />
     <recordTarget>
@@ -21,13 +43,13 @@
             <id extension="549699981" root="2.16.840.1.113883.3.1205.1.1.1.200" />
    
             <addr use="HP">
-                <streetAddressLine>502 LUFT DRIVE</streetAddressLine>
-                <city>CLEARFIELD</city>
-                <state>UT</state>
-                <postalCode>84015</postalCode>
+                <streetAddressLine>502 MAPLE DRIVE</streetAddressLine>
+                <city>HIGHFIELD</city>
+                <state>MA</state>
+                <postalCode>01201</postalCode>
                 <country>USA</country>
             </addr>
-            <telecom use="HP" value="tel:801-773-1902" />
+            <telecom use="HP" value="tel:413-773-1902" />
             <patient>
                 <name>
                     <family>Maher</family>
@@ -45,13 +67,13 @@
 
             <providerOrganization>
                 <id root="2.16.840.1.113883.3.1205.1.1.1.200" />
-                <name>Intermountain Healthcare</name>
-                <telecom use="WP" value="tel:801-442-5000" />
+                <name>Mountain Healthcare</name>
+                <telecom use="WP" value="tel:413-442-5000" />
                 <addr use="WP">
-                    <streetAddressLine>36 South State St</streetAddressLine>
-                    <city>Salt Lake City</city>
-                    <state>UT</state>
-                    <postalCode>84111</postalCode>
+                    <streetAddressLine>36 SOUTH STATE ST</streetAddressLine>
+                    <city>HIGHFIELD</city>
+                    <state>MA</state>
+                    <postalCode>01201</postalCode>
                     <country>USA</country>
                     <county>Salt Lake</county>
                 </addr>
@@ -62,33 +84,44 @@
     <author>
         <time value="20160412122459-0600" />
         <assignedAuthor>
-            <id nullFlavor="UNK" />
+            <id extension="5555555555" root="2.16.840.1.113883.4.6"/>
+            <code code="207QA0505X" displayName="Adult Medicine"
+                codeSystem="2.16.840.1.113883.6.101"
+                codeSystemName="Healthcare Provider Taxonomy (HIPAA)"/>
             <addr>
-                <streetAddressLine>36 South State St</streetAddressLine>
-                <city>Salt Lake City</city>
-                <state>UT</state>
-                <postalCode>84111</postalCode>
+                <streetAddressLine>36 SOUTH STATE ST</streetAddressLine>
+                <city>HIGHFIELD</city>
+                <state>MA</state>
+                <postalCode>01201</postalCode>
                 <country>USA</country>
             </addr>
-            <telecom use="WP" value="tel:801-442-2000" />
+            <telecom use="WP" value="tel:413-442-2000" />
             <assignedAuthoringDevice>
                 <manufacturerModelName>Help 2 Clinical Desktop</manufacturerModelName>
                 <softwareName>Help 2 Clinical Desktop</softwareName>
             </assignedAuthoringDevice>
+            <assignedPerson>
+                <name>
+                    <given>Andrew</given>
+                    <family>Noh</family>
+                    <suffix qualifier="AC">CNP</suffix>
+                </name>
+            </assignedPerson>
         </assignedAuthor>
     </author>
+    
     <custodian>
 
         <assignedCustodian>
             <representedCustodianOrganization>
                 <id extension="Intermountain NPI" root="2.16.840.1.113883.4.6" />
-                <name>Intermountain Healthcare Inc</name>
-                <telecom use="WP" value="tel:801-442-2000" />
+                <name>Mountain Healthcare Inc</name>
+                <telecom use="WP" value="tel:413-442-2000" />
                 <addr use="WP">
-                    <streetAddressLine>36 South State St</streetAddressLine>
-                    <city>Salt Lake City</city>
-                    <state>UT</state>
-                    <postalCode>84111</postalCode>
+                    <streetAddressLine>36 SOUTH STATE ST</streetAddressLine>
+                    <city>HIGHFIELDy</city>
+                    <state>MA</state>
+                    <postalCode>01201</postalCode>
                     <country>USA</country>
                 </addr>
             </representedCustodianOrganization>
@@ -96,10 +129,10 @@
     </custodian>
 
     <authenticator xmlns:sdtc="urn:hl7-org:sdtc" typeCode="AUTHEN" xmlns="urn:hl7-org:v3">
-        <time value="20211007224129-0500" />
+        <time value="20201120224129-0500" />
         <signatureCode code="S" />
         <sdtc:signatureText mediaType="text/xml" representation="B64">
-            <thumbnail>Signed by Yan Wang (ywang@direct.max.md) at Thu Oct 07 22:41:29 CDT 2021</thumbnail>
+            <thumbnail>Signed by Andrew Noh (noh@direct.max.md) at Thu Oct 20 22:41:29 CDT 2020</thumbnail>
             <ds:digitalSignature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
                 <ds:authorizedSigner Id="6baf8e91-c4ed-4c82-8531-445c56f008c6">
                     <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="xmldsig-76510d6e-34af-4d6b-9e78-a4210c7f88ee">
@@ -140,14 +173,14 @@
                                     <ds:X509IssuerName>cn=MaxSignatures CA G2,o=MaxMD,st=NEW JERSEY,c=US</ds:X509IssuerName>
                                     <ds:X509SerialNumber>332418258740791587094354351360075460153</ds:X509SerialNumber>
                                 </ds:X509IssuerSerial>
-                                <ds:X509SubjectName>cn=ywang@direct.max.md,ou=Yan Wang Signature Cert,l=Fort Lee,st=NEW JERSEY,c=US</ds:X509SubjectName>
+                                <ds:X509SubjectName>cn=noh@direct.max.md,ou=Andrew Noh Signature Cert,l=Fort Lee,st=NEW JERSEY,c=US</ds:X509SubjectName>
                             </ds:X509Data>
                         </ds:KeyInfo>
                         <ds:Object>
                             <xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" xmlns:xades141="http://uri.etsi.org/01903/v1.4.1#" Target="#xmldsig-76510d6e-34af-4d6b-9e78-a4210c7f88ee">
                                 <xades:SignedProperties Id="xmldsig-76510d6e-34af-4d6b-9e78-a4210c7f88ee-signedprops">
                                     <xades:SignedSignatureProperties>
-                                        <xades:SigningTime>2021-10-07T22:41:29.659-05:00</xades:SigningTime>
+                                        <xades:SigningTime>2020-11-20T22:41:29.659-05:00</xades:SigningTime>
                                         <xades:SigningCertificate>
                                             <xades:Cert>
                                                 <xades:CertDigest>
@@ -270,7 +303,7 @@
                                                     </xades:DigestAlgAndValue>
                                                     <xades:CRLIdentifier>
                                                         <xades:Issuer>cn=MaxSignatures CA G2,o=MaxMD,st=NEW JERSEY,c=US</xades:Issuer>
-                                                        <xades:IssueTime>2021-10-06T22:00:41.000-05:00</xades:IssueTime>
+                                                        <xades:IssueTime>2020-11-20T22:41:29.659-05:00</xades:IssueTime>
                                                         <xades:Number>130</xades:Number>
                                                     </xades:CRLIdentifier>
                                                 </xades:CRLRef>
@@ -431,11 +464,11 @@
         </sdtc:signatureText>
 
         <assignedEntity>
-            <id extension="ywang@direct.max.md" root="2.16.840.1.113883.3.4988.102.2.1.1" />
+            <id extension="noh@direct.max.md" root="2.16.840.1.113883.3.4988.102.2.1.1" />
             <assignedPerson>
                 <name>
-                    <family>Wang</family>
-                    <given>Yan</given>
+                    <family>Noh</family>
+                    <given>Andrew</given>
                 </name>
             </assignedPerson>
         </assignedEntity>

@@ -180,7 +180,7 @@
 			<!-- Examples of how to have a Null value for these elements-->
 			<addr nullFlavor="NA"/>
 
-			<telecom use="WP" value="tel:+1(555)555-1004"/>
+			<telecom use="WP" value="tel:+1(480)555-1004"/>
 			<assignedPerson>
 				<name>
 					<given>Patricia</given>
@@ -205,7 +205,7 @@
 			<!-- The National POLST Form does not have the address for the the Professional Assisting Health Care Provider w/ Form Completion on pg.2, Form Completion Information section.-->
 			<!-- Examples of how to have a Null value for these elements-->
 			<addr nullFlavor="NA"/>
-			<telecom use="WP" value="tel:+1(555)555-1005"/>
+			<telecom use="WP" value="tel:+1(480)555-1005"/>
 
 			<assignedPerson>
 				<name>
@@ -228,12 +228,12 @@
 			<representedCustodianOrganization>
 				<id extension="321CX" root="2.16.840.1.113883.4.6"/>
 				<name>Good Health HIE</name>
-				<telecom use="WP" value="tel:+1(555)555-1009"/>
+				<telecom use="WP" value="tel:+1(480)555-1009"/>
 				<addr use="WP">
 					<streetAddressLine>1009 Healthcare Drive </streetAddressLine>
-					<city>Portland</city>
+					<city>Phoenix</city>
 					<state>AZ</state>
-					<postalCode>99123</postalCode>
+					<postalCode>85001</postalCode>
 					<country>US</country>
 				</addr>
 			</representedCustodianOrganization>
@@ -266,7 +266,7 @@
 				<postalCode> </postalCode>
 				<country> </country>
 			</addr>
-			<telecom use="WP" value="tel:+1(555)555-1004"/>
+			<telecom use="WP" value="tel:+1(480)555-1004"/>
 			<assignedPerson>
 				<name>
 					<given>Patricia</given>
@@ -323,7 +323,7 @@
 			<!-- Emergency Contact Address is not on the National POLST Form-->
 			<!-- Examples of how to have a Null value for this element-->
 			<addr nullFlavor="NA"/>
-			<telecom value="tel:+1(555)777-2021" use="MC"/>
+			<telecom value="tel:+1(480)777-2021" use="MC"/>
 			<associatedPerson>
 				<name>
 					<given>Daniel</given>
@@ -340,7 +340,7 @@
 			<!-- primary care provider Address and Telephone are not on the National POLST Form-->
 			<!-- Examples of how to have a Null value for these elements-->
 			<addr nullFlavor="NA"/>
-			<telecom use="WP" value="tel:+1(555)555-1004"/>
+			<telecom use="WP" value="tel:+1(480)555-1004"/>
 			<associatedPerson>
 				<name>
 					<given>Patricia</given>
@@ -359,7 +359,7 @@
 			<!-- Hospice Address is not on the National POLST Form-->
 			<!-- Examples of how to have a Null value for these elements-->
 			<addr nullFlavor="NA"/>
-			<telecom use="WP" value="tel:+1(555)555-1003"/>
+			<telecom use="WP" value="tel:+1(480)555-1003"/>
 			<associatedPerson>
 				<name>Local Home Hospice, Inc.</name>
 			</associatedPerson>
@@ -370,7 +370,7 @@
 	<component>
 		<nonXMLBody>
 			<text>
-				<reference value="SAMPLE_PATIENT-2020.05.11-National-POLST-Form.pdf"/>
+				<reference value="SAMPLE_PATIENT-2020.05.11-National-POLST-Form.pdf"></reference>
 			</text>
 		</nonXMLBody>
 	</component>
