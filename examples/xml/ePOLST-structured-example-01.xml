@@ -6,10 +6,12 @@
  Created by:   Lantana Consulting Group, Inc.
  Updated by:   Lantana Consulting Group, Inc. 
  
- LastChangedDate: 11/28/2021, Diana Wright
+ LastChangedDate: 
+ 6/20/2022, Diana Wright
+ 11/28/2021, Diana Wright
   
  ********************************************************
- Disclaimer: This sample file contains representative data elements for an ePOLST: Resuscitation and Treatment Portable Medical Orders document (ePOLST). 
+ Disclaimer: This sample file contains representative data elements for an ePOLST: Portable Medical Orders About Resuscitation and Initial Treatment document (ePOLST). 
  The file depicts a fictional character's health data. Any resemblance to a real person is coincidental. 
  To illustrate as many data elements as possible, the clinical scenario may not be plausible. 
  The data in this sample file are not intended to represent real patients, people or clinical events. 
@@ -20,8 +22,10 @@
         CDA Header
         ********************************************************
     -->
-<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:voc="urn:hl7-org:v3/voc" xmlns:sdtc="urn:hl7-org:sdtc">
+<?xml-stylesheet type="text/xsl" href="../../../CDA-core-xsl/CDA.xsl"?>
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:v3 ../../../CDA-core-2.0/schema/extensions/SDTC/infrastructure/cda/CDA_SDTC.xsd"
+ xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:voc="urn:hl7-org:v3/voc">
 	<!-- realmCode is required by the US Realm Header and SHALL be realmCode="US" -->
 	<realmCode code="US"/>
 	<!--The following typeID describes an HL7 registered Refined Message Information Models (RMIMs) [root="2.16.840.1.113883.1.3"] 
@@ -74,18 +78,18 @@
     -->
 	<recordTarget>
 		<patientRole>
-			<!--  of a Masked Social Security Number  of id using the root for the Social Security Administion assigningAuthority.
-			This  was created by Lisa Nelson, MaxMD.
-			It represent a social security number (SSN) that has been masked to show only the last four digits.
-			This  is available at http://hl7-c-cda-s.herokuapp.com/s/view/Header/
+			<!-- Example of a Masked Social Security Number using the root for the Social Security Administion assigningAuthority.
+			This was created by Lisa Nelson, MaxMD.
+			It represents a social security number (SSN) that has been masked to show only the last four digits.
+			This is available at [http://cdasearch.hl7.org/examples/view/Header/Masked%20Social%20Security%20Number]
 			Note: When recording SSN in the extension, dashes (-) are permitted but not required.
-			Note: An id with a nullFlavor of "MSK" SHALL NOT be used for matching or indexing -->
+			Note: An id with a nullFlavor of "MSK" SHALL NOT be used for matching or indexing-->
 			<id assigningAuthorityName="US Social Security Administration"
 				root="2.16.840.1.113883.4.1" extension="***-**-2222" nullFlavor="MSK"/>
 
 			<!-- Example of the patient's Medical Record Number.
-				 This  was created by Lisa Nelson, MaxMD, and is available at http://hl7-c-cda-s.herokuapp.com-->
-			<!-- This s assumes the OID 2.16.840.1.113883.1.111.12345 
+				 This example was created by Lisa Nelson, MaxMD, and is available at http://cdasearch.hl7.org/examples/view/Header/Multiple%20Patient%20Identifiers-->
+			<!-- This example assumes the OID 2.16.840.1.113883.1.111.12345 
                  uniquely identifies the encompassed Provider Organization's local 
                  medical record number assigning system.
                  Note: A receiving system only knows this is an MRN by looking up the root oid in a repository. -->
@@ -98,7 +102,7 @@
 			<addr>
 				<streetAddressLine> </streetAddressLine>
 				<city> </city>
-				<state>OR</state>
+				<state>AZ</state>
 				<postalCode> </postalCode>
 				<country> </country>
 			</addr>
@@ -149,7 +153,6 @@
 						</name>
 					</guardianPerson>
 				</guardian>
-
 			</patient>
 		</patientRole>
 	</recordTarget>
@@ -222,7 +225,7 @@
 				<addr use="WP">
 					<streetAddressLine>1009 Healthcare Drive </streetAddressLine>
 					<city>Portland</city>
-					<state>OR</state>
+					<state>AZ</state>
 					<postalCode>99123</postalCode>
 					<country>US</country>
 				</addr>
@@ -241,7 +244,7 @@
 		<signatureCode code="S"/>
 		<assignedEntity>
 			<!-- Recommendation: Implementers should show the legalAuthenticator's id on the rendered form. 
-				At minimum, include the medical  or certification number of the health care provider signing the document in this ID element.-->
+				At minimum, include the medical or certification number of the health care provider signing the document in this ID element.-->
 			<id extension="5555555555" root="2.16.840.1.113883.4.6"/>
 			<code code="207QA0505X" displayName="Adult Medicine"
 				codeSystem="2.16.840.1.113883.6.101"
@@ -252,7 +255,7 @@
 			<addr use="WP">
 				<streetAddressLine> </streetAddressLine>
 				<city> </city>
-				<state>OR</state>
+				<state>AZ</state>
 				<postalCode> </postalCode>
 				<country> </country>
 			</addr>
@@ -566,12 +569,11 @@
 							<code code="55752-0" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC" displayName="Clinical information"> </code>
 							<text> Health care providers should complete this form only after a
-									conversation with their patient or the patient’s
-									representative. The POLST decision-making process is for patients who are at risk
-									for a life-threatening clinical event because they have a serious
-									life-limiting medical condition, which may include advanced frailty
-									(www.polst.org/guidance-appropriate-patients-pdf).
-							</text>
+								conversation with their patient or the patient’s representative. The
+								POLST decision-making process is for patients who are at risk for a
+								life-threatening clinical event because they have a serious
+								life-limiting medical condition, which may include advanced frailty
+								(www.polst.org/guidance-appropriate-patients-pdf). </text>
 							<!-- The reference in this ePOLST Clinical Instructions entry template here can point to the relevant blank POLST form.-->
 							<reference typeCode="REFR">
 								<externalDocument>
@@ -591,12 +593,13 @@
 							<code code="TEMP-POLST-ADMIN-INFO" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC"
 								displayName="ePOLST Administrative Information"> </code>
-							<text> 
-								HIPAA PERMITS DISCLOSURE OF POLST ORDERS TO HEALTH CARE PROVIDERS AS NECESSARY FOR TREATMENT SEND FORM WITH PATIENT WHENEVER TRANSFERRED OR DISCHARGED
-								This form does not expire.
-								The most recently completed valid POLST form supersedes all previously completed POLST forms.
-								This is a medical order, not an advance directive. For information about POLST and to understand this document, visit: www.polst.org/form
-							</text>
+							<text> HIPAA PERMITS DISCLOSURE OF POLST ORDERS TO HEALTH CARE PROVIDERS
+								AS NECESSARY FOR TREATMENT SEND FORM WITH PATIENT WHENEVER
+								TRANSFERRED OR DISCHARGED This form does not expire. The most
+								recently completed valid POLST form supersedes all previously
+								completed POLST forms. This is a medical order, not an advance
+								directive. For information about POLST and to understand this
+								document, visit: www.polst.org/form </text>
 						</act>
 					</entry>
 
@@ -927,10 +930,10 @@
 							<code code="TEMP-POLST-ADMIN-INFO" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC"
 								displayName="ePOLST Administrative Information"> </code>
-							<text> 
-								Reviewed patient’s advance directive to confirm no conflict with POLST orders. 
-								(A POLST form does not replace an advance directive or living will.)
-								<paragraph>Check everyone who participated in discussion.</paragraph>
+							<text> Reviewed patient’s advance directive to confirm no conflict with
+								POLST orders. (A POLST form does not replace an advance directive or
+								living will.) Check everyone who participated in
+									discussion.
 							</text>
 						</act>
 					</entry>
