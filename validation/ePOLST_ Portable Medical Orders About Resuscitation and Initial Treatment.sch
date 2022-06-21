@@ -2,7 +2,7 @@
 <!--
 
 THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL LANTANA CONSULTING GROUP LLC, OR ANY OF THEIR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-Schematron generated from Trifolia on 6/20/2022
+Schematron generated from Trifolia on 6/21/2022
 -->
 <sch:schema xmlns:voc="http://www.lantanagroup.com/voc" xmlns:svs="urn:ihe:iti:svs:2008" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdtc="urn:hl7-org:sdtc" xmlns="urn:hl7-org:v3" xmlns:cda="urn:hl7-org:v3" xmlns:sch="http://purl.oclc.org/dsdl/schematron">
   <sch:ns prefix="voc" uri="http://www.lantanagroup.com/voc" />
@@ -522,12 +522,6 @@ Schematron generated from Trifolia on 6/20/2022
       <sch:assert id="a-4511-33139" test="cda:component/cda:structuredBody[count(cda:component[count(cda:section[cda:templateId[@root='2.16.840.1.113883.9.275.2.1' and @extension='2021-12-01']])=1])=1]">This structuredBody SHALL contain exactly one [1..1] component (CONF:4511-33139) such that it SHALL contain exactly one [1..1] ePOLST Medical Orders Section  (identifier: urn:hl7ii:2.16.840.1.113883.9.275.2.1:2021-12-01) (CONF:4511-33140).</sch:assert>
       <sch:assert id="a-4511-33200" test="cda:legalAuthenticator[count(cda:signatureCode)=1]">This legalAuthenticator SHALL contain exactly one [1..1] signatureCode (CONF:4511-33200).</sch:assert>
       <sch:assert id="a-4511-33201" test="cda:legalAuthenticator/cda:signatureCode[@code='S']">This signatureCode SHALL contain exactly one [1..1] @code="S" (CodeSystem: HL7ParticipationSignature urn:oid:2.16.840.1.113883.5.89) (CONF:4511-33201).</sch:assert>
-      <sch:assert id="a-4511-33219" test="cda:authenticator[count(cda:signatureCode)=1]">This authenticator SHALL contain exactly one [1..1] signatureCode (CONF:4511-33219).</sch:assert>
-      <sch:assert id="a-4511-33220" test="cda:authenticator/cda:signatureCode[@code='S']">This signatureCode SHALL contain exactly one [1..1] @code="S" (CodeSystem: HL7ParticipationSignature urn:oid:2.16.840.1.113883.5.89) (CONF:4511-33220).</sch:assert>
-      <sch:assert id="a-4511-33222" test="cda:authenticator[count(cda:assignedEntity)=1]">This authenticator SHALL contain exactly one [1..1] assignedEntity (CONF:4511-33222).</sch:assert>
-      <sch:assert id="a-4511-33223" test="cda:authenticator/cda:assignedEntity[count(cda:id) &gt; 0]">This assignedEntity SHALL contain at least one [1..*] id (CONF:4511-33223).</sch:assert>
-      <sch:assert id="a-4511-33242" test="cda:authenticator/cda:assignedEntity[count(cda:assignedPerson)=1]">This assignedEntity SHALL contain exactly one [1..1] assignedPerson (CONF:4511-33242).</sch:assert>
-      <sch:assert id="a-4511-33243" test="cda:authenticator/cda:assignedEntity/cda:assignedPerson[count(cda:name) &gt; 0]">This assignedPerson SHALL contain at least one [1..*] name (CONF:4511-33243).</sch:assert>
     </sch:rule>
     <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.9.275.1-2021-12-01-errors" context="cda:ClinicalDocument[cda:templateId[@root='2.16.840.1.113883.9.275.1' and @extension='2021-12-01']]">
       <sch:extends rule="r-urn-hl7ii-2.16.840.1.113883.9.275.1-2021-12-01-errors-abstract" />
@@ -562,12 +556,6 @@ Schematron generated from Trifolia on 6/20/2022
       <sch:assert id="a-4511-33210" test="cda:legalAuthenticator/cda:assignedEntity[count(cda:telecom) &gt; 0]">This assignedEntity SHALL contain at least one [1..*] telecom (CONF:4511-33210).</sch:assert>
       <sch:assert id="a-4511-33212" test="cda:legalAuthenticator/cda:assignedEntity[count(cda:assignedPerson)=1]">This assignedEntity SHALL contain exactly one [1..1] assignedPerson (CONF:4511-33212).</sch:assert>
       <sch:assert id="a-4511-33213" test="cda:legalAuthenticator/cda:assignedEntity/cda:assignedPerson[count(cda:name) &gt; 0]">This assignedPerson SHALL contain at least one [1..*] name (CONF:4511-33213).</sch:assert>
-      <sch:assert id="a-4511-33215" test="cda:authenticator[count(cda:signatureCode)=1]">This authenticator SHALL contain exactly one [1..1] signatureCode (CONF:4511-33215).</sch:assert>
-      <sch:assert id="a-4511-33216" test="cda:authenticator/cda:signatureCode[@code='S']">This signatureCode SHALL contain exactly one [1..1] @code="S" (CodeSystem: HL7ParticipationSignature urn:oid:2.16.840.1.113883.5.89) (CONF:4511-33216).</sch:assert>
-      <sch:assert id="a-4511-33228" test="cda:authenticator[count(cda:assignedEntity)=1]">This authenticator SHALL contain exactly one [1..1] assignedEntity (CONF:4511-33228).</sch:assert>
-      <sch:assert id="a-4511-33229" test="cda:authenticator/cda:assignedEntity[count(cda:id) &gt; 0]">This assignedEntity SHALL contain at least one [1..*] id (CONF:4511-33229).</sch:assert>
-      <sch:assert id="a-4511-33240" test="cda:authenticator/cda:assignedEntity[count(cda:assignedPerson)=1]">This assignedEntity SHALL contain exactly one [1..1] assignedPerson (CONF:4511-33240).</sch:assert>
-      <sch:assert id="a-4511-33244" test="cda:authenticator/cda:assignedEntity/cda:assignedPerson[count(cda:name) &gt; 0]">This assignedPerson SHALL contain at least one [1..*] name (CONF:4511-33244).</sch:assert>
     </sch:rule>
     <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.9.275.11-2021-12-01-errors" context="cda:ClinicalDocument[cda:templateId[@root='2.16.840.1.113883.9.275.11' and @extension='2021-12-01']]">
       <sch:extends rule="r-urn-hl7ii-2.16.840.1.113883.9.275.11-2021-12-01-errors-abstract" />
@@ -834,7 +822,6 @@ Schematron generated from Trifolia on 6/20/2022
       <sch:assert id="a-4511-7999" test="cda:legalAuthenticator/cda:assignedEntity/cda:telecom[@use]">Such telecoms SHOULD contain zero or one [0..1] @use, which SHALL be selected from ValueSet Telecom Use (US Realm Header) urn:oid:2.16.840.1.113883.11.20.9.20 DYNAMIC (CONF:4511-7999).</sch:assert>
       <sch:assert id="a-4511-33187" test="count(cda:setId)=1">SHOULD contain zero or one [0..1] setId (CONF:4511-33187).</sch:assert>
       <sch:assert id="a-4511-33188" test="count(cda:versionNumber)=1">SHOULD contain zero or one [0..1] versionNumber (CONF:4511-33188).</sch:assert>
-      <sch:assert id="a-4511-33226" test="cda:authenticator/cda:assignedEntity/cda:id[@root='2.16.840.1.113883.4.6']">Such ids SHOULD contain zero or one [0..1] @root=" 2.16.840.1.113883.4.6" National Provider Identifier  (CONF:4511-33226).</sch:assert>
     </sch:rule>
     <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.9.275.1-2021-12-01-warnings" context="cda:ClinicalDocument[cda:templateId[@root='2.16.840.1.113883.9.275.1' and @extension='2021-12-01']]">
       <sch:extends rule="r-urn-hl7ii-2.16.840.1.113883.9.275.1-2021-12-01-warnings-abstract" />
@@ -855,7 +842,6 @@ Schematron generated from Trifolia on 6/20/2022
       <sch:assert id="a-4511-33193" test="count(cda:setId)=1">SHOULD contain zero or one [0..1] setId (CONF:4511-33193).</sch:assert>
       <sch:assert id="a-4511-33194" test="count(cda:versionNumber)=1">SHOULD contain zero or one [0..1] versionNumber (CONF:4511-33194).</sch:assert>
       <sch:assert id="a-4511-33211" test="cda:legalAuthenticator/cda:assignedEntity/cda:telecom[@use]">Such telecoms SHOULD contain zero or one [0..1] @use, which SHALL be selected from ValueSet Telecom Use (US Realm Header) urn:oid:2.16.840.1.113883.11.20.9.20 DYNAMIC (CONF:4511-33211).</sch:assert>
-      <sch:assert id="a-4511-33232" test="cda:authenticator/cda:assignedEntity/cda:id[@root='2.16.840.1.113883.4.6']">Such ids SHOULD contain zero or one [0..1] @root=" 2.16.840.1.113883.4.6" National Provider Identifier  (CONF:4511-33232).</sch:assert>
     </sch:rule>
     <sch:rule id="r-urn-hl7ii-2.16.840.1.113883.9.275.11-2021-12-01-warnings" context="cda:ClinicalDocument[cda:templateId[@root='2.16.840.1.113883.9.275.11' and @extension='2021-12-01']]">
       <sch:extends rule="r-urn-hl7ii-2.16.840.1.113883.9.275.11-2021-12-01-warnings-abstract" />
