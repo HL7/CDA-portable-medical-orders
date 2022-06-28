@@ -96,10 +96,6 @@
                 <country>USA</country>
             </addr>
             <telecom use="WP" value="tel:413-442-2000" />
-            <assignedAuthoringDevice>
-                <manufacturerModelName>Help 2 Clinical Desktop</manufacturerModelName>
-                <softwareName>Help 2 Clinical Desktop</softwareName>
-            </assignedAuthoringDevice>
             <assignedPerson>
                 <name>
                     <given>Andrew</given>
