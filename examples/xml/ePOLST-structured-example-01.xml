@@ -23,9 +23,10 @@
         ********************************************************
     -->
 <?xml-stylesheet type="text/xsl" href="../../../CDA-core-xsl-master/CDA-core-xsl-master/CDA.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../../../Lantana-Stylesheets/Stylesheets/CDA/cda.xsl"?>
 <ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="urn:hl7-org:v3 ../../../CDA-core-2.0/schema/extensions/SDTC/infrastructure/cda/CDA_SDTC.xsd"
- xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:voc="urn:hl7-org:v3/voc">
+	xsi:schemaLocation="urn:hl7-org:v3 ../../../HL7-RESOURCES/HL7-CDA-core-2.0/schema/extensions/SDTC/infrastructure/cda/CDA_SDTC.xsd"
+	xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:voc="urn:hl7-org:v3/voc">
 	<!-- realmCode is required by the US Realm Header and SHALL be realmCode="US" -->
 	<realmCode code="US"/>
 	<!--The following typeID describes an HL7 registered Refined Message Information Models (RMIMs) [root="2.16.840.1.113883.1.3"] 
@@ -43,7 +44,7 @@
 	<id root="5f6e4733-5fb4-4752-8d81-32420e9976b9"/>
 
 	<!-- Code for this document type (NOT the template OID)-->
-	<code code="TEMP-POLST-ORDERS" displayName="National ePOLST Form: A Portable Medical Order"
+	<code code="100821-8" displayName="National POLST form: portable medical order panel"
 		codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
 	<!--
         ********************************************************
@@ -423,7 +424,6 @@
 							best of my knowledge.”</paragraph>
 						<paragraph>[Note: Only d health care providers authorized by law to sign
 							POLST form in state where completed may sign this order]</paragraph>
-
 						<paragraph styleCode="Bold">A. Cardiopulmonary Resuscitation
 							Orders.</paragraph>
 						<paragraph styleCode="Bold">ePOLST Clinical Instructions</paragraph>
@@ -456,7 +456,6 @@
 								</tr>
 							</tbody>
 						</table>
-
 						<paragraph styleCode="Bold">B. Initial Treatment Orders.</paragraph>
 						<paragraph styleCode="Bold">ePOLST Clinical Instructions</paragraph>
 						<paragraph>Follow these orders if patient has a pulse and/or is
@@ -509,7 +508,6 @@
 								</tr>
 							</tbody>
 						</table>
-
 						<paragraph styleCode="Bold">C. Additional Orders or Instructions</paragraph>
 						<paragraph styleCode="Bold">ePOLST Clinical Instructions</paragraph>
 						<paragraph>These orders are in addition to those above (e.g., blood
@@ -590,9 +588,9 @@
 						<act classCode="ACT" moodCode="INT">
 							<templateId root="2.16.840.1.113883.9.275.3.6" extension="2021-12-01"/>
 							<id root="61c73d9d-2775-4030-b4bc-715f637e75b8"/>
-							<code code="TEMP-POLST-ADMIN-INFO" codeSystem="2.16.840.1.113883.6.1"
+							<code code="100828-3" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC"
-								displayName="ePOLST Administrative Information"> </code>
+								displayName="Portable medical order administrative information"> </code>
 							<text> HIPAA PERMITS DISCLOSURE OF POLST ORDERS TO HEALTH CARE PROVIDERS
 								AS NECESSARY FOR TREATMENT SEND FORM WITH PATIENT WHENEVER
 								TRANSFERRED OR DISCHARGED This form does not expire. The most
@@ -611,9 +609,9 @@
 						<act classCode="ACT" moodCode="INT">
 							<templateId root="2.16.840.1.113883.9.275.3.1" extension="2021-12-01"/>
 							<id root="51ac291d-fc5e-4ac1-bb81-5cc9b8df7bf8"/>
-							<code code="TEMP-POLST-CPR" codeSystem="2.16.840.1.113883.6.1"
+							<code code="100822-6" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC"
-								displayName="Cardiopulmonary Resuscitation Orders">
+								displayName="Cardiopulmonary resuscitation orders">
 								<originalText>A. Cardiopulmonary Resuscitation Orders. Follow these
 									orders if patient has no pulse and is not
 									breathing.</originalText>
@@ -628,7 +626,7 @@
 
 									<!-- Code must be selected from the value set defined in the guidance and a translation is allowed-->
 									<!-- In this example, the Cardiopulmonary Resuscitation Order option "YES CPR" has been selected.-->
-									<code code="TEMP-POLST-CPR-YES" displayName="YES CPR"
+									<code code="LA33470-8" displayName="Yes CPR"
 										codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
 										<originalText>YES CPR: Attempt Resuscitation, including
 											mechanical ventilation</originalText>
@@ -669,8 +667,9 @@
 						<act classCode="ACT" moodCode="INT">
 							<templateId root="2.16.840.1.113883.9.275.3.2" extension="2021-12-01"/>
 							<id root="61c73d9d-2775-4030-b4bc-715f637e75b8"/>
-							<code code="TEMP-POLST-TREAT" codeSystem="2.16.840.1.113883.6.1"
-								codeSystemName="LOINC" displayName="Initial Treatment Orders">
+							<code code="100823-4" codeSystem="2.16.840.1.113883.6.1"
+								codeSystemName="LOINC"
+								displayName="Initial portable medical treatment orders">
 								<originalText>B. Initial Treatment Orders. Follow these orders if
 									patient has a pulse and/or is breathing.</originalText>
 							</code>
@@ -684,7 +683,7 @@
 
 									<!-- Code must be selected from the value set defined in the guidance and a translation is allowed-->
 									<!-- In this example, the Initial Treatment Orders option "Full Treatments" has been selected.-->
-									<code code="TEMP-POLST-TREAT-FULL" displayName="Full Treatments"
+									<code code="LA33473-2" displayName="Full treatments"
 										codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
 										<originalText>Full Treatments (required if choose CPR in
 											Section A). Goal: Attempt to sustain life by all
@@ -724,9 +723,9 @@
 						<act classCode="ACT" moodCode="INT">
 							<templateId root="2.16.840.1.113883.9.275.3.3" extension="2021-12-01"/>
 							<id root="24f33931-faf1-4f88-be99-2d3e2496d2e4"/>
-							<code code="TEMP-POLST-ADD-ORDERS" codeSystem="2.16.840.1.113883.6.1"
+							<code code="100824-2" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC"
-								displayName="Additional Orders or Instructions">
+								displayName="Additional portable medical orders or instructions">
 								<originalText>C. Additional Orders or Instructions. These orders are
 									in addition to those above (e.g., blood products, dialysis).
 									[EMS protocols may limit emergency responder ability to act on
@@ -775,8 +774,9 @@
 						<act classCode="ACT" moodCode="INT">
 							<templateId root="2.16.840.1.113883.9.275.3.4" extension="2021-12-01"/>
 							<id root="43c286c9-9958-4907-9566-224fe3aca37a"/>
-							<code code="TEMP-POLST-MED-NUTR" codeSystem="2.16.840.1.113883.6.1"
-								codeSystemName="LOINC" displayName="Medically Assisted Nutrition">
+							<code code="100825-9" codeSystem="2.16.840.1.113883.6.1"
+								codeSystemName="LOINC"
+								displayName="Medically assisted nutrition orders">
 								<originalText>D. Medically Assisted Nutrition (Offer food by mouth
 									if desired by patient, safe and tolerated)</originalText>
 								<translation nullFlavor="NA"/>
@@ -790,8 +790,8 @@
 									<id root="2c7a0f50-2b07-4c41-93cc-03a13e1b05c6"/>
 									<!-- Code must be selected from the value set defined in the guidance and a translation is allowed-->
 									<!-- In this example, the Medically Assisted Nutrition Orders option "No artificial means of nutrition desired" has been selected.-->
-									<code code="TEMP-POLST-MED-NUTR-X"
-										codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+									<code code="LA33491-4" codeSystem="2.16.840.1.113883.6.1"
+										codeSystemName="LOINC"
 										displayName="No artificial means of nutrition desired">
 										<translation nullFlavor="NA"/>
 									</code>
@@ -834,8 +834,11 @@
 					<!-- ePOLST Completion Information Section section template 
 					Entry is required (SHALL)-->
 					<templateId root="2.16.840.1.113883.9.275.2.2" extension="2021-12-01"/>
-					<code code="TEMP-POLST-COMP" displayName="ePOLST Completion Information"
+					<code code="100970-3"
+						displayName="Portable medical order completion information"
 						codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					
+					
 					<!-- Provide a title for the orders portion of the form here. -->
 					<title>ePOLST Completion Information Section</title>
 
@@ -892,49 +895,98 @@
 								</tr>
 							</tbody>
 						</table>
+					<paragraph styleCode="Bold">ePOLST Participants</paragraph>
+					<table border="1">
+						<thead>
+							<tr>
+								<td> </td>
+								<td>Participated in Discussion</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>X</td>
+								<td>Patient with decision-making capacity participated </td>
+							</tr>
+							<tr>
+								<td> </td>
+								<td>Court appointed guardian participated</td>
+							</tr>
+							<tr>
+								<td> </td>
+								<td>Parent of minor participated</td>
+							</tr>
+							<tr>
+								<td>X</td>
+								<td>Legal surrogate / health care agent participated</td>
+							</tr>
+							<tr>
+								<td> </td>
+								<td>Other participated</td>
+							</tr>
+						</tbody>
+					</table>
 					</text>
-
-					<!-- Orders Review (ePOLST) entry template
-					If section is included, entry is required (SHALL). -->
+					
+					
+					<!-- Orders Review (ePOLST) entry template -->
 					<entry>
 						<observation classCode="OBS" moodCode="EVN">
 							<templateId root="2.16.840.1.113883.9.275.3.7" extension="2021-12-01"/>
 							<id root="752c8114-46b0-44db-af46-561a672f30ff"/>
-							<code code="TEMP-POLST-REVIEW" codeSystem="2.16.840.1.113883.6.1"
-								codeSystemName="LOINC" displayName=" ePOLST Review">
+							<code code="100826-7" codeSystem="2.16.840.1.113883.6.1"
+								codeSystemName="LOINC"
+								displayName="Portable medical order AndOr advance directive review">
 								<originalText>Reviewed patient’s advance directive to confirm no
-									conflict with POLST orders. Check everyone who participated in
-									discussion: </originalText>
+									conflict with POLST orders.</originalText>
 								<translation nullFlavor="NA"/>
 							</code>
+							<effectiveTime value="20130815223615-0800"/>
 							<!-- Codes must be selected from the value set defined in the guidance. More than one value may be selected. Select all that apply.-->
-							<!-- In this example , three values have been selected been selected.-->
-							<value xsi:type="CD" code="TEMP-POLST-R1"
+							<!-- In this example, two values have been selected been selected.-->
+							<value xsi:type="CD" code="LA33476-5"
 								displayName="Yes the document was reviewed"
 								codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
-							<value xsi:type="CD" code="TEMP-POLST-R4"
+							<value xsi:type="CD" code="LA33481-5"
 								displayName="No advance directive exists"
-								codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
-							<value xsi:type="CD" code="TEMP-POLST-R8"
-								displayName="Legal surrogate / health care agent participated"
 								codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
 						</observation>
 					</entry>
 
+					<!-- Orders Participants (ePOLST) entry template -->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<templateId root="2.16.840.1.113883.9.275.3.8" extension="2022-08-21"/>
+							<id root="752c8114-46b0-44db-af46-561a672f30ff"/>
+							<code code="100827-5" codeSystem="2.16.840.1.113883.6.1"
+								codeSystemName="LOINC"
+								displayName="Portable medical order discussion participants">
+								<originalText>Check everyone who participated in
+									discussion:</originalText>
+								<translation nullFlavor="NA"/>
+							</code>
+							<!-- Codes must be selected from the value set defined in the guidance. More than one value may be selected. Select all that apply.-->
+							<!-- In this example , two values have been selected been selected.-->
+							<value xsi:type="CD" code="LA33487-2"
+								displayName="Legal surrogate/health care agent"
+								codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+							<value xsi:type="CD" code="LA33482-3"
+								displayName="Patient with decision-making capacity"
+								codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+						</observation>
+					</entry>
+					
 					<!-- ePOLST Administrative Information entry template
 						Entry is optional (MAY). -->
 					<entry>
 						<act classCode="ACT" moodCode="INT">
 							<templateId root="2.16.840.1.113883.9.275.3.6" extension="2021-12-01"/>
 							<id root="61c73d9d-2775-4030-b4bc-715f637e75b8"/>
-							<code code="TEMP-POLST-ADMIN-INFO" codeSystem="2.16.840.1.113883.6.1"
+							<code code="100828-3" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC"
-								displayName="ePOLST Administrative Information"> </code>
-							<text> Reviewed patient’s advance directive to confirm no conflict with
-								POLST orders. (A POLST form does not replace an advance directive or
-								living will.) Check everyone who participated in
-									discussion.
-							</text>
+								displayName="Portable medical order administrative information"> </code>
+							<text>A POLST form does not replace an advance directive or
+								living will.</text>
 						</act>
 					</entry>
 				</section>

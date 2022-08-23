@@ -23,7 +23,7 @@
         ********************************************************
     -->
 <ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="urn:hl7-org:v3 ../../../CDA-core-2.0/schema/extensions/SDTC/infrastructure/cda/CDA_SDTC.xsd"
+ xsi:schemaLocation="urn:hl7-org:v3 ../../../HL7-RESOURCES/HL7-CDA-core-2.0/schema/extensions/SDTC/infrastructure/cda/CDA_SDTC.xsd"
  xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:voc="urn:hl7-org:v3/voc">
 	<!-- realmCode is required by the US Realm Header and SHALL be realmCode="US" -->
 	<realmCode code="US"/>
@@ -44,7 +44,7 @@
 	<id root="5f6e4733-5fb4-4752-8d81-32420e9976b9"/>
 
 	<!-- Code for this document type (NOT the template OID)-->
-	<code code="TEMP-POLST-ORDERS" displayName="National ePOLST Form: A Portable Medical Order"
+	<code code="100821-8" displayName="National POLST form: portable medical order panel"
 		codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
 
 	<!--

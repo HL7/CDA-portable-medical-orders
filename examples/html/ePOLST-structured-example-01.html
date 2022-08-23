@@ -277,7 +277,7 @@ $( function() {
    </head>
    <body data-spy="scroll" data-target="#navbar-cda">
       <div class="cda-render toc col-md-3" role="complementary">
-         <nav class="cda-render hidden-print hidden-xs hidden-sm affix toc-box" id="navbar-cda">
+         <nav class="cda-render hidden-print hidden-xs hidden-sm affix toc-box col-md-3" id="navbar-cda">
             <div class="container-fluid cda-render toc-header-container">
                <div class="cda-render toc-header">Abel Baker</div>
                <div class="cda-render toc-header">National ePOLST Form: A Portable Medical Order</div>
@@ -287,8 +287,8 @@ $( function() {
                <li><a class="cda-render lantana-toc" href="#cda-patient">DEMOGRAPHICS</a></li>
                <li><a class="cda-render lantana-toc" href="#author-performer">AUTHORING DETAILS</a></li>
                <li><a class="cda-render lantana-toc bold" href="#doc-clinical-info">Clinical Sections</a><ul class="cda-render nav nav-stacked fixed" id="navbar-list-cda-sortable">
-                     <li><a class="cda-render lantana-toc" href="#d3e486">ePOLST Portable Medical Orders </a></li>
-                     <li><a class="cda-render lantana-toc" href="#d3e1069">ePOLST Completion Information Section</a></li>
+                     <li><a class="cda-render lantana-toc" href="#d3e487">ePOLST Portable Medical Orders </a></li>
+                     <li><a class="cda-render lantana-toc" href="#d3e1070">ePOLST Completion Information Section</a></li>
                   </ul>
                </li>
                <li><a class="cda-render lantana-toc" href="#doc-info">SIGNATURES</a></li>
@@ -420,7 +420,7 @@ $( function() {
          </div>
          <div class="middle" id="doc-clinical-info">
             <div class="container-fluid header">
-               <h1 class="section-title" id="d3e486" ng-click="gotoAnchor('toc')">ePOLST Portable Medical Orders </h1>
+               <h1 class="section-title" id="d3e487" ng-click="gotoAnchor('toc')">ePOLST Portable Medical Orders </h1>
                <div class="section-text">
                   						
                   <p styleCode="Bold">ePOLST Clinical Instructions</p>
@@ -470,7 +470,6 @@ $( function() {
                   						
                   <p>[Note: Only d health care providers authorized by law to sign
                      							POLST form in state where completed may sign this order]</p>
-                  
                   						
                   <p styleCode="Bold">A. Cardiopulmonary Resuscitation
                      							Orders.</p>
@@ -521,7 +520,6 @@ $( function() {
                            							</tbody>
                         						</table>
                   </div>
-                  
                   						
                   <p styleCode="Bold">B. Initial Treatment Orders.</p>
                   						
@@ -595,7 +593,6 @@ $( function() {
                            							</tbody>
                         						</table>
                   </div>
-                  
                   						
                   <p styleCode="Bold">C. Additional Orders or Instructions</p>
                   						
@@ -680,7 +677,7 @@ $( function() {
                   					</div>
             </div>
             <div class="container-fluid header">
-               <h1 class="section-title" id="d3e1069" ng-click="gotoAnchor('toc')">ePOLST Completion Information Section</h1>
+               <h1 class="section-title" id="d3e1070" ng-click="gotoAnchor('toc')">ePOLST Completion Information Section</h1>
                <div class="section-text">
                   						
                   <p styleCode="Bold">ePOLST Administrative Information</p>
@@ -770,6 +767,61 @@ $( function() {
                               								</tr>
                            							</tbody>
                         						</table>
+                  </div>
+                  					
+                  <p styleCode="Bold">ePOLST Participants</p>
+                  					
+                  <div class="table-responsive">
+                     <table class="table table-striped table-hover" border="1">
+                        						
+                        <thead>
+                           							
+                           <tr>
+                              								
+                              <td> </td>
+                              								
+                              <td>Participated in Discussion</td>
+                              							</tr>
+                           						</thead>
+                        						
+                        <tbody>
+                           							
+                           <tr>
+                              								
+                              <td>X</td>
+                              								
+                              <td>Patient with decision-making capacity participated </td>
+                              							</tr>
+                           							
+                           <tr>
+                              								
+                              <td> </td>
+                              								
+                              <td>Court appointed guardian participated</td>
+                              							</tr>
+                           							
+                           <tr>
+                              								
+                              <td> </td>
+                              								
+                              <td>Parent of minor participated</td>
+                              							</tr>
+                           							
+                           <tr>
+                              								
+                              <td>X</td>
+                              								
+                              <td>Legal surrogate / health care agent participated</td>
+                              							</tr>
+                           							
+                           <tr>
+                              								
+                              <td> </td>
+                              								
+                              <td>Other participated</td>
+                              							</tr>
+                           						</tbody>
+                        					</table>
                   </div>
                   					</div>
             </div>
