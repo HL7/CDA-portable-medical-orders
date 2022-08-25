@@ -6,7 +6,8 @@
  Created by:   Lantana Consulting Group, Inc.
  Updated by:   Lantana Consulting Group, Inc. 
  
- LastChangedDate: 
+ LastChangedDate:
+ 8/24/2022, Diana Wright - Updated for ballot comment resolutions
  6/20/2022, Diana Wright
  11/28/2021, Diana Wright
   
@@ -422,7 +423,7 @@
 						<paragraph>“I have discussed this order with the patient or his/her
 							representative. The orders reflect the patient’s known wishes, to the
 							best of my knowledge.”</paragraph>
-						<paragraph>[Note: Only d health care providers authorized by law to sign
+						<paragraph>[Note: Only health care providers authorized by law to sign
 							POLST form in state where completed may sign this order]</paragraph>
 						<paragraph styleCode="Bold">A. Cardiopulmonary Resuscitation
 							Orders.</paragraph>
@@ -746,9 +747,13 @@
 									<statusCode code="active"/>
 								</procedure>
 							</entryRelationship>
-							<entryRelationship typeCode="COMP">
-								<!-- ePOLST Clinical Instructions entry template
-									Entry is optional (MAY). -->
+
+							<!-- ePOLST Clinical Instructions entry template
+ 							Entry is optional (MAY). 
+ 							This example does not have clinical instructions, so the template is not used, 
+ 							but is provided here in the comment as an illustration.-->
+							
+							<!-- <entryRelationship typeCode="COMP">
 								<act classCode="ACT" moodCode="INT">
 									<templateId root="2.16.840.1.113883.9.275.3.5"
 										extension="2021-12-01"/>
@@ -763,7 +768,7 @@
 										</externalDocument>
 									</reference>
 								</act>
-							</entryRelationship>
+							</entryRelationship>-->
 						</act>
 					</entry>
 
@@ -798,9 +803,13 @@
 									<statusCode code="active"/>
 								</procedure>
 							</entryRelationship>
-							<entryRelationship typeCode="COMP">
-								<!-- ePOLST Clinical Instructions entry template
-									Entry is optional (MAY). -->
+							
+							<!-- ePOLST Clinical Instructions entry template
+ 							Entry is optional (MAY). 
+ 							This example does not have clinical instructions, so the template is not used, 
+ 							but is provided here in the comment as an illustration.-->
+							
+<!--							<entryRelationship typeCode="COMP">
 								<act classCode="ACT" moodCode="INT">
 									<templateId root="2.16.840.1.113883.9.275.3.5"
 										extension="2021-12-01"/>
@@ -815,7 +824,7 @@
 										</externalDocument>
 									</reference>
 								</act>
-							</entryRelationship>
+							</entryRelationship>-->
 						</act>
 					</entry>
 				</section>
@@ -837,8 +846,8 @@
 					<code code="100970-3"
 						displayName="Portable medical order completion information"
 						codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
-					
-					
+
+
 					<!-- Provide a title for the orders portion of the form here. -->
 					<title>ePOLST Completion Information Section</title>
 
@@ -895,40 +904,40 @@
 								</tr>
 							</tbody>
 						</table>
-					<paragraph styleCode="Bold">ePOLST Participants</paragraph>
-					<table border="1">
-						<thead>
-							<tr>
-								<td> </td>
-								<td>Participated in Discussion</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>X</td>
-								<td>Patient with decision-making capacity participated </td>
-							</tr>
-							<tr>
-								<td> </td>
-								<td>Court appointed guardian participated</td>
-							</tr>
-							<tr>
-								<td> </td>
-								<td>Parent of minor participated</td>
-							</tr>
-							<tr>
-								<td>X</td>
-								<td>Legal surrogate / health care agent participated</td>
-							</tr>
-							<tr>
-								<td> </td>
-								<td>Other participated</td>
-							</tr>
-						</tbody>
-					</table>
+						<paragraph styleCode="Bold">ePOLST Participants</paragraph>
+						<table border="1">
+							<thead>
+								<tr>
+									<td> </td>
+									<td>Participated in Discussion</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>X</td>
+									<td>Patient with decision-making capacity participated </td>
+								</tr>
+								<tr>
+									<td> </td>
+									<td>Court appointed guardian participated</td>
+								</tr>
+								<tr>
+									<td> </td>
+									<td>Parent of minor participated</td>
+								</tr>
+								<tr>
+									<td>X</td>
+									<td>Legal surrogate / health care agent participated</td>
+								</tr>
+								<tr>
+									<td> </td>
+									<td>Other participated</td>
+								</tr>
+							</tbody>
+						</table>
 					</text>
-					
-					
+
+
 					<!-- Orders Review (ePOLST) entry template -->
 					<entry>
 						<observation classCode="OBS" moodCode="EVN">
@@ -975,7 +984,7 @@
 								codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
 						</observation>
 					</entry>
-					
+
 					<!-- ePOLST Administrative Information entry template
 						Entry is optional (MAY). -->
 					<entry>
@@ -985,8 +994,8 @@
 							<code code="100828-3" codeSystem="2.16.840.1.113883.6.1"
 								codeSystemName="LOINC"
 								displayName="Portable medical order administrative information"> </code>
-							<text>A POLST form does not replace an advance directive or
-								living will.</text>
+							<text>A POLST form does not replace an advance directive or living
+								will.</text>
 						</act>
 					</entry>
 				</section>
